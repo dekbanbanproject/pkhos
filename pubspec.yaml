@@ -45,6 +45,7 @@ dependencies:
   syncfusion_flutter_charts: ^23.1.36
   pdftron_flutter: ^1.0.1-20
   font_awesome_flutter: ^10.5.0
+  thai_idcard_reader_flutter: ^0.0.7
 
 dev_dependencies:
   flutter_test:

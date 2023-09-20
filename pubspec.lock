@@ -565,6 +565,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.0"
+  thai_idcard_reader_flutter:
+    dependency: "direct main"
+    description:
+      name: thai_idcard_reader_flutter
+      sha256: "8443286a0f008c6db3f4c4b5c559e6ea5a006ad6a43e9e1e70136a90985111c8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.7"
   typed_data:
     dependency: transitive
     description:
