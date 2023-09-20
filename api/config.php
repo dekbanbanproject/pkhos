@@ -3,11 +3,11 @@
     error_reporting(0);
     error_reporting(E_ERROR | E_PARSE);
     header("content-type:text/javascript;charset=utf-8");
-    $server = "27.254.191.157";
-    $username = "gotowin";
-    $password = "gotx!!;Mas!zxwera!!-2554!";
+    $server = "192.168.0.217";
+    $username = "pkhos";
+    $password = "pkhos10978";
     // $database = "gtw";
-    $database = "dis_test";
+    $database = "pkbackoffice";
   
     // $conn = mysqli_connect('27.254.191.157', 'gotowin', 'Fdm^;bog-91','gtw'); 
     $conn = mysqli_connect($server, $username, $password,$database); 

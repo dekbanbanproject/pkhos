@@ -2,7 +2,7 @@
     include('config.php');
     
     header("Access-Control-Allow-Origin: *");
-    // $conn = mysqli_connect('27.254.191.157', 'gotowin', 'Fdm^;bog-91','gtw'); 
+    // $conn = mysqli_connect('192.168.0.217', 'pkhos', 'pkhos10978','pkbackoffice'); 
 
     if (!$conn) {
         echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -23,7 +23,7 @@
  
 
             // $result = mysqli_query($conn,"SELECT * FROM info_users");
-            $result = mysqli_query($conn,"SELECT * FROM info_users WHERE username = '$Username'");
+            $result = mysqli_query($conn,"SELECT * FROM users WHERE username = '$Username'");
             if ($result) {
                 while($row=mysqli_fetch_assoc($result)){
                     $output[]=$row;

@@ -1,5 +1,10 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:pkhos/models/usersModel.dart';
 import 'package:pkhos/utility/my_constant.dart';
+import 'package:pkhos/utility/my_dialog.dart';
 import 'package:pkhos/widgets/show_image.dart';
 import 'package:pkhos/widgets/show_title.dart';
 
@@ -14,7 +19,7 @@ class _LoginState extends State<Login> {
   bool statusRedEye = true;
   final formKey = GlobalKey<FormState>();
   TextEditingController usernameController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
+  TextEditingController passappController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +36,7 @@ class _LoginState extends State<Login> {
                 buildImage(size),
                 builAppname(),
                 buildUser(size),
-                 buildPassword(size),
+                buildPassword(size),
                 buildSubmitlogin(size),
               ],
             ),
@@ -41,21 +46,21 @@ class _LoginState extends State<Login> {
     );
   }
 
-    Row buildSubmitlogin(double size) {
+  Row buildSubmitlogin(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           margin: EdgeInsets.symmetric(vertical: 16),
-          width: size * 0.2,
+          width: size * 0.4,
           child: ElevatedButton(
             style: MyConstant().mybuttonStyle(),
             onPressed: () {
               if (formKey.currentState!.validate()) {
                 String username = usernameController.text;
-                String password = passwordController.text;
-                print('## username = $username, password = $password');
-                // checkAuthen(username: username, password: password);
+                String passapp = passappController.text;
+                print('## username = $username, passapp = $passapp');
+                checkLogin(username: username, passapp: passapp);
                 // checkAuthen();
               }
             },
@@ -66,15 +71,60 @@ class _LoginState extends State<Login> {
     );
   }
 
-   Row buildPassword(double size) {
+  Future<Null> checkLogin({String? username, String? passapp}) async {
+    String apicheckLogin =
+        '${MyConstant.domain}/pkhos/api/signin.php?isAdd=true&username=$username';
+    await Dio().get(apicheckLogin).then((value) {
+      print('## value for API  ==>  $value');
+      if (value.toString() == 'null') {
+        MyDialog().normalDialog(
+            context, 'ไม่มี $username ในฐานข้อมูล', 'Username ผิด');
+      } else {
+        for (var item in json.decode(value.data!)) {
+          UsersModel model = UsersModel.fromMap(item);
+          if (passapp == model.passapp) {
+            String type = model.type;
+            print('## value for API ===> $type');
+             switch (type) {
+              case 'ADMIN':
+                Navigator.pushNamedAndRemoveUntil(
+                    context, MyConstant.routeAdminPage, (route) => false);
+                break;
+              // case 'PO':
+              //   Navigator.pushNamedAndRemoveUntil(
+              //       context, MyConstant.routePoPage, (route) => false);
+              //   break;
+              // case 'HN':
+              //   Navigator.pushNamedAndRemoveUntil(
+              //       context, MyConstant.routeHnPage, (route) => false);
+              //   break;
+              // case 'AD':
+              //   Navigator.pushNamedAndRemoveUntil(
+              //       context, MyConstant.routeAdminPage, (route) => false);
+              //   break;
+              default:
+            }
+          } else {
+            
+             MyDialog().normalDialog(
+            context, 'ไม่มี $passapp ในฐานข้อมูล', 'Password ผิด');
+          }
+        }
+      }
+    });
+
+    // await Dio().get{apicheckLogin}.then((value){
+  }
+
+  Row buildPassword(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           margin: EdgeInsets.only(top: 15),
-          width: size * 0.5,
+          width: size * 0.6,
           child: TextFormField(
-            controller: passwordController,
+            controller: passappController,
             validator: (value) {
               if (value!.isEmpty) {
                 return 'กรุณากรอก Password';
@@ -120,13 +170,13 @@ class _LoginState extends State<Login> {
     );
   }
 
-    Row buildUser(double size) {
+  Row buildUser(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
           margin: EdgeInsets.only(top: 25),
-          width: size * 0.5,
+          width: size * 0.6,
           child: TextFormField(
             controller: usernameController,
             validator: (value) {
@@ -157,7 +207,8 @@ class _LoginState extends State<Login> {
       ],
     );
   }
-    Row builAppname() {
+
+  Row builAppname() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -172,7 +223,7 @@ class _LoginState extends State<Login> {
     );
   }
 
-   Row buildImage(double size) {
+  Row buildImage(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

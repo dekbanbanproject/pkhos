@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkhos/states/admin.dart';
 import 'package:pkhos/states/home.dart';
 import 'package:pkhos/states/login.dart';
 import 'package:pkhos/utility/my_constant.dart';
@@ -7,6 +8,7 @@ import 'package:pkhos/utility/my_constant.dart';
 final Map<String, WidgetBuilder> map = {
   '/login': (BuildContext context) => const Login(),
   '/home': (BuildContext context) => const Home(),
+  '/admin': (BuildContext context) => const AdminPage(),
 };
 
 String? initlalRoute;

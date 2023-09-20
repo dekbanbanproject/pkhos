@@ -5,14 +5,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 class MyConstant {
   static String appName = 'PK-BACKOffice';
   // static String domain = 'http://27.254.191.157/';
-  static String domain = 'https://85db-183-88-231-30.ngrok.io/gtw';
+  static String domain = 'http://smarthos-phukieohos.moph.go.th';
  
   static String routeLogin = '/login';
   static String routeHome = '/home';
   // static String routeUserPage = '/user';
   // static String routeHnPage = '/hn';
   // static String routePoPage = '/po';
-  // static String routeAdminPage = '/ad';
+  static String routeAdminPage = '/admin';
   // static String routeResetPage = '/reset';
   // static String routeGleavePage = '/gleave';
   // static String routeTdbPage = '/tdb';
@@ -66,12 +66,12 @@ class MyConstant {
   ];
 
   static List<Image> image = [
-    Image.asset('assets//images/boo.png'),
+    Image.asset('assets/images/logo.png'),
   ];
 
   // Image
   static String img1 = 'assets/images/Job.png';
-  static String img2 = 'assets/images/Jobbro.png';
+  static String img2 = 'assets/images/logo.png';
   static String img3 = 'assets/images/Payment.png';
   static String img_logo = 'assets/images/logo.png';
   static String img5 = 'assets/images/logogtw.png';
