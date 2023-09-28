@@ -23,7 +23,7 @@ class _AdminPageState extends State<AdminPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.red.shade400,
+        backgroundColor: Colors.lightBlueAccent,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -34,6 +34,84 @@ class _AdminPageState extends State<AdminPage> {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: Colors.lightBlueAccent,
+        foregroundColor: const Color.fromARGB(255, 250, 250, 248),
+        // elevation: 0,
+        // shape: BeveledRectangleBorder(
+        //   borderRadius: BorderRadius.circular(20.0),
+        //   side: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+          
+        // ),
+      ),
+      bottomNavigationBar: BottomAppBar(
+          notchMargin: 5.0,
+          shape: CircularNotchedRectangle(),
+          color: Colors.lightBlue,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Home",
+                    style: TextStyle(color: Colors.white),
+                  )
+                ]),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(top: 10.0, right: 20.0, bottom: 10.0),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Setting",
+                    style: TextStyle(color: Colors.white),
+                  )
+                ]),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(top: 10.0, left: 20.0, bottom: 10.0),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Profile",
+                    style: TextStyle(color: Colors.white),
+                  )
+                ]),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(top: 10.0, right: 20.0, bottom: 10.0),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Menu",
+                    style: TextStyle(color: Colors.white),
+                  )
+                ]),
+              )
+            ],
+          )),
       // drawer: Drawer(
       //   child: ShowSignOut(),
       // ),
