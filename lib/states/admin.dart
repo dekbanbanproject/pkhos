@@ -22,7 +22,7 @@ class _AdminPageState extends State<AdminPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.yellow.shade500,
+      backgroundColor: Color.fromARGB(255, 249, 232, 240),
       appBar: AppBar(
         backgroundColor: Colors.lightBlueAccent,
         title: Row(
@@ -40,7 +40,7 @@ class _AdminPageState extends State<AdminPage> {
         onPressed: () {},
         child: Icon(Icons.add),
         backgroundColor: Colors.lightBlueAccent,
-        foregroundColor: const Color.fromARGB(255, 250, 250, 248),
+        foregroundColor: Color.fromARGB(255, 250, 240, 245),
         // elevation: 0,
         // shape: BeveledRectangleBorder(
         //   borderRadius: BorderRadius.circular(20.0),
