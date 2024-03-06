@@ -90,6 +90,10 @@ class _LoginState extends State<Login> {
                 Navigator.pushNamedAndRemoveUntil(
                     context, MyConstant.routeAdminPage, (route) => false);
                 break;
+              case 'USER':
+                Navigator.pushNamedAndRemoveUntil(
+                    context, MyConstant.routeUserPage, (route) => false);
+                break;
               // case 'PO':
               //   Navigator.pushNamedAndRemoveUntil(
               //       context, MyConstant.routePoPage, (route) => false);

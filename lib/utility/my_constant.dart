@@ -9,10 +9,11 @@ class MyConstant {
  
   static String routeLogin = '/login';
   static String routeHome = '/home';
-  // static String routeUserPage = '/user';
+  static String routeUserPage = '/user';
   // static String routeHnPage = '/hn';
   // static String routePoPage = '/po';
   static String routeAdminPage = '/admin';
+  
   // static String routeResetPage = '/reset';
   // static String routeGleavePage = '/gleave';
   // static String routeTdbPage = '/tdb';

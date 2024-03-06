@@ -29,7 +29,7 @@ class _AdminPageState extends State<AdminPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Text(
-              'Ver.660920',
+              'Ver.670305',
               style: MyConstant().h1whit17(),
             ),
           ],
