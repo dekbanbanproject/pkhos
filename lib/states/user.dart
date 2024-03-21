@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
@@ -43,11 +45,16 @@ class _UserPageState extends State<UserPage> {
           ],
         ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
+        child: CustomPaint(
+          // painter: HexagonPainter(Offset(11,11),30)
+          child: const Icon(Icons.add, color: Colors.white, size: 28),
+        ),
         // elevation: 12,
         backgroundColor: Color.fromARGB(255, 171, 125, 250),
-        tooltip: 'Menu',
-        child: const Icon(Icons.add, color: Colors.white, size: 28),
+        // tooltip: 'Menu',
+        //
         onPressed: () {},
       ),
       bottomNavigationBar: BottomAppBar(
@@ -59,6 +66,7 @@ class _UserPageState extends State<UserPage> {
         // shape: BeveledRectangleBorder(
         //   borderRadius: BorderRadius.zero
         // ),
+        height: 55,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
@@ -72,7 +80,6 @@ class _UserPageState extends State<UserPage> {
           ],
         ),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
