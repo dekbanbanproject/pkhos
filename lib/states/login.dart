@@ -7,6 +7,7 @@ import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
 import 'package:pkhos/widgets/show_image.dart';
 import 'package:pkhos/widgets/show_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -74,7 +75,7 @@ class _LoginState extends State<Login> {
   Future<Null> checkLogin({String? username, String? passapp}) async {
     String apicheckLogin =
         '${MyConstant.domain}/pkhos/api/signin.php?isAdd=true&username=$username';
-    await Dio().get(apicheckLogin).then((value) {
+    await Dio().get(apicheckLogin).then((value) async {
       print('## value for API  ==>  $value');
       if (value.toString() == 'null') {
         MyDialog().normalDialog(
@@ -85,6 +86,12 @@ class _LoginState extends State<Login> {
           if (passapp == model.passapp) {
             String type = model.type;
             print('## value for API ===> $type');
+            SharedPreferences preferences = await SharedPreferences.getInstance();
+            preferences.setString('type', type);
+            preferences.setString('username', model.username);
+            preferences.setString('id', model.id);
+
+
              switch (type) {
               case 'ADMIN':
                 Navigator.pushNamedAndRemoveUntil(
@@ -94,18 +101,7 @@ class _LoginState extends State<Login> {
                 Navigator.pushNamedAndRemoveUntil(
                     context, MyConstant.routeUserPage, (route) => false);
                 break;
-              // case 'PO':
-              //   Navigator.pushNamedAndRemoveUntil(
-              //       context, MyConstant.routePoPage, (route) => false);
-              //   break;
-              // case 'HN':
-              //   Navigator.pushNamedAndRemoveUntil(
-              //       context, MyConstant.routeHnPage, (route) => false);
-              //   break;
-              // case 'AD':
-              //   Navigator.pushNamedAndRemoveUntil(
-              //       context, MyConstant.routeAdminPage, (route) => false);
-              //   break;
+           
               default:
             }
           } else {

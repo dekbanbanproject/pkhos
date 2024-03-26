@@ -13,21 +13,11 @@ class AdminPage extends StatefulWidget {
 
 class _AdminPageState extends State<AdminPage> {
   Widget currentWidget = AdvertisePage();
-  IconData? iconSharp;
-  var onPressedFunc = () => {};
+
   @override
   void initState() {
     super.initState();
   }
-
-  //   @override
-  // void paint(Canvas canvas, Size size) {
-  //   Paint paint = Paint()
-  //   // ..color = color;  // ใส่สี
-  //   Offset offset = Offset(size.width / 2, size.height / 2);  // กำหนดจุดที่จะวาดวงกลม
-  //   double radius =  size.width / 2; // กำหนดรัศมี
-  //   canvas.drawCircle(offset, radius, paint);   // วาดวงกลมใน canvas
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -45,110 +35,84 @@ class _AdminPageState extends State<AdminPage> {
           ],
         ),
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Container(
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            color: Colors.blueAccent,
-          ),
-          width: 64,
-          height: 64,
-          child: ClipOval(
-            child: Material(
-              type: MaterialType.transparency,
-              child: InkWell(
-                onTap: () {
-                  print('Tapped!');
-                },
-              ),
-            ),
-          ),
-        // child: Center(
-        //   child: Container(
-        //     height: 300,
-        //     width: 300,
-        //     decoration: BoxDecoration(
-        //       color: Color(0xFF3be2a5),
-        //       // shape: BoxShape.circle,
-        //        borderRadius: BorderRadius.circular(30),
-        //     ),
-          ),
-          // painter: MyCirclePainter(color: Colors.green[300]),
-          // )
+        child: Icon(Icons.add),
+        backgroundColor: Colors.lightBlueAccent,
+        foregroundColor: Color.fromARGB(255, 250, 240, 245),
+        // elevation: 0,
+        // shape: BeveledRectangleBorder(
+        //   borderRadius: BorderRadius.circular(20.0),
+        //   side: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
+          
         // ),
-        // child: Container(
-        //     width: 500,
-        // height: 500,
-        // decoration: ShapeDecoration(
-        //               color: Colors.red[300],
-        //               shape: CircleBorder()
-        //             )
-        // ),
-        //      child: Ink(
-        // decoration: const ShapeDecoration(
-        //   color: Colors.grey,
-        //   shape: CircleBorder(),
-        // ),
-        // child: IconButton(
-        //   icon: Icon(IconData(59870, fontFamily: 'MaterialIcons')),
-        //   color: Colors.black,
-        //   onPressed: () {},
       ),
-      // child: Ink(
-      //   decoration: const ShapeDecoration(
-      //     color: Colors.grey,
-      //     shape: CircleBorder(),
-      //   ),
-      //   child: IconButton(
-      //     icon: Icon(iconSharp),
-      //     color: Colors.black,
-      //     onPressed: onPressedFunc,
-      //   ),
-      // child: Icon(Icons.add),
-      // backgroundColor: Colors.lightBlueAccent,
-      // foregroundColor: Color.fromARGB(255, 250, 240, 245),
-      // elevation: 0,
-      // shape: BeveledRectangleBorder(borderRadius: BorderRadius.circular(10.0),
-      // side: BorderSide(color: Colors.blue,width: 2.0,style:BorderStyle.solid )
-      // ),
-      // mini: true,
-      // shape: BeveledRectangleBorder(
-      //   borderRadius: BorderRadius.circular(20.0),
-      //   side: BorderSide(color: Colors.lightBlueAccent, width: 2.0),
-      // ),
-      // ),
-      // bottomNavigationBar: BottomAppBar(
-      // notchMargin: 5.0,
-      // shape: BeveledRectangleBorder(borderRadius: ),
-      // shape: CircularNotchedRectangle(),
-      // shape: BeveledRectangleBorder(
-      // borderRadius: BorderRadius.circular(20.0),
-      // side: BorderSide(color: Colors.black12,width: 2.0,style: BorderStyle.solid),
-      // ),
-      // color: Colors.lightBlue,
-      // child: Row(
-      //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-      //   mainAxisSize: MainAxisSize.max,
-      //   // children: [
-      //   //   Padding(
-      //   //     padding: const EdgeInsets.only(left: 10.0),
-      //   //     child: Column(mainAxisSize: MainAxisSize.min, children: [
-      //   //       Icon(
-      //   //         Icons.home,
-      //   //         color: Colors.white,
-      //   //       ),
-      //   //       Text(
-      //   //         "Home",
-      //   //         style: TextStyle(color: Colors.white),
-      //   //       )
-      //   //     ]),
-      //   //   ),
-
-      //   // ],
-      // ),
-      // ),
+      bottomNavigationBar: BottomAppBar(
+          notchMargin: 5.0,
+          shape: CircularNotchedRectangle(),
+          color: Colors.lightBlue,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisSize: MainAxisSize.max,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 10.0),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Home",
+                    style: TextStyle(color: Colors.white),
+                  )
+                ]),
+              ),
+              // Padding(
+              //   padding:
+              //       const EdgeInsets.only(top: 10.0, right: 20.0, bottom: 10.0),
+              //   child: Column(mainAxisSize: MainAxisSize.min, children: [
+              //     Icon(
+              //       Icons.home,
+              //       color: Colors.white,
+              //     ),
+              //     Text(
+              //       "Setting",
+              //       style: TextStyle(color: Colors.white),
+              //     )
+              //   ]),
+              // ),
+              Padding(
+                padding:
+                    const EdgeInsets.only(top: 10.0, left: 20.0, bottom: 10.0),
+                child: Column(mainAxisSize: MainAxisSize.min, children: [
+                  Icon(
+                    Icons.home,
+                    color: Colors.white,
+                  ),
+                  Text(
+                    "Profile",
+                    style: TextStyle(color: Colors.white),
+                  )
+                ]),
+              ),
+              // Padding(
+              //   padding:
+              //       const EdgeInsets.only(top: 10.0, right: 20.0, bottom: 10.0),
+              //   child: Column(mainAxisSize: MainAxisSize.min, children: [
+              //     Icon(
+              //       Icons.home,
+              //       color: Colors.white,
+              //     ),
+              //     Text(
+              //       "Menu",
+              //       style: TextStyle(color: Colors.white),
+              //     )
+              //   ]),
+              // )
+            ],
+          )),
       // drawer: Drawer(
       //   child: ShowSignOut(),
       // ),
