@@ -91,6 +91,9 @@ class MyConstant {
   TextStyle h1() =>
       TextStyle(fontSize: 24, color: primary, fontWeight: FontWeight.bold);
 
+  TextStyle h1dark() =>
+      TextStyle(fontSize: 22, color: back, fontWeight: FontWeight.normal);
+
   TextStyle h1White() =>
       TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
 
