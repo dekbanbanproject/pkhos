@@ -11,7 +11,8 @@ import android.app.Application;
 import android.content.Context;
 import androidx.annotation.CallSuper;
 import androidx.multidex.MultiDex;
-
+import androidx.multidex.MultiDexApplication;
+// import androidx.multidex.MultiDex;
 /**
  * Extension of {@link android.app.Application}, adding multidex support.
  */
