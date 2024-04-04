@@ -66,6 +66,10 @@ class _LoginState extends State<Login> {
               }
             },
             child: Text('Login'),
+            // child:  ElevatedButton(
+            //                 onPressed: () => scanQR(),
+            //              child: Text('Start QR scan'))
+
           ),
         ),
       ],

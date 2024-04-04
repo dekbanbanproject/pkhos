@@ -49,6 +49,8 @@ dependencies:
   qrscan: ^0.3.3
   http: 0.13.6
   flutter_automation: ^2.0.0
+  flutter_barcode_scanner: ^2.0.0
+  
 
 dev_dependencies:
   flutter_test:
