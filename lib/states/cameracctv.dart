@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkhos/models/article_model.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
 class CameraCCtv extends StatefulWidget {
@@ -9,12 +10,18 @@ class CameraCCtv extends StatefulWidget {
 }
 
 class _CameraCtState extends State<CameraCCtv> {
+List<ArticleModel> articlemodels = [];
+List<ArticleModel> searcharticlemodels = [];
  bool loadStatus = true;
 
 @override
 void initState() {
   super.initState();
   
+}
+
+Future<Null> readarticlecctv()async{
+
 }
 
   @override

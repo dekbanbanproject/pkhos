@@ -81,6 +81,7 @@ class _LoginState extends State<Login> {
         '${MyConstant.domain}/pkhos/api/signin.php?isAdd=true&username=$username';
     await Dio().get(apicheckLogin).then((value) async {
       print('## value for API  ==>  $value');
+     
       if (value.toString() == 'null') {
         MyDialog().normalDialog(
             context, 'ไม่มี $username ในฐานข้อมูล', 'Username ผิด');
@@ -94,7 +95,6 @@ class _LoginState extends State<Login> {
             preferences.setString('type', type);
             preferences.setString('username', model.username);
             preferences.setString('id', model.id);
-
 
              switch (type) {
               case 'ADMIN':

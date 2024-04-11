@@ -23,7 +23,7 @@ Future<Null> main() async {
   SharedPreferences preferences = await SharedPreferences.getInstance();
   String? type = preferences.getString('type');
   String? username = preferences.getString('username');
- String? id = preferences.getString('id');
+  String? id = preferences.getString('id');
 
   if (type?.isEmpty ?? true) {
     initlalRoute = MyConstant.routeLogin;
