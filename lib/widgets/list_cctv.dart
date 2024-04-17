@@ -38,9 +38,11 @@ class _ListCctvState extends State<ListCctv> {
   //   });
   // }
 
+
+
   @override
   Widget build(BuildContext context) {
-    return Text('data');
+    return Text('ListCctv รายการกล้องวงจรปิด');
     // return Container(
 
     //   child: Padding(
