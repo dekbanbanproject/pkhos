@@ -39,6 +39,13 @@ class ArticleModel {
   String? articleImg;
   String? articleImgName;
   String? storeId;
+  String? cctv;
+  String? cctv_location;
+  String? cctv_location_detail;
+  String? cctv_type;
+  String? cctv_code;
+  String? cctv_monitor;
+  String? cctv_status;
 
   ArticleModel(
       {this.articleId,
@@ -80,7 +87,14 @@ class ArticleModel {
       this.articleUnitId,
       this.articleImg,
       this.articleImgName,
-      this.storeId});
+      this.storeId,
+      this.cctv,
+      this.cctv_location,
+      this.cctv_location_detail,
+      this.cctv_type,
+      this.cctv_code,
+      this.cctv_monitor,
+      this.cctv_status});
 
   ArticleModel.fromJson(Map<String, dynamic> json) {
     articleId = json['article_id'];
@@ -123,6 +137,13 @@ class ArticleModel {
     articleImg = json['article_img'];
     articleImgName = json['article_img_name'];
     storeId = json['store_id'];
+    cctv = json['cctv'];
+    cctv_location = json['cctv_location'];
+    cctv_location_detail = json['cctv_location_detail'];
+    cctv_type = json['cctv_type'];
+    cctv_code = json['cctv_code'];
+    cctv_monitor = json['cctv_monitor'];
+    cctv_status = json['cctv_status'];
   }
 
   Map<String, dynamic> toJson() {
@@ -167,6 +188,13 @@ class ArticleModel {
     data['article_img'] = this.articleImg;
     data['article_img_name'] = this.articleImgName;
     data['store_id'] = this.storeId;
+    data['cctv'] = this.cctv;
+    data['cctv_location'] = this.cctv_location;
+    data['cctv_location_detail'] = this.cctv_location_detail;
+    data['cctv_type'] = this.cctv_type;
+    data['cctv_code'] = this.cctv_code;
+    data['cctv_monitor'] = this.cctv_monitor;
+    data['cctv_status'] = this.cctv_status;
     return data;
   }
 }

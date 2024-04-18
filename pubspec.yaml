@@ -51,6 +51,7 @@ dependencies:
   flutter_automation: ^2.0.0
   flutter_barcode_scanner: ^2.0.0
   json_annotation: ^4.8.1
+  curved_navigation_bar: ^1.0.3
   
 
 dev_dependencies:

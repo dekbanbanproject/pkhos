@@ -16,17 +16,16 @@
     }
     if(isset($_GET)){
         if ($_GET['isAdd'] == 'true') {
-           
-            $org = '1';
-
-            $result = mysqli_query($conn,"SELECT ORG_ID,ORG_NAME FROM info_org WHERE ORG_ID = '1'");
-            if ($result) {
-                while($row=mysqli_fetch_assoc($result)){
-                    $output[]=$row;
+            
+            $result = mysqli_query($conn,"SELECT * FROM article_data WHERE cctv ='Y'");
+          
+                if ($result) {
+                    while($row=mysqli_fetch_assoc($result)){
+                        $output[]=$row;
+                    }
+                    echo json_encode($output);
                 }
-                header('Content-type: application/json');
-                echo json_encode($output);
-            }
+            
         } else echo "Wellcome";
     }
 
