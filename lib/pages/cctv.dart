@@ -21,7 +21,7 @@ class _CctvPageState extends State<CctvPage> {
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
 
- @override
+  @override
   void initState() {
     super.initState();
     readdatacctv();
@@ -34,9 +34,10 @@ class _CctvPageState extends State<CctvPage> {
         MyDialog()
             .normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีข้อมูลกล้องวงจรปิด');
       } else {
-        for (var item in json.decode(value.data)) {
+        for (var item in json.decode(value.data!)) {
           ArticleModel model = ArticleModel.fromJson(item);
-          print('### ==>>>${model.cctv_code}');
+           String cctv_code = model.cctv_code;
+          print('### ==>>>$cctv_code');
           setState(() {
             articleModel.add(model);
             searcharticleModel = articleModel;
@@ -56,18 +57,18 @@ class _CctvPageState extends State<CctvPage> {
               child: Column(
                 children: [
                   Text('CCTV Page'),
-                  Center(
-                      child: SizedBox(
-                    height: 150,
-                  )),
-                  CircleAvatar(
-                    radius: 70,
-                    child: Icon(
-                      Icons.photo_camera_front,
-                      size: 120,
-                    ),
-                  ),
-                  buildSearch(),
+                  // Center(
+                  //     child: SizedBox(
+                  //   height: 150,
+                  // )),
+                  // CircleAvatar(
+                  //   radius: 70,
+                  //   child: Icon(
+                  //     Icons.photo_camera_front,
+                  //     size: 120,
+                  //   ),
+                  // ),
+                  // buildSearch(),
                   buildListView(),
                 ],
               ),
@@ -101,17 +102,20 @@ class _CctvPageState extends State<CctvPage> {
 
   ListView buildListView() {
     return ListView.builder(
-         padding: EdgeInsets.symmetric(horizontal: 6),
+      padding: EdgeInsets.symmetric(horizontal: 6),
       shrinkWrap: true,
       physics: const ScrollPhysics(),
       itemCount: searcharticleModel.length,
       itemBuilder: (context, index) => GestureDetector(
-        child: Padding(padding: EdgeInsets.only(left: 0, right: 0, top: 3, bottom: 3),
-        child: Container(
-          decoration: BoxDecoration(color: Colors.white,
-          borderRadius: BorderRadius.circular(10.0),
-          border: Border.all(width: 2.0,color: Colors.blueAccent),
-           boxShadow: const [
+        child: Padding(
+          padding: EdgeInsets.only(left: 0, right: 0, top: 3, bottom: 3),
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10.0),
+              // border: Border.all(
+              //     width: 2.0, color: Color.fromARGB(255, 224, 191, 255)),
+              boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
                   offset: Offset(0, 2),
@@ -119,54 +123,38 @@ class _CctvPageState extends State<CctvPage> {
                 ),
               ],
             ),
-             child: Card(
-              elevation: 2,
+            child: Card(
+              elevation: 1,
               child: ListTile(
-                leading: Text('tttttt',
-                  semanticsLabel: searcharticleModel[index].cctv_code,
-                  style: MyConstant().h5dark(),
+                leading: Text(
+                  searcharticleModel[index].cctv_location,
+                  // searcharticleModel[index].articleBuyId,
+                  // searcharticleModel[index].cctv_code,
+                  // style: MyConstant().h5dark(),
                 ),
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    // Text(
-                    //   'วันที่     ',
-                    //   style: MyConstant().h4dark(),
-                    // ),
-                    Text('sssss',
-                      // searcharticleModel[index].cctv_location,
-                      style: MyConstant().h5dark(),
-                    ),
-                    Text(
-                      '  ถึง  ',
-                      style: MyConstant().h5dark(),
-                    ),
-                    
-                     
+                    Text('3'
+                        // searcharticleModel[index].cctv_code,
+                        // style: MyConstant().h5dark(),
+                        ),
                   ],
                 ),
-                
               ),
             ),
           ),
         ),
-         ),
-      );
-     
+      ),
+    );
   }
-  
-  
-  
- 
-
-
 
 // class CctvPage extends StatelessWidget {
 //   const CctvPage({Key? key}) : super(key: key);
 //  List<ArticleModel> articleModel = [];
 //   @override
 //   Widget build(BuildContext context) {
-  
+
 //      return Padding(
 //       padding: const EdgeInsets.all(24.0),
 //       child: Column(

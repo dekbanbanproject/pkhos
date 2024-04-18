@@ -143,6 +143,8 @@ class MyConstant {
       TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
   TextStyle h1whit17() =>
       TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
+    TextStyle h1cctv17() =>
+      TextStyle(fontSize: 17, color: Color.fromARGB(255, 248, 143, 143), fontWeight: FontWeight.bold);
 
   Text showTitle(String title) => Text(title,style: h3white(),);
 

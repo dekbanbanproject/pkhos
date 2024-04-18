@@ -1,200 +1,178 @@
+import 'dart:convert';
+
 class ArticleModel {
-  String? articleId;
-  String? articleFsn;
-  String? articleNum;
-  String? articleName;
-  String? articleAttribute;
-  String? articlePrice;
-  String? articleYear;
-  String? articleRecieveDate;
-  String? articleSpypriceid;
-  String? articleSpypricename;
-  String? articleRegister;
-  String? articleTypeid;
-  String? articleTypename;
-  String? articleCategoryid;
-  String? articleCategoryname;
-  String? articleGroupid;
-  String? articleGroupname;
-  String? articleMethodId;
-  String? articleBuyId;
-  String? articleBuyName;
-  String? articleBudgetId;
-  String? articleDeclineId;
-  String? articleDeclineName;
-  String? articleVendorId;
-  String? articleVendorName;
-  String? articleDebSubsubId;
-  String? articleDebSubsubName;
-  String? articleCarTypeId;
-  String? articleCarTypeName;
-  String? articleCarNumber;
-  String? articleSerialNo;
-  String? articleStatusId;
-  String? articleModelId;
-  String? articleColorId;
-  String? articleBrandId;
-  String? articleSizeId;
-  String? articleUnitId;
-  String? articleImg;
-  String? articleImgName;
-  String? storeId;
-  String? cctv;
-  String? cctv_location;
-  String? cctv_location_detail;
-  String? cctv_type;
-  String? cctv_code;
-  String? cctv_monitor;
-  String? cctv_status;
+  late String article_id;
+  late String article_fsn;
+  late String article_num;
+  late String article_name;
+  late String article_attribute;
+  late String article_price;
+  late String article_year;
+  late String article_img;
+  late String article_img_name;
+  late String store_id;
+  late String cctv;
+  late String cctv_location;
+  late String cctv_location_detail;
+  late String cctv_type;
+  late String cctv_code;
+  late String cctv_monitor;
+  late String cctv_status;
 
-  ArticleModel(
-      {this.articleId,
-      this.articleFsn,
-      this.articleNum,
-      this.articleName,
-      this.articleAttribute,
-      this.articlePrice,
-      this.articleYear,
-      this.articleRecieveDate,
-      this.articleSpypriceid,
-      this.articleSpypricename,
-      this.articleRegister,
-      this.articleTypeid,
-      this.articleTypename,
-      this.articleCategoryid,
-      this.articleCategoryname,
-      this.articleGroupid,
-      this.articleGroupname,
-      this.articleMethodId,
-      this.articleBuyId,
-      this.articleBuyName,
-      this.articleBudgetId,
-      this.articleDeclineId,
-      this.articleDeclineName,
-      this.articleVendorId,
-      this.articleVendorName,
-      this.articleDebSubsubId,
-      this.articleDebSubsubName,
-      this.articleCarTypeId,
-      this.articleCarTypeName,
-      this.articleCarNumber,
-      this.articleSerialNo,
-      this.articleStatusId,
-      this.articleModelId,
-      this.articleColorId,
-      this.articleBrandId,
-      this.articleSizeId,
-      this.articleUnitId,
-      this.articleImg,
-      this.articleImgName,
-      this.storeId,
-      this.cctv,
-      this.cctv_location,
-      this.cctv_location_detail,
-      this.cctv_type,
-      this.cctv_code,
-      this.cctv_monitor,
-      this.cctv_status});
-
-  ArticleModel.fromJson(Map<String, dynamic> json) {
-    articleId = json['article_id'];
-    articleFsn = json['article_fsn'];
-    articleNum = json['article_num'];
-    articleName = json['article_name'];
-    articleAttribute = json['article_attribute'];
-    articlePrice = json['article_price'];
-    articleYear = json['article_year'];
-    articleRecieveDate = json['article_recieve_date'];
-    articleSpypriceid = json['article_spypriceid'];
-    articleSpypricename = json['article_spypricename'];
-    articleRegister = json['article_register'];
-    articleTypeid = json['article_typeid'];
-    articleTypename = json['article_typename'];
-    articleCategoryid = json['article_categoryid'];
-    articleCategoryname = json['article_categoryname'];
-    articleGroupid = json['article_groupid'];
-    articleGroupname = json['article_groupname'];
-    articleMethodId = json['article_method_id'];
-    articleBuyId = json['article_buy_id'];
-    articleBuyName = json['article_buy_name'];
-    articleBudgetId = json['article_budget_id'];
-    articleDeclineId = json['article_decline_id'];
-    articleDeclineName = json['article_decline_name'];
-    articleVendorId = json['article_vendor_id'];
-    articleVendorName = json['article_vendor_name'];
-    articleDebSubsubId = json['article_deb_subsub_id'];
-    articleDebSubsubName = json['article_deb_subsub_name'];
-    articleCarTypeId = json['article_car_type_id'];
-    articleCarTypeName = json['article_car_type_name'];
-    articleCarNumber = json['article_car_number'];
-    articleSerialNo = json['article_serial_no'];
-    articleStatusId = json['article_status_id'];
-    articleModelId = json['article_model_id'];
-    articleColorId = json['article_color_id'];
-    articleBrandId = json['article_brand_id'];
-    articleSizeId = json['article_size_id'];
-    articleUnitId = json['article_unit_id'];
-    articleImg = json['article_img'];
-    articleImgName = json['article_img_name'];
-    storeId = json['store_id'];
-    cctv = json['cctv'];
-    cctv_location = json['cctv_location'];
-    cctv_location_detail = json['cctv_location_detail'];
-    cctv_type = json['cctv_type'];
-    cctv_code = json['cctv_code'];
-    cctv_monitor = json['cctv_monitor'];
-    cctv_status = json['cctv_status'];
+  ArticleModel({
+    required this.article_id,
+    required this.article_fsn,
+    required this.article_num,
+    required this.article_name,
+    required this.article_attribute,
+    required this.article_price,
+    required this.article_year,
+    required this.article_img,
+    required this.article_img_name,
+    required this.store_id,
+    required this.cctv,
+    required this.cctv_location,
+    required this.cctv_location_detail,
+    required this.cctv_type,
+    required this.cctv_code,
+    required this.cctv_monitor,
+    required this.cctv_status,
+  });
+  ArticleModel copyWith({
+    String? article_id,
+    String? article_fsn,
+    String? article_num,
+    String? article_name,
+    String? article_attribute,
+    String? article_price,
+    String? article_year,
+    String? article_img,
+    String? article_img_name,
+    String? store_id,
+    String? cctv,
+    String? cctv_location,
+    String? cctv_location_detail,
+    String? cctv_type,
+    String? cctv_code,
+    String? cctv_monitor,
+    String? cctv_status,
+  }) {
+    return ArticleModel(
+      article_id: article_id ?? this.article_id,
+      article_fsn: article_fsn ?? this.article_fsn,
+      article_num: article_num ?? this.article_num,
+      article_name: article_name ?? this.article_name,
+      article_attribute: article_attribute ?? this.article_attribute,
+      article_price: article_price ?? this.article_price,
+      article_year: article_year ?? this.article_year,
+      article_img: article_img ?? this.article_img,
+      article_img_name: article_img_name ?? this.article_img_name,
+      store_id: store_id ?? this.store_id,
+      cctv: cctv ?? this.cctv,
+      cctv_location: cctv_location ?? this.cctv_location,
+      cctv_location_detail: cctv_location_detail ?? this.cctv_location_detail,
+      cctv_type: cctv_type ?? this.cctv_type,
+      cctv_code: cctv_code ?? this.cctv_code,
+      cctv_monitor: cctv_monitor ?? this.cctv_monitor,
+      cctv_status: cctv_status ?? this.cctv_status,
+    );
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['article_id'] = this.articleId;
-    data['article_fsn'] = this.articleFsn;
-    data['article_num'] = this.articleNum;
-    data['article_name'] = this.articleName;
-    data['article_attribute'] = this.articleAttribute;
-    data['article_price'] = this.articlePrice;
-    data['article_year'] = this.articleYear;
-    data['article_recieve_date'] = this.articleRecieveDate;
-    data['article_spypriceid'] = this.articleSpypriceid;
-    data['article_spypricename'] = this.articleSpypricename;
-    data['article_register'] = this.articleRegister;
-    data['article_typeid'] = this.articleTypeid;
-    data['article_typename'] = this.articleTypename;
-    data['article_categoryid'] = this.articleCategoryid;
-    data['article_categoryname'] = this.articleCategoryname;
-    data['article_groupid'] = this.articleGroupid;
-    data['article_groupname'] = this.articleGroupname;
-    data['article_method_id'] = this.articleMethodId;
-    data['article_buy_id'] = this.articleBuyId;
-    data['article_buy_name'] = this.articleBuyName;
-    data['article_budget_id'] = this.articleBudgetId;
-    data['article_decline_id'] = this.articleDeclineId;
-    data['article_decline_name'] = this.articleDeclineName;
-    data['article_vendor_id'] = this.articleVendorId;
-    data['article_vendor_name'] = this.articleVendorName;
-    data['article_deb_subsub_id'] = this.articleDebSubsubId;
-    data['article_deb_subsub_name'] = this.articleDebSubsubName;
-    data['article_car_type_id'] = this.articleCarTypeId;
-    data['article_car_type_name'] = this.articleCarTypeName;
-    data['article_car_number'] = this.articleCarNumber;
-    data['article_serial_no'] = this.articleSerialNo;
-    data['article_status_id'] = this.articleStatusId;
-    data['article_model_id'] = this.articleModelId;
-    data['article_color_id'] = this.articleColorId;
-    data['article_brand_id'] = this.articleBrandId;
-    data['article_size_id'] = this.articleSizeId;
-    data['article_unit_id'] = this.articleUnitId;
-    data['article_img'] = this.articleImg;
-    data['article_img_name'] = this.articleImgName;
-    data['store_id'] = this.storeId;
-    data['cctv'] = this.cctv;
-    data['cctv_location'] = this.cctv_location;
-    data['cctv_location_detail'] = this.cctv_location_detail;
-    data['cctv_type'] = this.cctv_type;
-    data['cctv_code'] = this.cctv_code;
-    data['cctv_monitor'] = this.cctv_monitor;
-    data['cctv_status'] = this.cctv_status;
-    return data;
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'article_id': article_id,
+      'article_fsn': article_fsn,
+      'article_num': article_num,
+      'article_name': article_name,
+      'article_attribute': article_attribute,
+      'article_price': article_price,
+      'article_year': article_year,
+      'article_img': article_img,
+      'article_img_name': article_img_name,
+      'store_id': store_id,
+      'cctv': cctv,
+      'cctv_location': cctv_location,
+      'cctv_location_detail': cctv_location_detail,
+      'cctv_type': cctv_type,
+      'cctv_code': cctv_code,
+      'cctv_monitor': cctv_monitor,
+      'cctv_status': cctv_status,
+    };
+  }
+
+  factory ArticleModel.fromMap(Map<String, dynamic> map) {
+    return ArticleModel(
+      article_id: map['article_id'] == null ? '' : map['article_id'],
+      article_fsn: map['article_fsn'] == null ? '' : map['article_fsn'],
+      article_num: map['article_num'] == null ? '' : map['article_num'],
+      article_name: map['article_name'] == null ? '' : map['article_name'],
+      article_attribute:
+          map['article_attribute'] == null ? '' : map['article_attribute'],
+      article_price: map['article_price'] == null ? '' : map['article_price'],
+      article_year: map['article_year'] == null ? '' : map['article_year'],
+      article_img: map['article_img'] == null ? '' : map['article_img'],
+      article_img_name:
+          map['article_img_name'] == null ? '' : map['article_img_name'],
+      store_id: map['store_id'] == null ? '' : map['store_id'],
+      cctv: map['cctv'] == null ? '' : map['cctv'],
+      cctv_location: map['cctv_location'] == null ? '' : map['cctv_location'],
+      cctv_location_detail: map['cctv_location_detail'] == null
+          ? ''
+          : map['cctv_location_detail'],
+      cctv_type: map['cctv_type'] == null ? '' : map['cctv_type'],
+      cctv_code: map['cctv_code'] == null ? '' : map['cctv_code'],
+      cctv_monitor: map['cctv_monitor'] == null ? '' : map['cctv_monitor'],
+      cctv_status: map['cctv_status'] == null ? '' : map['cctv_status'],
+    );
+  }
+  String toJson() => json.encode(toMap());
+  factory ArticleModel.fromJson(String source) =>
+      ArticleModel.fromMap(json.decode(source) as Map<String, dynamic>);
+
+  @override
+  String toString() {
+    return 'ArticleModel(article_id: $article_id, article_fsn: $article_fsn, article_num: $article_num, article_name: $article_name, article_attribute: $article_attribute, article_price: $article_price, article_year: $article_year, article_img: $article_img, article_img_name: $article_img_name, store_id: $store_id, cctv: $cctv, cctv_location: $cctv_location, cctv_location_detail: $cctv_location_detail, cctv_type: $cctv_type, cctv_code: $cctv_code, cctv_monitor: $cctv_monitor, cctv_status: $cctv_status)';
+  }
+
+  @override
+  bool operator ==(covariant ArticleModel other) {
+    if (identical(this, other)) return true;
+    return other.article_id == article_id &&
+        other.article_fsn == article_fsn &&
+        other.article_num == article_num &&
+        other.article_name == article_name &&
+        other.article_attribute == article_attribute &&
+        other.article_price == article_price &&
+        other.article_year == article_year &&
+        other.article_img == article_img &&
+        other.article_img_name == article_img_name &&
+        other.store_id == store_id &&
+        other.cctv == cctv &&
+        other.cctv_location == cctv_location &&
+        other.cctv_location_detail == cctv_location_detail &&
+        other.cctv_type == cctv_type &&
+        other.cctv_code == cctv_code &&
+        other.cctv_monitor == cctv_monitor &&
+        other.cctv_status == cctv_status;
+  }
+
+  @override
+  int get hashCode {
+    return article_id.hashCode ^
+        article_fsn.hashCode ^
+        article_num.hashCode ^
+        article_name.hashCode ^
+        article_attribute.hashCode ^
+        article_price.hashCode ^
+        article_img.hashCode ^
+        article_img_name.hashCode ^
+        store_id.hashCode ^
+        cctv.hashCode ^
+        cctv_location.hashCode ^
+        cctv_location_detail.hashCode ^
+        cctv_type.hashCode ^
+        cctv_code.hashCode ^
+        cctv_monitor.hashCode ^
+        cctv_status.hashCode;
   }
 }

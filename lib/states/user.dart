@@ -33,27 +33,27 @@ class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 211, 187, 252),
+      // backgroundColor: Color.fromARGB(255, 237, 227, 255),
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 171, 125, 250),
+        backgroundColor: Color.fromARGB(228, 255, 255, 255),
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             IconButton(
                 onPressed: () {},
                 icon: const Icon(Icons.photo_camera_front,
-                    color: Color.fromARGB(255, 255, 255, 255))),
+                    color: Color.fromARGB(255, 248, 143, 143))),
             Text(
               // 'Ver.670305',
               'PK-Service',
-              style: MyConstant().h1whit17(),
+              style: MyConstant().h1cctv17(),
             ),
             
           ],
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.add_alert),
+            icon: const Icon(Icons.add_alert,color: Color.fromARGB(255, 248, 143, 143)),
             tooltip: 'Version',
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(
@@ -61,7 +61,7 @@ class _UserPageState extends State<UserPage> {
             },
           ),
           IconButton(
-            icon: const Icon(Icons.logout),
+            icon: const Icon(Icons.logout,color: Color.fromARGB(255, 248, 143, 143)),
             tooltip: 'Logout',
             onPressed: () => signoutProcess(context),
             // onPressed: () {
@@ -86,12 +86,12 @@ class _UserPageState extends State<UserPage> {
         },
         height: 70,
         backgroundColor: Colors.transparent,
-        buttonBackgroundColor: Color.fromARGB(255, 171, 125, 250),
-        color: Color.fromARGB(255, 171, 125, 250),
+        buttonBackgroundColor: Color.fromARGB(255, 235, 76, 36),
+        color: Color.fromARGB(255, 191, 154, 255),
         animationDuration: const Duration(milliseconds: 300), 
       ),
       body: Container(
-        color: Color.fromARGB(255, 211, 187, 252),
+        color: Color.fromARGB(255, 253, 253, 253),
         width: double.infinity,
         height: double.infinity,
         alignment: Alignment.center,
