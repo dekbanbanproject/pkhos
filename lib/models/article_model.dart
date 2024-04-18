@@ -1,23 +1,23 @@
 import 'dart:convert';
 
 class ArticleModel {
-  late String article_id;
-  late String article_fsn;
-  late String article_num;
-  late String article_name;
-  late String article_attribute;
-  late String article_price;
-  late String article_year;
-  late String article_img;
-  late String article_img_name;
-  late String store_id;
-  late String cctv;
-  late String cctv_location;
-  late String cctv_location_detail;
-  late String cctv_type;
-  late String cctv_code;
-  late String cctv_monitor;
-  late String cctv_status;
+  final String article_id;
+  final String article_fsn;
+  final String article_num;
+  final String article_name;
+  final String article_attribute;
+  final String article_price;
+  final String article_year;
+  final String article_img;
+  final String article_img_name;
+  final String store_id;
+  final String cctv;
+  final String cctv_location;
+  final String cctv_location_detail;
+  final String cctv_type;
+  final String cctv_code;
+  final String cctv_monitor;
+  final String cctv_status;
 
   ArticleModel({
     required this.article_id,
@@ -79,7 +79,7 @@ class ArticleModel {
   }
 
   Map<String, dynamic> toMap() {
-    return <String, dynamic>{
+    return{
       'article_id': article_id,
       'article_fsn': article_fsn,
       'article_num': article_num,
@@ -127,7 +127,7 @@ class ArticleModel {
   }
   String toJson() => json.encode(toMap());
   factory ArticleModel.fromJson(String source) =>
-      ArticleModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      ArticleModel.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -135,9 +135,10 @@ class ArticleModel {
   }
 
   @override
-  bool operator ==(covariant ArticleModel other) {
+  bool operator ==(Object other) {
     if (identical(this, other)) return true;
-    return other.article_id == article_id &&
+    return other is ArticleModel && 
+    other.article_id == article_id &&
         other.article_fsn == article_fsn &&
         other.article_num == article_num &&
         other.article_name == article_name &&
