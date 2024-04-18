@@ -28,7 +28,7 @@ class _CctvPageState extends State<CctvPage> {
   }
 
   Future<Null> readdatacctv() async {
-    String apireaData = '${MyConstant.domain}/pkhos/api/article.php?isAdd=true';
+    var apireaData = '${MyConstant.domain}/pkhos/api/article.php?isAdd=true';
     await Dio().get(apireaData).then((value) async {
       if (value.toString() == 'null') {
         MyDialog()
