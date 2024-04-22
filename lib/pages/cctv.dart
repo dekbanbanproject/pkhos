@@ -49,22 +49,22 @@ class _CctvPageState extends State<CctvPage> {
   //   });
   // }
 
-  Future<List<ArticleModel>> getarticleApi() async {
-    final response = await http.get(Uri.parse(
-        'http://smarthos-phukieohos.moph.go.th/pkhos/api/article.php?isAdd=true'));
-    var data = jsonDecode(response.body.toString());
+  // Future<List<ArticleModel>> getarticleApi() async {
+  //   final response = await http.get(Uri.parse(
+  //       'http://smarthos-phukieohos.moph.go.th/pkhos/api/article.php?isAdd=true'));
+  //   var data = jsonDecode(response.body.toString());
 
-    // print(data);
-    if (response.statusCode == 200) {
-      for (Map i in data) {
-        // print(i['cctv_location']);
-        articleList.add(ArticleModel.fromJson(data));
-      }
-      return articleList;
-    } else {
-      return articleList;
-    }
-  }
+  //   // print(data);
+  //   if (response.statusCode == 200) {
+  //     for (Map i in data) {
+  //       // print(i['cctv_location']);
+  //       articleList.add(ArticleModel.fromJson(data));
+  //     }
+  //     return articleList;
+  //   } else {
+  //     return articleList;
+  //   }
+  // }
 
   Future<Null> listcctv() async {
     final apicctv = '${MyConstant.domain}/pkhos/api/article.php?isAdd=true';
@@ -89,56 +89,10 @@ class _CctvPageState extends State<CctvPage> {
           ? Center(child: CircularProgressIndicator())
           : SingleChildScrollView(
               child: Column(
-        children: [
-          // Expanded(
-          //   child: FutureBuilder(
-          //     future: getarticleApi(),
-          //     builder: (context, AsyncSnapshot<List<ArticleModel>> snapshot) {
-          //       if (snapshot.hasData) {
-          //         return CircularProgressIndicator();
-          //       } else {
-          //         return ListView.builder(
-          //             itemCount: articleList.length,
-          //             itemBuilder: (context, index) {
-          //               return Card(
-          //                 child: Padding(
-          //                   padding: const EdgeInsets.all(8.0),
-          //                   child: Column(
-          //                     children: [
-          //                       Row(
-          //                         mainAxisAlignment:
-          //                             MainAxisAlignment.spaceBetween,
-          //                         children: [
-          //                           Text('data'),
-          //                           Text(snapshot.data![index].cctvCode
-          //                               .toString()),
-          //                         ],
-          //                       )
-          //                     ],
-          //                   ),
-          //                 ),
-          //               );
-          //             });
-          //       }
-          //     },
-          //   ),
-          // ),
-
-          // Text('CCTV Page'),
-          // Center(
-          //     child: SizedBox(
-          //   height: 150,
-          // )),
-          // CircleAvatar(
-          //   radius: 70,
-          //   child: Icon(
-          //     Icons.photo_camera_front,
-          //     size: 120,
-          //   ),
-          // ),
-          buildSearch(),
-          buildListView(),
-       ],
+                children: [
+                  buildSearch(),
+                  buildListView(),
+                ],
               ),
             ),
     );
@@ -181,8 +135,6 @@ class _CctvPageState extends State<CctvPage> {
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(10.0),
-              // border: Border.all(
-              //     width: 2.0, color: Color.fromARGB(255, 224, 191, 255)),
               boxShadow: const [
                 BoxShadow(
                   color: Colors.black26,
@@ -196,17 +148,15 @@ class _CctvPageState extends State<CctvPage> {
               child: ListTile(
                 leading: Text(
                   searcharticleModel[index].cctvCode!,
-                  // searcharticleModel[index].articleBuyId,
-                  // searcharticleModel[index].cctv_code,
                   style: MyConstant().h5dark(),
                 ),
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text( 
-                       searcharticleModel[index].articleName!,
-                        style: MyConstant().h5dark(),
-                        ),
+                    Text(
+                      searcharticleModel[index].articleName!,
+                      style: MyConstant().h5dark(),
+                    ),
                   ],
                 ),
               ),
@@ -216,29 +166,6 @@ class _CctvPageState extends State<CctvPage> {
       ),
     );
   }
-
-// class CctvPage extends StatelessWidget {
-//   const CctvPage({Key? key}) : super(key: key);
-//  List<ArticleModel> articleModel = [];
-//   @override
-//   Widget build(BuildContext context) {
-
-//      return Padding(
-//       padding: const EdgeInsets.all(24.0),
-//       child: Column(
-//         children: [
-//           Text('CCTV Page'),
-//           Center(child: SizedBox(height: 150,)),
-//           CircleAvatar(
-//             radius: 70,
-//             child: Icon(Icons.photo_camera_front,size: 120,),
-//           ),
-//           Icon(Icons.add),
-//         ],
-//       ),
-//     );
-//   }
-// }
 }
 
 class Debouncer {

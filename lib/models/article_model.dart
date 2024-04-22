@@ -102,4 +102,6 @@ class ArticleModel {
     data['cctv_status'] = this.cctvStatus;
     return data;
   }
+
+  void add(ArticleModel articleModel) {}
 }

@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:pkhos/pages/cctv.dart';
 import 'package:pkhos/pages/home.dart';
 import 'package:pkhos/pages/profile.dart';
@@ -20,6 +22,7 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   Widget curentWidget = ListCctv();
   List<Widget> widgets = [ListCctv(), Listcctvadd()];
+   late String _scanBarcode = 'ยังไม่มีข้อมูล';
   final items = const [
     Icon(Icons.home, size: 26, color: Colors.white),
     Icon(Icons.photo_camera_front, size: 26, color: Colors.white),
@@ -29,6 +32,29 @@ class _UserPageState extends State<UserPage> {
     Icon(Icons.notifications, size: 26, color: Colors.white),
   ];
   int index = 0;
+
+    Future<void> startBarcodeScanStream() async {
+      FlutterBarcodeScanner.getBarcodeStreamReceiver(
+              '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
+          .listen((barcode) => print(barcode));
+    }
+
+    Future<void> scanQR() async {
+    String barcodeScanRes;
+    // Platform messages may fail, so we use a try/catch PlatformException.
+    try {
+      barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
+          '#ff6666', 'Cancel', true, ScanMode.QR);
+      print(barcodeScanRes);
+    } on PlatformException {
+      barcodeScanRes = 'Failed to get platform version.';
+    }
+    if (!mounted) return;
+
+    setState(() {
+      _scanBarcode = barcodeScanRes;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +101,12 @@ class _UserPageState extends State<UserPage> {
           ),
         ],
       ),
-      
+      //  floatingActionButton: FloatingActionButton(
+      //     child: Icon(Icons.qr_code_scanner_sharp),
+      //     backgroundColor: Colors.orange,
+      //     onPressed: () => scanQR(),
+      //      tooltip: 'Start scan',
+      //   ),
       bottomNavigationBar: CurvedNavigationBar(
         items: items,
         index: index,
