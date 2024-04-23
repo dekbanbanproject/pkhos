@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:pkhos/models/article_model.dart';
 import 'package:pkhos/pages/cctvdetail.dart';
 
 // HomePage
@@ -21,11 +22,8 @@ class _HomePageState extends State<HomePage> {
     await FlutterBarcodeScanner.scanBarcode(
             '#ff6666', 'Cancel', true, ScanMode.QR)
         .then((String article_num) {
-      Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => CctvDetail(article_num)
-          ));
+      // Navigator.push(context,
+          // MaterialPageRoute(builder: (context) => CctvDetail(article_num)));
     });
   }
 
@@ -76,7 +74,7 @@ class _HomePageState extends State<HomePage> {
           MaterialButton(
             onPressed: () {
               scanbarcodenew();
-            }, 
+            },
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
