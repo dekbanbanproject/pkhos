@@ -1,10 +1,17 @@
+import 'dart:convert';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
+
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+
 import 'package:pkhos/models/article_model.dart';
-import 'package:pkhos/pages/cctvdetail.dart';
+
 import 'package:pkhos/utility/my_constant.dart';
+import 'package:pkhos/utility/my_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // HomePage
 class HomePage extends StatefulWidget {
@@ -16,11 +23,10 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   late String _scanBarcode = 'ยังไม่มีข้อมูล';
-
-  // late String code = '';
-  // late String getcode = '';
-  TextEditingController articleController = TextEditingController();
-  // TextEditingController passappController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  TextEditingController article_numController = TextEditingController();
+  TextEditingController check_dateController = TextEditingController();
+  TextEditingController camera_screenController = TextEditingController();
 
   Future<void> scanbarcodenew() async {
     //  getcode =
@@ -41,6 +47,12 @@ class _HomePageState extends State<HomePage> {
   late String barcodeScanRes = '';
   late String getbarcodeScanRes = '';
   late String cctvStatus = '';
+  late String articlenum = '';
+  late String connerStatus = '';
+  late String drawbackStatus = '';
+  late String saveStatus = '';
+  late String powerStatus = '';
+  List<ArticleModel> articleModel = [];
 
   Future<void> scanQR() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
@@ -59,65 +71,118 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
+  Future<void> _refreshpage() async {
+    return await Future.delayed(Duration(seconds: 2));
+  }
+
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Column(
-        children: [
-          MaterialButton(
-            onPressed: () {
-              // scanbarcodenew();
-              scanQR();
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
+    // return Expanded(
+    //   child: SingleChildScrollView(
+    return Scaffold(
+      body: LiquidPullToRefresh(
+        onRefresh: _refreshpage,
+        color: Colors.deepPurple,height: 300,backgroundColor: Colors.deepPurple[200],
+        animSpeedFactor: 2,
+        showChildOpacityTransition: true,
+        child: ListView(
+          // child: Column(
+          children: [
+            Column(
               children: [
-                CircleAvatar(
-                  radius: 70,
-                  child: Icon(
-                    Icons.qr_code_scanner_sharp,
-                    color: Colors.orange,
-                    size: 90,
+                Padding(
+                  padding: const EdgeInsets.only(top: 40),
+                  child: MaterialButton(
+                    onPressed: () {
+                      // scanbarcodenew();
+                      scanQR();
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircleAvatar(
+                          radius: 60,
+                          child: Icon(
+                            Icons.qr_code_scanner_sharp,
+                            color: Colors.orange,
+                            size: 60,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                )
+                ),
+                Center(
+              child: SizedBox(
+                height: 5,
+              ),
+            ),
+            Text('SCAN QRCODE CCTV'),
+            Center(
+              child: SizedBox(
+                height: 5,
+              ),
+            ),
+            textNum(),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  normalRadio(),
+                  damagedRadio(),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  normalconerRadio(),
+                  damagedconerRadio(),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  normaldrawbackRadio(),
+                  damageddrawbackRadio(),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  normalsaveRadio(),
+                  damagedsaveRadio(),
+                ],
+              ),
+            ),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  normalpowerRadio(),
+                  damagedpowerRadio(),
+                ],
+              ),
+            ),
               ],
             ),
-          ),
-          Center(
-            child: SizedBox(
-              height: 5,
-            ),
-          ),
-          Text('รายการกล้องวงจรปิด'),
-          Center(
-            child: SizedBox(
-              height: 5,
-            ),
-          ),
-          articleNum(size),
-          Center(
-            child: SizedBox(
-              height: 5,
-            ),
-          ),
-          textNum(),
-          Center(
-            child: SizedBox(
-              height: 5,
-            ),
-          ),
-          normalRadio(),
-          damagedRadio(),
-          saveButtom(size),
-        ],
+            
+            saveButtom(size),
+          ],
+        ),
+        //  onRefresh: onRefresh
       ),
     );
   }
 
   // dynamic saveButtom() => saveButtom();
-    Row saveButtom(double size) {
+  Row saveButtom(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -126,60 +191,220 @@ class _HomePageState extends State<HomePage> {
           width: size * 0.6,
           child: ElevatedButton(
             style: MyConstant().mybuttonStyle(),
-            onPressed: () {
-               
-            },
-            child: Text('Save',style: MyConstant().h2White(),),
-          
-
+            // onPressed: () {
+            //   print('######## Active = $cctvStatus, ###### Article num = $articlenum');
+            // },
+            onPressed: () => comfirmDialog(),
+            // onPressed: () => editActive(),
+            child: Text(
+              'Save',
+              style: MyConstant().h2White(),
+            ),
           ),
         ),
       ],
     );
   }
 
-  Widget normalRadio() => Container(
-        child: Row(mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(width: 250.0,
-              child: Row(
-                children: <Widget>[
-                  Radio(
-                    value: '0',
-                    groupValue: cctvStatus,
-                    onChanged: (value) {
-                      setState(() {
-                        cctvStatus = value!;
-                      });
-                    },
-                  ),
-                  Text('ปกติ'),
-                ],
-              ),
+  Future<Null> comfirmDialog() async {
+    showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text('บันทึกข้อมูลใช่ไหม ?'),
+        children: [
+          Center(
+            child: OutlinedButton(
+              onPressed: () {
+                Navigator.pop(context);
+                updateActive();
+                // editActive();
+              },
+              child: Text('ใช่'),
             ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget normalRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Text(
+              'จอกล้อง',
+              style: TextStyle(fontSize: 17),
+            ),
+            Radio(
+              value: '0',
+              groupValue: cctvStatus,
+              onChanged: (value) {
+                setState(() {
+                  cctvStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
           ],
         ),
       );
 
-       Widget damagedRadio() => Container(
-        child: Row(mainAxisAlignment: MainAxisAlignment.end,
-          children: [
-            Container(width: 250.0,
-              child: Row(
-                children: <Widget>[
-                  Radio(
-                    value: '1',
-                    groupValue: cctvStatus,
-                    onChanged: (value) {
-                      setState(() {
-                        cctvStatus = value!;
-                      });
-                    },
-                  ),
-                  Text('ชำรุด'),
-                ],
-              ),
+  Widget damagedRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '1',
+              groupValue: cctvStatus,
+              onChanged: (value) {
+                setState(() {
+                  cctvStatus = value!;
+                });
+              },
             ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+  Widget normalconerRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Text(
+              'มุมกล้อง',
+              style: TextStyle(fontSize: 17),
+            ),
+            Radio(
+              value: '0',
+              groupValue: connerStatus,
+              onChanged: (value) {
+                setState(() {
+                  connerStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+          ],
+        ),
+      );
+  Widget damagedconerRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '1',
+              groupValue: connerStatus,
+              onChanged: (value) {
+                setState(() {
+                  connerStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+  Widget normaldrawbackRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Text(
+              'สิ่งกีดขวาง',
+              style: TextStyle(fontSize: 17),
+            ),
+            Radio(
+              value: '0',
+              groupValue: drawbackStatus,
+              onChanged: (value) {
+                setState(() {
+                  drawbackStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+          ],
+        ),
+      );
+  Widget damageddrawbackRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '1',
+              groupValue: drawbackStatus,
+              onChanged: (value) {
+                setState(() {
+                  drawbackStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+  Widget normalsaveRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Text(
+              'การบันทึก',
+              style: TextStyle(fontSize: 17),
+            ),
+            Radio(
+              value: '0',
+              groupValue: saveStatus,
+              onChanged: (value) {
+                setState(() {
+                  saveStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+          ],
+        ),
+      );
+  Widget damagedsaveRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '1',
+              groupValue: saveStatus,
+              onChanged: (value) {
+                setState(() {
+                  saveStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+  Widget normalpowerRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Text(
+              'การสำรองไฟ',
+              style: TextStyle(fontSize: 17),
+            ),
+            Radio(
+              value: '0',
+              groupValue: powerStatus,
+              onChanged: (value) {
+                setState(() {
+                  powerStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+          ],
+        ),
+      );
+  Widget damagedpowerRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '1',
+              groupValue: powerStatus,
+              onChanged: (value) {
+                setState(() {
+                  powerStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
           ],
         ),
       );
@@ -187,7 +412,7 @@ class _HomePageState extends State<HomePage> {
   dynamic textNum() {
     return Container(
         child: Text(
-      'Scan result : $_scanBarcode\n',
+      'รหัสกล้องวงจรปิด : $_scanBarcode\n',
       style: TextStyle(fontSize: 20),
     ));
   }
@@ -199,16 +424,17 @@ class _HomePageState extends State<HomePage> {
         Container(
           margin: EdgeInsets.only(top: 10),
           width: size * 0.8,
+          // child: TextField(onChanged: (value) => articlenum = value.trim(),
+          //   decoration: InputDecoration(labelText: '$_scanBarcode'),
+          // ),
           child: TextFormField(
-            initialValue: barcodeScanRes,
+            // onChanged: (value) => articlenum = value.trim(),
+            // controller: article_numController,
+            // initialValue: barcodeScanRes,
             // controller: articleController,
             decoration: InputDecoration(
               labelStyle: MyConstant().h2(),
               labelText: '$_scanBarcode\n',
-              // prefixIcon: Icon(
-              //   Icons.account_circle,
-              //   color: MyConstant.info,
-              // ),
               enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: MyConstant.primary),
                 borderRadius: BorderRadius.circular(30),
@@ -222,6 +448,64 @@ class _HomePageState extends State<HomePage> {
         ),
       ],
     );
+  }
+
+  Future<Null> editActive() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    String id = preferences.getString('id')!;
+    // String article_num2 = article_numController.text;
+
+    print('######## userid = $id');
+    print('######## article_num = $_scanBarcode');
+
+    String path =
+        '${MyConstant.domain}/pkhos/api/getArticle.php?isAdd=true&article_num=$_scanBarcode';
+    await Dio().get(path).then((value) async {
+      if (value.toString() == 'null') {
+        MyDialog()
+            .normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีข้อมูลกล้องวงจรปิด');
+      } else {
+        for (var items in json.decode(value.data!)) {
+          ArticleModel model = ArticleModel.fromJson(items);
+          String getarticlenum = model.articleNum.toString();
+          print('### ==>>>$getarticlenum');
+          setState(() {
+            articleModel.add(model);
+          });
+        }
+      }
+    });
+    // (value) =>
+    // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ'));
+  }
+
+  Future<Null> updateActive() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+
+    String id = preferences.getString('id')!;
+    // String article_num2 = article_numController.text;
+
+    print('######## userid = $id');
+    print('######## Active = $cctvStatus');
+
+    String path =
+        '${MyConstant.domain}/pkhos/api/getArticleinsert.php?isAdd=true&article_num=$_scanBarcode&cctv_user_id=$id&cctv_camera_screen=$cctvStatus&cctv_camera_corner=$connerStatus&cctv_camera_drawback=$drawbackStatus&cctv_camera_save=$saveStatus&cctv_camera_power_backup=$powerStatus';
+    await Dio().get(path).then((value) =>
+        MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ'));
+    // Navigator.pushNamed(context, MyConstant.routeCctvhome)
+    // .then((value) => scanQR());
+    // Navigator.pop(context);
+    // },
+    // );
+
+    // var response = await Dio().get(url);
+    // if (response.toString() == 'true') {
+    //   Navigator.pop(context);
+    // } else {
+    //   MyDialog().normalDialog(
+    //       context, 'ไม่มี $_scanBarcode ในฐานข้อมูล', 'article_num ผิด');
+    // }
   }
 //   Text articleNum() {
 //     return Text(

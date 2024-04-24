@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkhos/pages/home.dart';
 import 'package:pkhos/states/admin.dart';
 import 'package:pkhos/states/cameracctv.dart';
 import 'package:pkhos/states/home.dart';
@@ -13,6 +14,7 @@ final Map<String, WidgetBuilder> map = {
   '/admin': (BuildContext context) => const AdminPage(),
   '/user': (BuildContext context) => const UserPage(),
   '/cameracctv': (BuildContext context) => const CameraCCtv(),
+  '/cctvhome': (BuildContext context) => const HomePage(),
 };
 
 String? initlalRoute;
