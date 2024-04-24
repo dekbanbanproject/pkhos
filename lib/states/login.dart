@@ -52,8 +52,8 @@ class _LoginState extends State<Login> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          margin: EdgeInsets.symmetric(vertical: 16),
-          width: size * 0.4,
+          margin: EdgeInsets.symmetric(vertical: 18),
+          width: size * 0.6,
           child: ElevatedButton(
             style: MyConstant().mybuttonStyle(),
             onPressed: () {
@@ -65,7 +65,7 @@ class _LoginState extends State<Login> {
                 // checkAuthen();
               }
             },
-            child: Text('Login'),
+            child: Text('Login',style: MyConstant().h2White(),),
             // child:  ElevatedButton(
             //                 onPressed: () => scanQR(),
             //              child: Text('Start QR scan'))

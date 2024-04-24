@@ -6,15 +6,15 @@ class MyConstant {
   static String appName = 'PK-OFFice';
   // static String domain = 'http://27.254.191.157/';
   static String domain = 'http://smarthos-phukieohos.moph.go.th';
- 
+
   static String routeLogin = '/login';
   static String routeHome = '/home';
   static String routeUserPage = '/user';
-   static String routeCameracctv = '/cameracctv';
+  static String routeCameracctv = '/cameracctv';
   // static String routeHnPage = '/hn';
   // static String routePoPage = '/po';
   static String routeAdminPage = '/admin';
-  
+
   // static String routeResetPage = '/reset';
   // static String routeGleavePage = '/gleave';
   // static String routeTdbPage = '/tdb';
@@ -143,13 +143,20 @@ class MyConstant {
       TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
   TextStyle h1whit17() =>
       TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
-    TextStyle h1cctv17() =>
-      TextStyle(fontSize: 17, color: Color.fromARGB(255, 248, 143, 143), fontWeight: FontWeight.bold);
+  TextStyle h1cctv17() => TextStyle(
+      fontSize: 17,
+      color: Color.fromARGB(255, 248, 143, 143),
+      fontWeight: FontWeight.bold);
 
-  Text showTitle(String title) => Text(title,style: h3white(),);
+  Text showTitle(String title) => Text(
+        title,
+        style: h3white(),
+      );
 
 //Button
   ButtonStyle mybuttonStyle() => ElevatedButton.styleFrom(
+        // iconColor: Colors.orange, 
+        backgroundColor: Color.fromARGB(255, 54, 186, 247),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
         ),
@@ -172,4 +179,3 @@ class MyConstant {
   }
   // Mydialog()
 }
- 
