@@ -10,6 +10,6 @@ class MainCctv extends StatefulWidget {
 class _MainCctvState extends State<MainCctv> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(); 
+    return Text('Maincctv'); 
   }
 }

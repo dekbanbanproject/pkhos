@@ -18,6 +18,7 @@ class CctvList extends StatelessWidget {
                 borderRadius: BorderRadius.circular(20),
                 color: MyConstant.kprimaryColor),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SizedBox(height: 15),
                 Center(
@@ -36,7 +37,11 @@ class CctvList extends StatelessWidget {
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                 ),
-                 SizedBox(height: 10),
+                SizedBox(height: 10),
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
+                ),
+                SizedBox(height: 10),
               ],
             ),
           ),

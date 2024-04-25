@@ -34,6 +34,7 @@ List screens = const [
 class _AdminNewState extends State<AdminNew> {
   Widget build(BuildContext context) {
     return Scaffold(
+      // appBar: Text('data'),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           setState(() {

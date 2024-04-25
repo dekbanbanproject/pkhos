@@ -25,6 +25,12 @@ class _MainHomeState extends State<MainHome> {
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
 
+  @override
+  void initState() {
+    super.initState(); 
+    listcctv();
+  }
+
   Future<Null> listcctv() async {
     final apicctv = '${MyConstant.domain}/pkhos/api/article.php?isAdd=true';
     await Dio().get(apicctv).then((value) async {
@@ -89,7 +95,7 @@ class _MainHomeState extends State<MainHome> {
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2),
+                    crossAxisCount: 2,childAspectRatio: 0.78,crossAxisSpacing: 20,mainAxisSpacing: 20),
                 itemCount: searcharticleModel.length,
                 itemBuilder: (context, index) {
                   return CctvList(articleModel: searcharticleModel[index]);
