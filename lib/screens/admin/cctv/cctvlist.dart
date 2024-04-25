@@ -25,7 +25,7 @@ class CctvList extends StatelessWidget {
                   child: Image.asset(
                     articleModel.articleImg!,
                     width: 130,
-                    height: 130,
+                    height: 100,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -34,7 +34,7 @@ class CctvList extends StatelessWidget {
                   padding: EdgeInsets.only(left: 10),
                   child: Text(
                     articleModel.articleName!,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
                   ),
                 ),
                 SizedBox(height: 10),
