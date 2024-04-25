@@ -14,6 +14,7 @@ class MyConstant {
   static String routeCctvhome = '/cctvhome';
   // static String routePoPage = '/po';
   static String routeAdminPage = '/admin';
+  static String routeAdminnewPage = '/adminnew';
 
   // static String routeResetPage = '/reset';
   // static String routeGleavePage = '/gleave';
@@ -68,15 +69,15 @@ class MyConstant {
   ];
 
   static List<Image> image = [
-    Image.asset('assets/images/logo.png'),
+    Image.asset('images/logo.png'),
   ];
 
   // Image
-  static String img1 = 'assets/images/Job.png';
-  static String img2 = 'assets/images/logo.png';
-  static String img3 = 'assets/images/Payment.png';
-  static String img_logo = 'assets/images/logo.png';
-  static String img5 = 'assets/images/logogtw.png';
+  static String img1 = 'images/Job.png';
+  static String img2 = 'images/logo.png';
+  static String img3 = 'images/Payment.png';
+  static String img_logo = 'images/logo.png';
+  static String img5 = 'images/logogtw.png';
 
   //Color
   static Color primary = Color(0xff3065f7);
@@ -87,7 +88,14 @@ class MyConstant {
   static Color dark = Color(0xffa3a18c);
   static Color white = Color(0xFFFFFFFF);
   static Color back = Color(0xFF020202);
-
+  static const kprimaryColor = Color(0xffF5F5F5);
+   static const searchColor = Color.fromARGB(255, 252, 234, 224);
+  static const kcontentColor = Color(0xffff660e);
+  static const cctvhomeColor = Color.fromARGB(255, 253, 128, 44);
+  static const cctvaddColor = Color.fromARGB(255, 14, 167, 255);
+  static const kcctvtColor = Color.fromARGB(255, 14, 167, 255);
+  static const cctvprofileColor = Color.fromARGB(255, 253, 49, 127);
+  static const cctvtreportColor = Color.fromARGB(255, 10, 174, 196);
   //Style
   TextStyle h1() =>
       TextStyle(fontSize: 24, color: primary, fontWeight: FontWeight.bold);
@@ -155,7 +163,7 @@ class MyConstant {
 
 //Button
   ButtonStyle mybuttonStyle() => ElevatedButton.styleFrom(
-        // iconColor: Colors.orange, 
+        // iconColor: Colors.orange,
         backgroundColor: Color.fromARGB(255, 54, 186, 247),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(30),
@@ -173,7 +181,7 @@ class MyConstant {
 
   Container showlogo2() {
     return Container(
-      width: 160.0,
+      width: 360.0,
       child: Image.asset('images/logo.png'),
     );
   }

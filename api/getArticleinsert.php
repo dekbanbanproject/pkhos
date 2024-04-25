@@ -24,16 +24,38 @@
             $cctv_camera_drawback         = $_GET['cctv_camera_drawback'];
             $cctv_camera_save             = $_GET['cctv_camera_save'];
             $cctv_camera_power_backup     = $_GET['cctv_camera_power_backup'];
+
+            $datacount_ = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date = '$date' AND article_num = '$article_num'");
+            $datacount = mysqli_num_rows($datacount_);
            
-            $sql = "INSERT INTO `cctv_check` (`cctv_check_id`,`cctv_check_date`,`article_num`,`cctv_user_id`,`cctv_camera_screen`,`cctv_camera_corner`,`cctv_camera_drawback`,`cctv_camera_save`,`cctv_camera_power_backup`) 
-            VALUES(Null,'$date','$article_num','$cctv_user_id','$cctv_camera_screen','$cctv_camera_corner','$cctv_camera_drawback','$cctv_camera_save','$cctv_camera_power_backup')";
-            $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
-            
-            if ($result) {
-                echo "true";
-            }else{
+            // while($objet = mysqli_fetch_array($datacount,MYSQLI_ASSOC))
+            // {
+            //     $checkdata =$objet["total"];    
+            // } 
+            if ($datacount > 0) {
                 echo "false";
+            } else {
+                $sql = "INSERT INTO `cctv_check` (`cctv_check_id`,`cctv_check_date`,`article_num`,`cctv_user_id`,`cctv_camera_screen`,`cctv_camera_corner`,`cctv_camera_drawback`,`cctv_camera_save`,`cctv_camera_power_backup`) 
+                VALUES(Null,'$date','$article_num','$cctv_user_id','$cctv_camera_screen','$cctv_camera_corner','$cctv_camera_drawback','$cctv_camera_save','$cctv_camera_power_backup')";
+                $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
+                
+                if ($result) {
+                    echo "true";
+                }else{
+                    echo "false";
+                }
             }
+            
+           
+            // $sql = "INSERT INTO `cctv_check` (`cctv_check_id`,`cctv_check_date`,`article_num`,`cctv_user_id`,`cctv_camera_screen`,`cctv_camera_corner`,`cctv_camera_drawback`,`cctv_camera_save`,`cctv_camera_power_backup`) 
+            // VALUES(Null,'$date','$article_num','$cctv_user_id','$cctv_camera_screen','$cctv_camera_corner','$cctv_camera_drawback','$cctv_camera_save','$cctv_camera_power_backup')";
+            // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
+            
+            // if ($result) {
+            //     echo "true";
+            // }else{
+            //     echo "false";
+            // }
             
         } else echo "Wellcome";
     }

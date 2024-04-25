@@ -83,7 +83,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: LiquidPullToRefresh(
         onRefresh: _refreshpage,
-        color: Colors.deepPurple,height: 300,backgroundColor: Colors.deepPurple[200],
+        color: Colors.deepPurple, height: 300,
+        backgroundColor: Colors.deepPurple[200],
         animSpeedFactor: 2,
         showChildOpacityTransition: true,
         child: ListView(
@@ -114,65 +115,64 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 Center(
-              child: SizedBox(
-                height: 5,
-              ),
-            ),
-            Text('SCAN QRCODE CCTV'),
-            Center(
-              child: SizedBox(
-                height: 5,
-              ),
-            ),
-            textNum(),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  normalRadio(),
-                  damagedRadio(),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  normalconerRadio(),
-                  damagedconerRadio(),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  normaldrawbackRadio(),
-                  damageddrawbackRadio(),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  normalsaveRadio(),
-                  damagedsaveRadio(),
-                ],
-              ),
-            ),
-            Container(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  normalpowerRadio(),
-                  damagedpowerRadio(),
-                ],
-              ),
-            ),
+                  child: SizedBox(
+                    height: 5,
+                  ),
+                ),
+                Text('SCAN QRCODE CCTV'),
+                Center(
+                  child: SizedBox(
+                    height: 5,
+                  ),
+                ),
+                textNum(),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      normalRadio(),
+                      damagedRadio(),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      normalconerRadio(),
+                      damagedconerRadio(),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      normaldrawbackRadio(),
+                      damageddrawbackRadio(),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      normalsaveRadio(),
+                      damagedsaveRadio(),
+                    ],
+                  ),
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      normalpowerRadio(),
+                      damagedpowerRadio(),
+                    ],
+                  ),
+                ),
               ],
             ),
-            
             saveButtom(size),
           ],
         ),
@@ -452,13 +452,10 @@ class _HomePageState extends State<HomePage> {
 
   Future<Null> editActive() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
-
     String id = preferences.getString('id')!;
     // String article_num2 = article_numController.text;
-
     print('######## userid = $id');
     print('######## article_num = $_scanBarcode');
-
     String path =
         '${MyConstant.domain}/pkhos/api/getArticle.php?isAdd=true&article_num=$_scanBarcode';
     await Dio().get(path).then((value) async {
@@ -476,8 +473,6 @@ class _HomePageState extends State<HomePage> {
         }
       }
     });
-    // (value) =>
-    // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ'));
   }
 
   Future<Null> updateActive() async {
@@ -485,26 +480,33 @@ class _HomePageState extends State<HomePage> {
 
     String id = preferences.getString('id')!;
     // String article_num2 = article_numController.text;
-
     print('######## userid = $id');
     print('######## Active = $cctvStatus');
 
+    // String path =
+    //     '${MyConstant.domain}/pkhos/api/getArticleinsert.php?isAdd=true&article_num=$_scanBarcode&cctv_user_id=$id&cctv_camera_screen=$cctvStatus&cctv_camera_corner=$connerStatus&cctv_camera_drawback=$drawbackStatus&cctv_camera_save=$saveStatus&cctv_camera_power_backup=$powerStatus';
+    // await Dio().get(path).then((value) =>
+    //     MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ'));
+
     String path =
         '${MyConstant.domain}/pkhos/api/getArticleinsert.php?isAdd=true&article_num=$_scanBarcode&cctv_user_id=$id&cctv_camera_screen=$cctvStatus&cctv_camera_corner=$connerStatus&cctv_camera_drawback=$drawbackStatus&cctv_camera_save=$saveStatus&cctv_camera_power_backup=$powerStatus';
-    await Dio().get(path).then((value) =>
-        MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ'));
-    // Navigator.pushNamed(context, MyConstant.routeCctvhome)
-    // .then((value) => scanQR());
-    // Navigator.pop(context);
-    // },
-    // );
-
+    await Dio().get(path).then((value) async {
+      String dd = value.toString();
+       print('######## Vaaaaaaaaaa = $dd');
+      if (value.toString() == 'false') { 
+        // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
+        MyDialog().normalDialog(
+            context, 'ข้อมูลซ้ำ', 'บันทึกข้อมูลวันนี้แล้ว');
+      } else {
+        MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
+ 
+      }
+    });
     // var response = await Dio().get(url);
     // if (response.toString() == 'true') {
     //   Navigator.pop(context);
     // } else {
-    //   MyDialog().normalDialog(
-    //       context, 'ไม่มี $_scanBarcode ในฐานข้อมูล', 'article_num ผิด');
+
     // }
   }
 //   Text articleNum() {

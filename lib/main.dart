@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:pkhos/pages/home.dart';
 import 'package:pkhos/states/admin.dart';
+import 'package:pkhos/states/adminnew.dart';
 import 'package:pkhos/states/cameracctv.dart';
 import 'package:pkhos/states/home.dart';
 import 'package:pkhos/states/login.dart';
@@ -12,6 +14,7 @@ final Map<String, WidgetBuilder> map = {
   '/login': (BuildContext context) => const Login(),
   '/home': (BuildContext context) => const Home(),
   '/admin': (BuildContext context) => const AdminPage(),
+  '/adminnew': (BuildContext context) => const AdminNew(),
   '/user': (BuildContext context) => const UserPage(),
   '/cameracctv': (BuildContext context) => const CameraCCtv(),
   '/cctvhome': (BuildContext context) => const HomePage(),
@@ -33,17 +36,16 @@ Future<Null> main() async {
   } else {
     switch (type) {
       case 'ADMIN':
-              initlalRoute = MyConstant.routeAdminPage;
-              runApp(MyApp());
-            break;
-          case 'USER':
-              initlalRoute = MyConstant.routeUserPage;
-              runApp(MyApp());
-            break;
+        initlalRoute = MyConstant.routeAdminnewPage;
+        runApp(MyApp());
+        break;
+      case 'USER':
+        initlalRoute = MyConstant.routeUserPage;
+        runApp(MyApp());
+        break;
       default:
     }
   }
-  
 }
 
 class MyApp extends StatelessWidget {
@@ -56,6 +58,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       routes: map,
       initialRoute: initlalRoute,
+      theme: ThemeData(
+        textTheme: GoogleFonts.mulishTextTheme(),
+      ),
     );
   }
 }
