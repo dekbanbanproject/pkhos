@@ -6,6 +6,7 @@ import 'package:pkhos/pages/cctv.dart';
 import 'package:pkhos/pages/home.dart';
 import 'package:pkhos/pages/profile.dart';
 import 'package:pkhos/screens/admin/cctv/maincctv.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/screens/admin/cctv/mainhome.dart';
 import 'package:pkhos/screens/admin/cctv/mainprofile.dart';
 import 'package:pkhos/screens/admin/cctv/mainreport.dart';
@@ -21,14 +22,14 @@ class AdminNew extends StatefulWidget {
   State<AdminNew> createState() => _AdminNewState();
 }
 
-int currentIndex = 0;
+int currentIndex = 2;
 List screens = const [
-  // Scaffold(),
-  MainHome(),
-  MainCctv(),
-  MainReport(),
-  MainProfile(),
-  Scaffold()
+  MainCctvAdd(),        // 0
+  MainCctv(),        // 1
+  MainHome(),        // 2
+  MainReport(),      // 3
+  MainProfile(),     // 4
+  Scaffold()         // 5
 ];
 
 class _AdminNewState extends State<AdminNew> {
@@ -44,7 +45,7 @@ class _AdminNewState extends State<AdminNew> {
         shape: const CircleBorder(),
         backgroundColor: MyConstant.cctvaddColor,
         child: const Icon(
-          Icons.add,
+          Icons.home,
           color: Colors.white,
           size: 35,
         ),
@@ -67,7 +68,7 @@ class _AdminNewState extends State<AdminNew> {
                 });
               },
               icon: Icon(
-                Icons.home,
+                Icons.add,
                 size: 30,
                 color: currentIndex == 0
                     ? MyConstant.cctvhomeColor

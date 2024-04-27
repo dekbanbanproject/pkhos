@@ -22,11 +22,14 @@ class CctvList extends StatelessWidget {
               children: [
                 SizedBox(height: 15),
                 Center(
-                  child: Image.asset(
-                    articleModel.articleImg!,
-                    width: 130,
-                    height: 100,
-                    fit: BoxFit.cover,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    child: Image.asset(
+                      "images/cctv2.jpg",
+                      // width: 130,
+                      // height: 100,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 SizedBox(height: 10),
@@ -38,10 +41,10 @@ class CctvList extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-                Padding(
-                  padding: EdgeInsets.only(left: 10),
-                ),
-                SizedBox(height: 10),
+                // Padding(
+                //   padding: EdgeInsets.only(left: 10),
+                // ),
+                // SizedBox(height: 10),
               ],
             ),
           ),

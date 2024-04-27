@@ -27,7 +27,7 @@ class _MainHomeState extends State<MainHome> {
 
   @override
   void initState() {
-    super.initState(); 
+    super.initState();
     listcctv();
   }
 
@@ -91,16 +91,28 @@ class _MainHomeState extends State<MainHome> {
                   // SizedBox(width: 10,)
                 ],
               ),
-              GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,childAspectRatio: 0.78,crossAxisSpacing: 20,mainAxisSpacing: 20),
+              // GridView.builder(
+              //   physics: NeverScrollableScrollPhysics(),
+              //   shrinkWrap: true,
+              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 2,
+              //       childAspectRatio: 0.78,
+              //       crossAxisSpacing: 20,
+              //       mainAxisSpacing: 20),
+              //   itemCount: searcharticleModel.length,
+              //   itemBuilder: (context, index) {
+              //     return CctvList(articleModel: searcharticleModel[index]);
+              //   },
+              // ),
+              ListView.builder(physics: NeverScrollableScrollPhysics(),shrinkWrap: true,
                 itemCount: searcharticleModel.length,
                 itemBuilder: (context, index) {
-                  return CctvList(articleModel: searcharticleModel[index]);
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 2,left: 2,bottom: 10),
+                    child: CctvList(articleModel: searcharticleModel[index]),
+                  );
                 },
-              ),
+              )
             ],
           ),
         ),
