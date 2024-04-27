@@ -23,9 +23,9 @@ class CctvList extends StatelessWidget {
                 SizedBox(height: 15),
                 Center(
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
+                    padding: const EdgeInsets.only(left: 10, right: 10),
                     child: Image.asset(
-                      "images/cctv2.jpg",
+                      "images/cctv2.png",
                       // width: 130,
                       // height: 100,
                       fit: BoxFit.cover,
@@ -33,12 +33,40 @@ class CctvList extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 10),
-                Padding(
-                  padding: EdgeInsets.only(left: 10),
-                  child: Text(
-                    articleModel.articleName!,
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: 10),
+                      child: Text(
+                        articleModel.articleNum!,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14),
+                      ),
+                    ),
+                     Padding(
+                      padding: EdgeInsets.only(left: 2),
+                      child: Text(
+                        articleModel.cctvType!,
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, fontSize: 14),
+                      ),
+                    ),
+                    
+                    Row(
+                      children: [
+                       
+                        Padding(
+                          padding: EdgeInsets.only(right: 5),
+                          child: Text(
+                            articleModel.articleName!,
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 14),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
                 SizedBox(height: 10),
                 // Padding(
