@@ -18,14 +18,14 @@ class MainCctvAdd extends StatefulWidget {
 }
 
 class _MainCctvAddState extends State<MainCctvAdd> {
-   late String _scanBarcode = 'ยังไม่มีข้อมูล';
-   int index = 0;
-    final formKey = GlobalKey<FormState>();
+  late String _scanBarcode = 'ยังไม่มีข้อมูล';
+  int index = 0;
+  final formKey = GlobalKey<FormState>();
   TextEditingController article_numController = TextEditingController();
   TextEditingController check_dateController = TextEditingController();
   TextEditingController camera_screenController = TextEditingController();
-   
-     Future<void> startBarcodeScanStream() async {
+
+  Future<void> startBarcodeScanStream() async {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
             '#ff6666', 'Cancel', true, ScanMode.BARCODE)!
         .listen((barcode) => print(barcode));
@@ -62,11 +62,16 @@ class _MainCctvAddState extends State<MainCctvAdd> {
     return await Future.delayed(Duration(seconds: 2));
   }
 
-
   @override
   Widget build(BuildContext context) {
-      double size = MediaQuery.of(context).size.width;
+    double size = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.blueAccent,
+        title: Row(
+          children: [Text('ย้อนกลับ')],
+        ),
+      ),
       body: LiquidPullToRefresh(
         onRefresh: _refreshpage,
         color: Colors.deepPurple, height: 300,
@@ -478,17 +483,35 @@ class _MainCctvAddState extends State<MainCctvAdd> {
         '${MyConstant.domain}/pkhos/api/getArticleinsert.php?isAdd=true&article_num=$_scanBarcode&cctv_user_id=$id&cctv_camera_screen=$cctvStatus&cctv_camera_corner=$connerStatus&cctv_camera_drawback=$drawbackStatus&cctv_camera_save=$saveStatus&cctv_camera_power_backup=$powerStatus';
     await Dio().get(path).then((value) async {
       String dd = value.toString();
-       print('######## Vaaaaaaaaaa = $dd');
-      if (value.toString() == 'false') { 
+      print('######## Vaaaaaaaaaa = $dd');
+      if (value.toString() == 'false') {
         // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
-        MyDialog().normalDialog(
-            context, 'ข้อมูลซ้ำ', 'บันทึกข้อมูลวันนี้แล้ว');
+        MyDialog().normalDialog(context, 'ข้อมูลซ้ำ', 'บันทึกข้อมูลวันนี้แล้ว');
       } else {
-        MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
- 
+        // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
+        // Navigator.pushNamed(context, MyConstant.routeMainCctv);
+        comfirmsaveDialog();
       }
     });
-    
   }
- 
+
+  Future<Null> comfirmsaveDialog() async {
+    showDialog(
+      context: context,
+      builder: (context) => SimpleDialog(
+        title: Text('บันทึกข้อมูลสำเร็จ'),
+        children: [
+          Center(
+            child: OutlinedButton(
+              onPressed: () {
+                // Navigator.pop(context);
+               Navigator.pushNamed(context, MyConstant.routeMainCctv);
+              },
+              child: Text('ปิด'),
+            ),
+          )
+        ],
+      ),
+    );
+  }
 }

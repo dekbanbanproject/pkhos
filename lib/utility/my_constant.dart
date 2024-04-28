@@ -15,8 +15,8 @@ class MyConstant {
   // static String routePoPage = '/po';
   static String routeAdminPage = '/admin';
   static String routeAdminnewPage = '/adminnew';
-
-  // static String routeResetPage = '/reset';
+  static String routeMainCctvAdd = '/cctvadd';
+  static String routeMainCctv = '/cctvmain';
   // static String routeGleavePage = '/gleave';
   // static String routeTdbPage = '/tdb';
   // static String routeTdbSPage = '/tdbS';
