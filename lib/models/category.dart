@@ -5,9 +5,10 @@ class Category {
 }
 
 final List<Category> categories = [
-  Category(title: "CCTV", image: "images/cctv2.jpg"),
-  Category(title: "Technicial", image: "images/techserevice.png"),
-  Category(title: "Medical", image: "images/medical.png"),
-  Category(title: "Finace", image: "images/finace.png"),
-  Category(title: "Claim", image: "images/claim2.png")
+  Category(title: "Cctv", image: "images/cctv1.png"),
+  // Category(title: "Fire extinguisher", image: "images/fire.png"),
+  Category(title: "Fire", image: "images/fire.png"),
+  Category(title: "Electric", image: "images/electrice.png"),
+  Category(title: "Plumbing", image: "images/Plumbing.png"),
+  Category(title: "Phone", image: "images/tel_1.png")
 ];

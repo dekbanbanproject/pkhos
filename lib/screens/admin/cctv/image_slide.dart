@@ -11,7 +11,7 @@ class ImageSlider extends StatelessWidget {
     return Stack(
       children: [
         SizedBox(
-          height: 220,
+          height: 200,
           width: double.infinity,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(15),
@@ -54,7 +54,7 @@ class ImageSlider extends StatelessWidget {
                   duration: Duration(microseconds: 300),
                   width: currentSlide == index ? 15 : 8,
                   height: 8,
-                  margin: EdgeInsets.only(right: 3),
+                  margin: EdgeInsets.only(right: 7),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     color: currentSlide == index

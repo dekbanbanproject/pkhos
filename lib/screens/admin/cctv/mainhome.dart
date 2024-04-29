@@ -53,17 +53,17 @@ class _MainHomeState extends State<MainHome> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 35),
+              const SizedBox(height: 15),
               //for custom appbar
               CustomAppBar(),
               //for searchbar
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               MySearchBar(),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               ImageSlider(
                 currentSlide: currentSlider,
                 onChang: (value) {
@@ -72,7 +72,7 @@ class _MainHomeState extends State<MainHome> {
                   });
                 },
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 15),
               const Categories(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

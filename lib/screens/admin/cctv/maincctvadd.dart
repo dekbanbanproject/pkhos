@@ -41,6 +41,12 @@ class _MainCctvAddState extends State<MainCctvAdd> {
   late String powerStatus = '';
   List<ArticleModel> articleModel = [];
 
+  @override
+  void initState() {
+    super.initState();
+    scanQR();
+  }
+
   Future<void> scanQR() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
@@ -69,8 +75,8 @@ class _MainCctvAddState extends State<MainCctvAdd> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: Row(
-          children: [Text('ย้อนกลับ')],
-        ),
+            // children: [Text('ย้อนกลับ')],
+            ),
       ),
       body: LiquidPullToRefresh(
         onRefresh: _refreshpage,
@@ -486,7 +492,7 @@ class _MainCctvAddState extends State<MainCctvAdd> {
       print('######## Vaaaaaaaaaa = $dd');
       if (value.toString() == 'false') {
         // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
-        MyDialog().normalDialog(context, 'ข้อมูลซ้ำ', 'บันทึกข้อมูลวันนี้แล้ว');
+        MyDialog().normalDialog(context, 'บันทึกไปแล้ว', 'ข้อมูลซ้ำ');
       } else {
         // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
         // Navigator.pushNamed(context, MyConstant.routeMainCctv);
@@ -505,7 +511,9 @@ class _MainCctvAddState extends State<MainCctvAdd> {
             child: OutlinedButton(
               onPressed: () {
                 // Navigator.pop(context);
-               Navigator.pushNamed(context, MyConstant.routeMainCctv);
+                // Navigator.pushNamed(context, MyConstant.routeMainCctv);
+                // Navigator.pushNamedAndRemoveUntil(
+                    // context, MyConstant.routeMainCctv, (route) => false);
               },
               child: Text('ปิด'),
             ),

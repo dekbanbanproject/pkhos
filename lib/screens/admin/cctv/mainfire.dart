@@ -3,24 +3,24 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:pkhos/models/article_model.dart';
 import 'package:pkhos/models/article_model_check.dart';
+import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
-class MainCctv extends StatefulWidget {
-  const MainCctv({super.key});
+class MainFire extends StatefulWidget {
+  const MainFire({super.key});
 
   @override
-  State<MainCctv> createState() => _MainCctvState();
+  State<MainFire> createState() => _MainFireState();
 }
 
-class _MainCctvState extends State<MainCctv> {
-  int currentIndex = 0;
-  // List screens = const [
-  //   MainCctv(), // 0
-  //   MainCctvAdd() // 1
-  // ];
+class _MainFireState extends State<MainFire> {
+  List screens = const [
+    MainCctv(), // 0
+    MainCctvAdd() // 1
+  ];
   int currentSlider = 0;
   List<ArticleCheckModel> articlecheckModel = [];
   List<ArticleCheckModel> searcharticlecheckModel = [];
@@ -70,9 +70,15 @@ class _MainCctvState extends State<MainCctv> {
                     style: IconButton.styleFrom(
                         backgroundColor: MyConstant.kprimaryColor,
                         padding: const EdgeInsets.all(20)),
-                    onPressed: () {},
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MaincctvReq(),
+                      ),
+                    ),
                     iconSize: 30,
-                    icon: Icon(Icons.photo_camera_front,color: Colors.lightBlueAccent),
+                    icon: Icon(Icons.photo_camera_front,
+                        color: Colors.lightBlueAccent),
                   ),
                   IconButton(
                     style: IconButton.styleFrom(
@@ -80,7 +86,8 @@ class _MainCctvState extends State<MainCctv> {
                         padding: const EdgeInsets.all(20)),
                     onPressed: () {},
                     iconSize: 30,
-                    icon: Icon(Icons.photo_camera_back,color: Colors.lightBlueAccent),
+                    icon: Icon(Icons.photo_camera_back,
+                        color: Colors.lightBlueAccent),
                   ),
                   IconButton(
                     style: IconButton.styleFrom(
@@ -93,7 +100,8 @@ class _MainCctvState extends State<MainCctv> {
                       ),
                     ),
                     iconSize: 30,
-                    icon: Icon(Icons.qr_code_scanner_rounded,color: Colors.lightBlueAccent),
+                    icon: Icon(Icons.qr_code_scanner_rounded,
+                        color: Colors.lightBlueAccent),
                   ),
                 ],
               ),
@@ -149,32 +157,10 @@ class _MainCctvState extends State<MainCctv> {
                   hintText: "Search....", border: InputBorder.none),
             ),
           ),
-           ],
+        ],
       ),
     );
   }
-    // return Container(
-    //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-    //   child: TextFormField(
-    //     onChanged: (value) {
-    //       debouncer.run(() {
-    //         setState(() {
-    //           searcharticlecheckModel = articlecheckModel
-    //               .where((element) => element.articleNum!
-    //                   .toLowerCase()
-    //                   .contains(value.toLowerCase()))
-    //               .toList();
-    //         });
-    //       });
-    //     },
-    //     decoration: InputDecoration(
-    //       prefixIcon: Icon(Icons.search),
-    //       labelText: 'Search....',
-    //       border: OutlineInputBorder(),
-    //     ),
-    //   ),
-    // );
- 
 
   ListView buildListView() {
     return ListView.builder(

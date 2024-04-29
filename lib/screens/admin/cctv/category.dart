@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:pkhos/models/category.dart';
 
-class Categories extends StatelessWidget {
+class Categories extends StatefulWidget {
   const Categories({super.key});
 
+  @override
+  State<Categories> createState() => _CategoriesState();
+}
+
+class _CategoriesState extends State<Categories> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

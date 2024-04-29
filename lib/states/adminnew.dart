@@ -8,6 +8,7 @@ import 'package:pkhos/pages/profile.dart';
 import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
+import 'package:pkhos/screens/admin/cctv/mainfire.dart';
 import 'package:pkhos/screens/admin/cctv/mainhome.dart';
 import 'package:pkhos/screens/admin/cctv/mainprofile.dart';
 import 'package:pkhos/screens/admin/cctv/mainreport.dart';
@@ -25,8 +26,9 @@ class AdminNew extends StatefulWidget {
 
 int currentIndex = 2;
 List screens = const [
-  MainCctvAdd(),        // 0
-  MaincctvReq(),        // 1
+    // MainCctvAdd(), 
+  MaincctvReq(),        // 0
+  MainFire(),        // 1
   MainHome(),        // 2
   MainReport(),      // 3
   MainProfile(),     // 4
@@ -69,7 +71,7 @@ class _AdminNewState extends State<AdminNew> {
                 });
               },
               icon: Icon(
-                Icons.add,
+                Icons.photo_camera_front,
                 size: 30,
                 color: currentIndex == 0
                     ? MyConstant.cctvhomeColor
@@ -83,7 +85,7 @@ class _AdminNewState extends State<AdminNew> {
                 });
               },
               icon: Icon(
-                Icons.photo_camera_front,
+                Icons.fire_extinguisher,
                 size: 30,
                 color: currentIndex == 1
                     ? MyConstant.kcctvtColor

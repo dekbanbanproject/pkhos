@@ -24,10 +24,10 @@
 
             // $article_num = $_GET['article_num'];
 
-            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newweek' AND '$date' GROUP BY article_num
+            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newweek' AND '$date' ORDER BY cctv_check_date DESC
             ");
 
-            
+// GROUP BY article_num
             // $result = mysqli_query($conn,"SELECT a.article_id,c.article_num, a.article_name,a.article_price ,a.article_year,a.article_status_id,a.article_img,a.article_img_name,a.store_id,a.cctv,a.cctv_location\n"
             //          . ",a.cctv_location_detail,a.cctv_type,a.cctv_code,a.cctv_monitor,a.cctv_status\n"
             //         . "FROM cctv_check c LEFT JOIN  article_data a ON a.article_num = c.article_num WHERE c.cctv_check_date BETWEEN '$newweek' AND '$date' GROUP BY c.article_num
