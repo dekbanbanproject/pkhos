@@ -3,20 +3,21 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:pkhos/models/article_model.dart';
 import 'package:pkhos/models/article_model_check.dart';
+import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
-class MainCctv extends StatefulWidget {
-  const MainCctv({super.key});
+class MaincctvReq extends StatefulWidget {
+  const MaincctvReq({super.key});
 
   @override
-  State<MainCctv> createState() => _MainCctvState();
+  State<MaincctvReq> createState() => _MaincctvReqState();
 }
 
-class _MainCctvState extends State<MainCctv> {
-  int currentIndex = 0;
+class _MaincctvReqState extends State<MaincctvReq> {
+
+   int currentIndex = 0;
   List screens = const [
     MainCctv(), // 0
     MainCctvAdd() // 1
@@ -50,10 +51,9 @@ class _MainCctvState extends State<MainCctv> {
       }
     });
   }
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
       backgroundColor: Colors.white,
       // body: screens[currentIndex],
       body: SingleChildScrollView(
@@ -70,7 +70,12 @@ class _MainCctvState extends State<MainCctv> {
                     style: IconButton.styleFrom(
                         backgroundColor: MyConstant.kprimaryColor,
                         padding: const EdgeInsets.all(20)),
-                    onPressed: () {},
+                    onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => MaincctvReq(),
+                      ),
+                    ),
                     iconSize: 30,
                     icon: Icon(Icons.photo_camera_front,color: Colors.lightBlueAccent),
                   ),
@@ -153,30 +158,9 @@ class _MainCctvState extends State<MainCctv> {
       ),
     );
   }
-    // return Container(
-    //   margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-    //   child: TextFormField(
-    //     onChanged: (value) {
-    //       debouncer.run(() {
-    //         setState(() {
-    //           searcharticlecheckModel = articlecheckModel
-    //               .where((element) => element.articleNum!
-    //                   .toLowerCase()
-    //                   .contains(value.toLowerCase()))
-    //               .toList();
-    //         });
-    //       });
-    //     },
-    //     decoration: InputDecoration(
-    //       prefixIcon: Icon(Icons.search),
-    //       labelText: 'Search....',
-    //       border: OutlineInputBorder(),
-    //     ),
-    //   ),
-    // );
- 
 
-  ListView buildListView() {
+
+    ListView buildListView() {
     return ListView.builder(
       padding: EdgeInsets.symmetric(horizontal: 6),
       shrinkWrap: true,
@@ -243,6 +227,7 @@ class _MainCctvState extends State<MainCctv> {
     );
   }
 }
+
 
 class Debouncer {
   final int millisecond;

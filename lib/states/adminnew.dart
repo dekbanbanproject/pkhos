@@ -7,6 +7,7 @@ import 'package:pkhos/pages/home.dart';
 import 'package:pkhos/pages/profile.dart';
 import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/screens/admin/cctv/mainhome.dart';
 import 'package:pkhos/screens/admin/cctv/mainprofile.dart';
 import 'package:pkhos/screens/admin/cctv/mainreport.dart';
@@ -25,7 +26,7 @@ class AdminNew extends StatefulWidget {
 int currentIndex = 2;
 List screens = const [
   MainCctvAdd(),        // 0
-  MainCctv(),        // 1
+  MaincctvReq(),        // 1
   MainHome(),        // 2
   MainReport(),      // 3
   MainProfile(),     // 4
