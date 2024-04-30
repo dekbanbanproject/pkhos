@@ -185,7 +185,7 @@ class _MaincctvReqState extends State<MaincctvReq> {
                   );
                   Navigator.push(context, route).then((value) => listcctv());
                 }),
-                backgroundColor: Color.fromARGB(255, 252, 138, 85),
+                backgroundColor: Color.fromARGB(255, 62, 210, 255),
                 icon: Icons.edit_rounded,
               ),
             ),
@@ -194,7 +194,7 @@ class _MaincctvReqState extends State<MaincctvReq> {
                 // onPressed: () => deletCheck(searcharticlecheckModel[index].cctv_check_id),
                 onPressed: (context) =>
                     delectCheck(searcharticlecheckModel[index]),
-                backgroundColor: Color.fromARGB(255, 23, 142, 253),
+                backgroundColor: Color.fromARGB(255, 253, 23, 23),
                 icon: Icons.delete,
               ),
             ),
