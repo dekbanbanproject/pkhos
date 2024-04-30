@@ -20,19 +20,26 @@ class MaincctvReq extends StatefulWidget {
 
 class _MaincctvReqState extends State<MaincctvReq> {
   int currentIndex = 0;
-
   int currentSlider = 0;
   List<ArticleCheckModel> articlecheckModel = [];
   List<ArticleCheckModel> searcharticlecheckModel = [];
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
+  // late TabController controller;
 
   @override
   void initState() {
+    // controller = new TabController(vsync: this, length: 4);
     super.initState();
     // readdatacctv();
     listcctv();
   }
+  
+  // @override
+  // void dispose() {
+  //   controller.dispose();
+  //   super.dispose();
+  // }
 
   Future<Null> listcctv() async {
     if (articlecheckModel.length != 0) {
@@ -185,7 +192,7 @@ class _MaincctvReqState extends State<MaincctvReq> {
                   );
                   Navigator.push(context, route).then((value) => listcctv());
                 }),
-                backgroundColor: Color.fromARGB(255, 62, 210, 255),
+                backgroundColor: Color.fromARGB(255, 253, 158, 49),
                 icon: Icons.edit_rounded,
               ),
             ),
@@ -246,6 +253,10 @@ class _MaincctvReqState extends State<MaincctvReq> {
                           style: MyConstant().h5dark(),
                         ),
                         Text(
+                          searcharticlecheckModel[index].cctv_camera_screen!,
+                          style: MyConstant().h5dark(),
+                        ),
+                        Text(
                           searcharticlecheckModel[index].cctv_camera_corner!,
                           style: MyConstant().h5dark(),
                         ),
@@ -254,16 +265,12 @@ class _MaincctvReqState extends State<MaincctvReq> {
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searcharticlecheckModel[index]
-                              .cctv_camera_power_backup!,
-                          style: MyConstant().h5dark(),
-                        ),
-                        Text(
                           searcharticlecheckModel[index].cctv_camera_save!,
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searcharticlecheckModel[index].cctv_camera_screen!,
+                          searcharticlecheckModel[index]
+                              .cctv_camera_power_backup!,
                           style: MyConstant().h5dark(),
                         ),
                       ],
@@ -291,7 +298,7 @@ class _MaincctvReqState extends State<MaincctvReq> {
                 Navigator.pop(context);
                 String path =
                     '${MyConstant.domain}/pkhos/api/deletcctv.php?isAdd=true&article_num=${searcharticlecheckModel.articleNum}';
-                await Dio().get(path).then((value) => listcctv()); 
+                await Dio().get(path).then((value) => listcctv());
               },
               child: Text('ใช่ ต้องการลบข้อมูล'),
             ),

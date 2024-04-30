@@ -17,8 +17,8 @@ class MyConstant {
   static String routeAdminnewPage = '/adminnew';
   static String routeMainCctvAdd = '/cctvadd';
   static String routeMainCctv = '/cctvmain';
-  // static String routeGleavePage = '/gleave';
-  // static String routeTdbPage = '/tdb';
+  static String routeMaincctvReq = '/maincctvReq';
+  static String routespachScreen = '/spachscreen';
   // static String routeTdbSPage = '/tdbS';
   // static String routeTGleaveDetailPage = '/gleavedetail';
 
@@ -70,6 +70,7 @@ class MyConstant {
 
   static List<Image> image = [
     Image.asset('images/logo.png'),
+    
   ];
 
   // Image

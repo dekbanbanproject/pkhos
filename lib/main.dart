@@ -1,8 +1,12 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:pkhos/pages/home.dart';
 import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
+import 'package:pkhos/splash_screen.dart';
 import 'package:pkhos/states/admin.dart';
 import 'package:pkhos/states/adminnew.dart';
 import 'package:pkhos/states/cameracctv.dart';
@@ -20,8 +24,10 @@ final Map<String, WidgetBuilder> map = {
   '/user': (BuildContext context) => const UserPage(),
   '/cameracctv': (BuildContext context) => const CameraCCtv(),
   '/cctvhome': (BuildContext context) => const HomePage(),
-    '/cctvadd': (BuildContext context) => const MainCctvAdd(),
-     '/cctvmain': (BuildContext context) => const MainCctv(),
+  '/cctvadd': (BuildContext context) => const MainCctvAdd(),
+  '/cctvmain': (BuildContext context) => const MainCctv(),
+  '/maincctvReq': (BuildContext context) => const MaincctvReq(),
+  '/spachscreen': (BuildContext context) => const SplashScreen(),
 };
 
 String? initlalRoute;
@@ -35,7 +41,9 @@ Future<Null> main() async {
   String? id = preferences.getString('id');
 
   if (type?.isEmpty ?? true) {
-    initlalRoute = MyConstant.routeLogin;
+    // initlalRoute = MyConstant.routeLogin;
+    initlalRoute = MyConstant.routespachScreen;
+    
     runApp(MyApp());
   } else {
     switch (type) {
@@ -65,6 +73,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         textTheme: GoogleFonts.mulishTextTheme(),
       ),
+      // home: SplashScreen(),
     );
   }
 }
+
+

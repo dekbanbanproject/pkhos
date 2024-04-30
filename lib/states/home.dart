@@ -35,12 +35,12 @@ class _HomeState extends State<Home> {
       //   actions: [adminBool == null ? SizedBox() : adminBool! ? HeadAdmin() : HeadUser()],
       // ),
 
-      drawer: Drawer(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.end,
+      // drawer: Drawer(
+      //   child: Column(
+      //     mainAxisAlignment: MainAxisAlignment.end,
          
-        ),
-      ),
+      //   ),
+      // ),
       body: SafeArea(
         child: Container(
           // height: 50,

@@ -74,9 +74,19 @@ class _MainCctvAddState extends State<MainCctvAdd> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
-        title: Row(
-            // children: [Text('ย้อนกลับ')],
+       title: Padding(
+          padding: const EdgeInsets.only(right: 30),
+          child: Center(
+            child: Text(
+              'บันทึกข้อมูลกล้องวงจรปิด',
+              // _gleaveModel.LEAVE_PERSON_FULLNAME,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'Kanit-Regular',
+                  color: Colors.white),
             ),
+          ),
+        ),
       ),
       body: LiquidPullToRefresh(
         onRefresh: _refreshpage,
@@ -90,7 +100,7 @@ class _MainCctvAddState extends State<MainCctvAdd> {
             Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(top: 40),
+                  padding: const EdgeInsets.only(top: 15),
                   child: MaterialButton(
                     onPressed: () {
                       // scanbarcodenew();
@@ -113,61 +123,226 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                 ),
                 Center(
                   child: SizedBox(
-                    height: 5,
+                    height: 3,
                   ),
                 ),
                 Text('SCAN QRCODE CCTV'),
                 Center(
                   child: SizedBox(
-                    height: 5,
+                    height: 3,
                   ),
                 ),
                 textNum(),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      normalRadio(),
-                      damagedRadio(),
-                    ],
-                  ),
+                Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3,left: 10,right: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          left: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          right: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          bottom: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(221, 255, 255, 255)
+                                .withOpacity(0.05),
+                            spreadRadius: 1.5,
+                            blurRadius: 1.5,
+                            offset: Offset(0, 1), 
+                          ),
+                        ],
+                      ),
+                      child: Card(
+                        child: ListTile(
+                          leading: Text(
+                            'จอกล้อง',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              damagedRadio(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                 ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      normalconerRadio(),
-                      damagedconerRadio(),
-                    ],
+                Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3,left: 10,right: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          left: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          right: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          bottom: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(221, 255, 255, 255)
+                                .withOpacity(0.05),
+                            spreadRadius: 1.5,
+                            blurRadius: 1.5,
+                            offset: Offset(0, 1), 
+                          ),
+                        ],
+                      ),
+                      child: Card(
+                        child: ListTile(
+                          leading: Text(
+                            'มุมกล้อง',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              damagedconerRadio(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      normaldrawbackRadio(),
-                      damageddrawbackRadio(),
-                    ],
+                Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3,left: 10,right: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          left: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          right: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          bottom: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(221, 255, 255, 255)
+                                .withOpacity(0.05),
+                            spreadRadius: 1.5,
+                            blurRadius: 1.5,
+                            offset: Offset(0, 1), 
+                          ),
+                        ],
+                      ),
+                      child: Card(
+                        child: ListTile(
+                          leading: Text(
+                            'สิ่งกีดขวาง',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              damageddrawbackRadio(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      normalsaveRadio(),
-                      damagedsaveRadio(),
-                    ],
+                Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3,left: 10,right: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          left: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          right: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          bottom: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(221, 255, 255, 255)
+                                .withOpacity(0.05),
+                            spreadRadius: 1.5,
+                            blurRadius: 1.5,
+                            offset: Offset(0, 1), 
+                          ),
+                        ],
+                      ),
+                      child: Card(
+                        child: ListTile(
+                          leading: Text(
+                            'การบันทึก',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              damagedsaveRadio(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      normalpowerRadio(),
-                      damagedpowerRadio(),
-                    ],
+                Padding(
+                    padding: const EdgeInsets.only(top: 3, bottom: 3,left: 10,right: 10),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border(
+                          top: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          left: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          right: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                          bottom: BorderSide(
+                              color: Color.fromARGB(255, 102, 217, 252)),
+                        ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15.0),
+                        boxShadow: [
+                          BoxShadow(
+                            color: const Color.fromARGB(221, 255, 255, 255)
+                                .withOpacity(0.05),
+                            spreadRadius: 1.5,
+                            blurRadius: 1.5,
+                            offset: Offset(0, 1), 
+                          ),
+                        ],
+                      ),
+                      child: Card(
+                        child: ListTile(
+                          leading: Text(
+                            'การสำรองไฟ',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              damagedpowerRadio(),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
-                ),
               ],
             ),
             saveButtom(size),
@@ -230,7 +405,14 @@ class _MainCctvAddState extends State<MainCctvAdd> {
             Text(
               'จอกล้อง',
               style: TextStyle(fontSize: 17),
-            ),
+            ),            
+          ],
+        ),
+      );
+
+  Widget damagedRadio() => Container(
+        child: Row(
+          children: <Widget>[
             Radio(
               value: '0',
               groupValue: cctvStatus,
@@ -241,13 +423,6 @@ class _MainCctvAddState extends State<MainCctvAdd> {
               },
             ),
             Text('ปกติ'),
-          ],
-        ),
-      );
-
-  Widget damagedRadio() => Container(
-        child: Row(
-          children: <Widget>[
             Radio(
               value: '1',
               groupValue: cctvStatus,
@@ -267,7 +442,13 @@ class _MainCctvAddState extends State<MainCctvAdd> {
             Text(
               'มุมกล้อง',
               style: TextStyle(fontSize: 17),
-            ),
+            ),            
+          ],
+        ),
+      );
+  Widget damagedconerRadio() => Container(
+        child: Row(
+          children: <Widget>[
             Radio(
               value: '0',
               groupValue: connerStatus,
@@ -278,12 +459,6 @@ class _MainCctvAddState extends State<MainCctvAdd> {
               },
             ),
             Text('ปกติ'),
-          ],
-        ),
-      );
-  Widget damagedconerRadio() => Container(
-        child: Row(
-          children: <Widget>[
             Radio(
               value: '1',
               groupValue: connerStatus,
@@ -303,7 +478,13 @@ class _MainCctvAddState extends State<MainCctvAdd> {
             Text(
               'สิ่งกีดขวาง',
               style: TextStyle(fontSize: 17),
-            ),
+            ),            
+          ],
+        ),
+      );
+  Widget damageddrawbackRadio() => Container(
+        child: Row(
+          children: <Widget>[
             Radio(
               value: '0',
               groupValue: drawbackStatus,
@@ -314,12 +495,6 @@ class _MainCctvAddState extends State<MainCctvAdd> {
               },
             ),
             Text('ปกติ'),
-          ],
-        ),
-      );
-  Widget damageddrawbackRadio() => Container(
-        child: Row(
-          children: <Widget>[
             Radio(
               value: '1',
               groupValue: drawbackStatus,
@@ -339,7 +514,13 @@ class _MainCctvAddState extends State<MainCctvAdd> {
             Text(
               'การบันทึก',
               style: TextStyle(fontSize: 17),
-            ),
+            ),            
+          ],
+        ),
+      );
+  Widget damagedsaveRadio() => Container(
+        child: Row(
+          children: <Widget>[
             Radio(
               value: '0',
               groupValue: saveStatus,
@@ -350,12 +531,6 @@ class _MainCctvAddState extends State<MainCctvAdd> {
               },
             ),
             Text('ปกติ'),
-          ],
-        ),
-      );
-  Widget damagedsaveRadio() => Container(
-        child: Row(
-          children: <Widget>[
             Radio(
               value: '1',
               groupValue: saveStatus,
@@ -375,7 +550,13 @@ class _MainCctvAddState extends State<MainCctvAdd> {
             Text(
               'การสำรองไฟ',
               style: TextStyle(fontSize: 17),
-            ),
+            ),            
+          ],
+        ),
+      );
+  Widget damagedpowerRadio() => Container(
+        child: Row(
+          children: <Widget>[
             Radio(
               value: '0',
               groupValue: powerStatus,
@@ -386,12 +567,6 @@ class _MainCctvAddState extends State<MainCctvAdd> {
               },
             ),
             Text('ปกติ'),
-          ],
-        ),
-      );
-  Widget damagedpowerRadio() => Container(
-        child: Row(
-          children: <Widget>[
             Radio(
               value: '1',
               groupValue: powerStatus,
@@ -494,9 +669,10 @@ class _MainCctvAddState extends State<MainCctvAdd> {
         // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
         MyDialog().normalDialog(context, 'บันทึกไปแล้ว', 'ข้อมูลซ้ำ');
       } else {
+        Navigator.pop(context);
         // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
         // Navigator.pushNamed(context, MyConstant.routeMainCctv);
-        comfirmsaveDialog();
+        // comfirmsaveDialog();
       }
     });
   }
@@ -512,8 +688,8 @@ class _MainCctvAddState extends State<MainCctvAdd> {
               onPressed: () {
                 // Navigator.pop(context);
                 // Navigator.pushNamed(context, MyConstant.routeMainCctv);
-                // Navigator.pushNamedAndRemoveUntil(
-                    // context, MyConstant.routeMainCctv, (route) => false);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, MyConstant.routeMaincctvReq, (route) => false);
               },
               child: Text('ปิด'),
             ),

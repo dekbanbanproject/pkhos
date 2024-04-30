@@ -16,26 +16,33 @@
     }
     if(isset($_GET)){
         if ($_GET['isAdd'] == 'true') {
-            $article_num = $_GET['article_num'];
+            $cctv_check_id = $_GET['cctv_check_id'];
+            $screen        = $_GET['cctv_camera_screen'];
+            $corner        = $_GET['cctv_camera_corner'];
+            $drawback      = $_GET['cctv_camera_drawback'];
+            $camera_save   = $_GET['cctv_camera_save'];
+            $power_backup  = $_GET['cctv_camera_power_backup'];
 
-            // $sql = "UPDATE `cctv_check` SET `article_num` = '$article_num',`LEAVE_STATUS_CODE` = '$status' WHERE article_num = '$article_num'";
-            $sql = "UPDATE `cctv_check` SET `article_num` = '$article_num' WHERE article_num = '$article_num'";
+            $sql = "UPDATE `cctv_check` SET `cctv_camera_screen` = '$screen',`cctv_camera_corner` = '$corner',`cctv_camera_drawback` = '$drawback',`cctv_camera_save` = '$camera_save',`cctv_camera_power_backup` = '$power_backup' WHERE cctv_check_id = '$cctv_check_id'";
             $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
-            // $result = mysqli_query($conn,"SELECT article_id,article_num, article_name,article_price ,article_year,article_recieve_date,article_typeid,article_typename\n"
-            //         . ",article_categoryid,article_categoryname,article_groupid,article_groupname,article_status_id,article_img,article_img_name,store_id,cctv,cctv_location\n"
-            //         . ",cctv_location_detail,cctv_type,cctv_code,cctv_monitor,cctv_status\n"
-            //         . "FROM article_data WHERE cctv ='Y' AND article_num = '$article_num'
-            // ");
-          
-            // $data = $result->mysqli_fetch_assoc();
-            // echo json_encode($data);
             
-            if ($result) {
-                while($row=mysqli_fetch_assoc($result)){
-                    $output[]=$row;
-                }
-                echo json_encode($output);
-            }
+            // $article_num = $_GET['article_num'];
+
+            // $sql = "DELETE FROM cctv_check WHERE article_num = '$article_num'";
+            // $result = mysqli_query($conn,$sql);
+
+           if ($result) {
+            echo "true";
+           } else {
+            echo "false";
+           }
+            
+            // if ($result) {
+            //     while($row=mysqli_fetch_assoc($result)){
+            //         $output[]=$row;
+            //     }
+            //     echo json_encode($output);
+            // }
             
         } else echo "Wellcome";
     }
