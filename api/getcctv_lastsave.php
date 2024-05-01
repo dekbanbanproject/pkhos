@@ -24,7 +24,7 @@
 
             // $article_num = $_GET['article_num'];
 
-            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newweek' AND '$date' ORDER BY cctv_check_date DESC
+            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' ORDER BY cctv_check_date DESC
             ");
 
 // GROUP BY article_num
