@@ -110,11 +110,11 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
-                          radius: 60,
+                          radius: 50,
                           child: Icon(
                             Icons.qr_code_scanner_sharp,
                             color: Colors.orange,
-                            size: 60,
+                            size: 50,
                           ),
                         ),
                       ],
@@ -132,9 +132,13 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                     height: 3,
                   ),
                 ),
-                textNum(),
+                // textNum(),
+                 Text(
+                    'รหัสกล้องวงจรปิด :$_scanBarcode',
+                    style: TextStyle(fontSize: 18),
+                  ),
                 Padding(
-                    padding: const EdgeInsets.only(top: 3, bottom: 3,left: 10,right: 10),
+                    padding: const EdgeInsets.only(top: 15, bottom: 3,left: 10,right: 10,),
                     child: Container(
                       decoration: BoxDecoration(
                         border: Border(
@@ -581,13 +585,13 @@ class _MainCctvAddState extends State<MainCctvAdd> {
         ),
       );
 
-  dynamic textNum() {
-    return Container(
-        child: Text(
-      'รหัสกล้องวงจรปิด : $_scanBarcode\n',
-      style: TextStyle(fontSize: 20),
-    ));
-  }
+  // dynamic textNum() {
+  //   return Container(
+  //       child: Text(
+  //     'รหัสกล้องวงจรปิด : $_scanBarcode\n',
+  //     style: TextStyle(fontSize: 20),
+  //   ));
+  // }
 
   Row articleNum(double size) {
     return Row(

@@ -74,14 +74,14 @@ class _MainCctvState extends State<MainCctv> {
                     iconSize: 30,
                     icon: Icon(Icons.photo_camera_front,color: Colors.lightBlueAccent),
                   ),
-                  IconButton(
-                    style: IconButton.styleFrom(
-                        backgroundColor: MyConstant.kprimaryColor,
-                        padding: const EdgeInsets.all(20)),
-                    onPressed: () {},
-                    iconSize: 30,
-                    icon: Icon(Icons.photo_camera_back,color: Colors.lightBlueAccent),
-                  ),
+                  // IconButton(
+                  //   style: IconButton.styleFrom(
+                  //       backgroundColor: MyConstant.kprimaryColor,
+                  //       padding: const EdgeInsets.all(20)),
+                  //   onPressed: () {},
+                  //   iconSize: 30,
+                  //   icon: Icon(Icons.photo_camera_back,color: Colors.lightBlueAccent),
+                  // ),
                   IconButton(
                     style: IconButton.styleFrom(
                         backgroundColor: MyConstant.kprimaryColor,

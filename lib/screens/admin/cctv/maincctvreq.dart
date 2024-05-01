@@ -7,6 +7,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:pkhos/models/article_model_check.dart';
 import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvdetail.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvedit.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
@@ -83,22 +84,23 @@ class _MaincctvReqState extends State<MaincctvReq> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MaincctvReq(),
+                        builder: (context) => MainCctvdetail(),
                       ),
                     ),
                     iconSize: 30,
-                    icon: Icon(Icons.photo_camera_front,
-                        color: Colors.lightBlueAccent),
-                  ),
-                  IconButton(
-                    style: IconButton.styleFrom(
-                        backgroundColor: MyConstant.kprimaryColor,
-                        padding: const EdgeInsets.all(20)),
-                    onPressed: () {},
-                    iconSize: 30,
-                    icon: Icon(Icons.photo_camera_back,
-                        color: Colors.lightBlueAccent),
-                  ),
+                    icon: Icon(Icons.qr_code_scanner_rounded,
+                      // Icons.photo_camera_front,
+                        color: const Color.fromARGB(255, 255, 64, 121)),
+                  ),Text('บันทึกข้อมูลกล้อง CCTV',style: MyConstant().h4back()),
+                  // IconButton(
+                  //   style: IconButton.styleFrom(
+                  //       backgroundColor: MyConstant.kprimaryColor,
+                  //       padding: const EdgeInsets.all(20)),
+                  //   onPressed: () {},
+                  //   iconSize: 30,
+                  //   icon: Icon(Icons.photo_camera_back,
+                  //       color: Colors.lightBlueAccent),
+                  // ),
                   IconButton(
                     style: IconButton.styleFrom(
                         backgroundColor: MyConstant.kprimaryColor,

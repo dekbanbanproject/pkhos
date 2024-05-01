@@ -104,15 +104,20 @@ class _MainHomeState extends State<MainHome> {
               //     return CctvList(articleModel: searcharticleModel[index]);
               //   },
               // ),
-              ListView.builder(physics: NeverScrollableScrollPhysics(),shrinkWrap: true,
+
+              ListView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
                 itemCount: searcharticleModel.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.only(right: 2,left: 2,bottom: 10),
+                    padding:
+                        const EdgeInsets.only(right: 2, left: 2, bottom: 10),
                     child: CctvList(articleModel: searcharticleModel[index]),
                   );
                 },
               )
+
             ],
           ),
         ),
