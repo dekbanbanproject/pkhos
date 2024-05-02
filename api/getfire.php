@@ -34,11 +34,12 @@
             //      $fire_              = $obje["fire"]; 
             //      $cctv_location_     = $obje['cctv_location'];   
             //  }
-            $result = mysqli_query($conn,"SELECT article_id,article_num, article_name,article_price ,article_year,article_recieve_date,article_typeid,article_typename\n"
-                    . ",article_categoryid,article_categoryname,article_groupid,article_groupname,article_status_id,article_img,article_img_name,store_id,cctv,cctv_location\n"
-                    . ",cctv_location_detail,cctv_type,cctv_code,cctv_monitor,cctv_status\n"
-                    . "FROM article_data WHERE fire ='Y'
-            ");
+            // $result = mysqli_query($conn,"SELECT article_id,article_num, article_name,article_price ,article_year,article_recieve_date,article_typeid,article_typename\n"
+            //         . ",article_categoryid,article_categoryname,article_groupid,article_groupname,article_status_id,article_img,article_img_name,store_id,cctv,cctv_location\n"
+            //         . ",cctv_location_detail,cctv_type,cctv_code,cctv_monitor,cctv_status\n"
+            //         . "FROM article_data WHERE fire ='Y'
+            // ");
+            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND category = 'fire' ORDER BY cctv_check_date DESC");
 
             // $sql = "SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND fire_extinguisher='Y' ORDER BY cctv_check_date DESC";
             // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
