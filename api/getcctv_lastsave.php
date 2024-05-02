@@ -23,10 +23,8 @@
             $newyear     = date('Y-m-d', strtotime($date . ' -1 year')); //ย้อนหลัง 1 ปี 
 
             // $article_num = $_GET['article_num'];
-
-            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND cctv='Y' ORDER BY cctv_check_date DESC
-            ");
- 
+         $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND cctv='Y' ORDER BY cctv_check_date DESC"); 
+            
             if ($result) {
                 while($row=mysqli_fetch_assoc($result)){
                     $output[]=$row;
