@@ -30,7 +30,12 @@
             //     }
             //     echo json_encode($output);
             // }
-            $sql = "SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND fire_extinguisher ='Y'";
+            $sql = mysqli_query($conn, "SELECT c.*,a.*\n"		
+            . "FROM cctv_check c\n"
+            . "LEFT JOIN article_data a ON a.article_num = c.article_num\n"    	
+            . "WHERE a.fire = 'Y'\n"
+            . "AND c.cctv_check_date BETWEEN '$newDate' AND '$date' ORDER BY c.cctv_check_date DESC ");	
+  
             $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error()); 
  
             if ($result) {
