@@ -22,8 +22,17 @@
             $newDate = date('Y-m-d', strtotime($date . ' -1 months')); //ย้อนหลัง 1 เดือน
             $newyear = date('Y-m-d', strtotime($date . ' -1 year')); //ย้อนหลัง 1 ปี 
    
-            $sql = "SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND fire_extinguisher='Y' ORDER BY cctv_check_date DESC";
-            $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
+            // $sql = "SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND fire_extinguisher='Y' ORDER BY cctv_check_date DESC";
+            // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
+            // if ($result) {
+            //     while($row=mysqli_fetch_assoc($result)){
+            //         $output[]=$row;
+            //     }
+            //     echo json_encode($output);
+            // }
+            $sql = "SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND fire_extinguisher ='Y'";
+            $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error()); 
+ 
             if ($result) {
                 while($row=mysqli_fetch_assoc($result)){
                     $output[]=$row;
