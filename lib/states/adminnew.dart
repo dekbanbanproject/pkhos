@@ -9,6 +9,7 @@ import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/screens/admin/cctv/mainfire.dart';
+import 'package:pkhos/screens/admin/cctv/mainfirereq.dart';
 import 'package:pkhos/screens/admin/cctv/mainhome.dart';
 import 'package:pkhos/screens/admin/cctv/mainprofile.dart';
 import 'package:pkhos/screens/admin/cctv/mainreport.dart';
@@ -28,7 +29,7 @@ int currentIndex = 2;
 List screens = const [
     // MainCctvAdd(), 
   MaincctvReq(),        // 0
-  MainFire(),        // 1
+  Mainfirereq(),        // 1
   MainHome(),        // 2
   MainReport(),      // 3
   MainProfile(),     // 4
