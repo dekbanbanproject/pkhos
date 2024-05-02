@@ -35,8 +35,21 @@
             if ($datacount > 0) {
                 echo "false";
             } else {
-                $sql = "INSERT INTO `cctv_check` (`cctv_check_id`,`cctv_check_date`,`article_num`,`cctv_user_id`,`cctv_camera_screen`,`cctv_camera_corner`,`cctv_camera_drawback`,`cctv_camera_save`,`cctv_camera_power_backup`) 
-                VALUES(Null,'$date','$article_num','$cctv_user_id','$cctv_camera_screen','$cctv_camera_corner','$cctv_camera_drawback','$cctv_camera_save','$cctv_camera_power_backup')";
+
+                 //Qury article_data
+                $sql2 = "SELECT `article_name`,`cctv_location`,`cctv_type`,`fire` FROM article_data WHERE article_num = '$article_num'";
+                $resline2 = mysqli_query($conn, $sql2) or die ("Error : $sql2" .mysqli_error());
+                while($obje = mysqli_fetch_array($resline2,MYSQLI_ASSOC))
+                {
+                    $article_num_       = $obje["article_num"];
+                    $fire_              = $obje["fire"]; 
+                    $cctv_type_         = $obje["cctv_type"]; 
+                    $fire_              = $obje["fire"]; 
+                    $cctv_location_     = $obje['cctv_location'];   
+                }
+
+                $sql = "INSERT INTO `cctv_check` (`cctv_check_id`,`cctv_check_date`,`article_num`,`cctv_user_id`,`cctv_camera_screen`,`cctv_camera_corner`,`cctv_camera_drawback`,`cctv_camera_save`,`cctv_camera_power_backup`,`cctv_type`,`cctv_location`) 
+                VALUES(Null,'$date','$article_num','$cctv_user_id','$cctv_camera_screen','$cctv_camera_corner','$cctv_camera_drawback','$cctv_camera_save','$cctv_camera_power_backup','$cctv_type_','$cctv_location_')";
                 $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
                 
                 if ($result) {

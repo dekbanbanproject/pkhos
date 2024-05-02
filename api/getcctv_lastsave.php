@@ -22,15 +22,15 @@
             $newDate     = date('Y-m-d', strtotime($date . ' -1 months')); //ย้อนหลัง 1 เดือน
             $newyear     = date('Y-m-d', strtotime($date . ' -1 year')); //ย้อนหลัง 1 ปี 
 
-            $sql = mysqli_query($conn, "SELECT c.*,a.*\n"		
-            . "FROM cctv_check c\n"
-            . "LEFT JOIN article_data a ON a.article_num = c.article_num\n"    	
-            . "WHERE a.cctv = 'Y'\n"
-            . "AND c.cctv_check_date BETWEEN '$newDate' AND '$date' ORDER BY c.cctv_check_date DESC ");	
+            // $sql = mysqli_query($conn, "SELECT c.*,a.*\n"		
+            // . "FROM cctv_check c\n"
+            // . "LEFT JOIN article_data a ON a.article_num = c.article_num\n"    	
+            // . "WHERE a.cctv = 'Y'\n"
+            // . "AND c.cctv_check_date BETWEEN '$newDate' AND '$date' ORDER BY c.cctv_check_date DESC ");	
   
-            $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error()); 
+            // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error()); 
          
-            // $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' ORDER BY cctv_check_date DESC");
+            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' ORDER BY cctv_check_date DESC");
  
             if ($result) {
                 while($row=mysqli_fetch_assoc($result)){
