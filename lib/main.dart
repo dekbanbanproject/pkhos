@@ -40,7 +40,7 @@ Future<Null> main() async {
   String? username = preferences.getString('username');
   String? id = preferences.getString('id');
 
-  if (type.isEmpty ?? true) {
+  if (type?.isEmpty ?? true) {
     // initlalRoute = MyConstant.routeLogin;
     initlalRoute = MyConstant.routespachScreen;
     
