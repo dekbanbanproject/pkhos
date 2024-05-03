@@ -39,6 +39,8 @@
             //         . ",cctv_location_detail,cctv_type,cctv_code,cctv_monitor,cctv_status\n"
             //         . "FROM article_data WHERE fire ='Y'
             // ");
+
+            
             $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND category = 'fire' ORDER BY cctv_check_date DESC");
 
             // $sql = "SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND fire_extinguisher='Y' ORDER BY cctv_check_date DESC";
