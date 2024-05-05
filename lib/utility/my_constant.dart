@@ -143,7 +143,7 @@ static const listColors = [green, purple, yellow, orange, sky, secondary, red, b
       TextStyle(fontSize: 20, color:Color.fromARGB(255, 11, 185, 162), fontWeight: FontWeight.bold);
 
   TextStyle h2White() =>
-      TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
 
   TextStyle h2info() =>
       TextStyle(fontSize: 17, color: info, fontWeight: FontWeight.bold);

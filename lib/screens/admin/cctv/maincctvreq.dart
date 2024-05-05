@@ -313,7 +313,7 @@ class _MaincctvReqState extends State<MaincctvReq> {
               onPressed: () async {
                 Navigator.pop(context);
                 String path =
-                    '${MyConstant.domain}/pkhos/api/deletcctv.php?isAdd=true&article_num=${searcharticlecheckModel.articleNum}';
+                    '${MyConstant.domain}/pkhos/api/deletecctv.php?isAdd=true&article_num=${searcharticlecheckModel.articleNum}&check_date=${searcharticlecheckModel.cctv_check_date}';
                 await Dio().get(path).then((value) => listcctv());
               },
               child: Text('ใช่ ต้องการลบข้อมูล'),

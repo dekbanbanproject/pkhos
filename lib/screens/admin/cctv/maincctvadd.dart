@@ -94,7 +94,7 @@ class _MainCctvAddState extends State<MainCctvAdd> {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+          backgroundColor: Color.fromARGB(255, 222, 248, 244),
         title: Padding(
           padding: const EdgeInsets.only(right: 30),
           child: Center(
@@ -395,16 +395,27 @@ class _MainCctvAddState extends State<MainCctvAdd> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 18),
           width: size * 0.6,
-          child: ElevatedButton(
-            style: MyConstant().mybuttonStyle(),
-            // onPressed: () {
-            //   print('######## Active = $cctvStatus, ###### Article num = $articlenum');
-            // },
-            onPressed: () => comfirmDialog(),
-            // onPressed: () => editActive(),
-            child: Text(
-              'Save',
-              style: MyConstant().h2White(),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 3),
+            child: ElevatedButton.icon(
+              icon: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Icon(
+                  Icons.save,
+                  color: Color.fromARGB(255, 8, 190, 166),
+                  size: 30.0,
+                ),
+              ),
+              label: Text(
+                'Save',
+                style: MyConstant().h2save(),
+              ),
+              onPressed: () => comfirmDialog(),
+              style: ElevatedButton.styleFrom(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(50.0),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 222, 248, 244)),
             ),
           ),
         ),
@@ -418,14 +429,32 @@ class _MainCctvAddState extends State<MainCctvAdd> {
       builder: (context) => SimpleDialog(
         title: Text('บันทึกข้อมูลใช่ไหม ?'),
         children: [
-          Center(
-            child: OutlinedButton(
+          // Center(
+          //   child: OutlinedButton(
+          //     onPressed: () {
+          //       Navigator.pop(context);
+          //       updateActive();
+          //       // editActive();
+          //     },
+          //     child: Text('ใช่'),
+          //   ),
+          // )
+          Center( 
+            child: ElevatedButton.icon( 
+              label: Text(
+                ' Yes',
+                style: MyConstant().h2save(),
+              ),
               onPressed: () {
                 Navigator.pop(context);
                 updateActive();
-                // editActive();
               },
-              child: Text('ใช่'),
+              // onPressed: () => comfirmDialog(),
+              style: ElevatedButton.styleFrom(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 222, 248, 244)),
             ),
           )
         ],

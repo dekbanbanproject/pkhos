@@ -134,21 +134,21 @@ class _MainCctvdetailState extends State<MainCctvdetail> {
         endActionPane: ActionPane(
           motion: const StretchMotion(),
           children: [
-            Container(
-              child: SlidableAction(
-                onPressed: (context) {},
-                backgroundColor: Color.fromARGB(255, 253, 158, 49),
-                icon: Icons.edit_rounded,
-              ),
-            ),
-            Container(
-              child: SlidableAction(
-                // onPressed: () => deletCheck(searcharticlecheckModel[index].cctv_check_id),
-                onPressed: (context) {},
-                backgroundColor: Color.fromARGB(255, 253, 23, 23),
-                icon: Icons.delete,
-              ),
-            ),
+            // Container(
+            //   child: SlidableAction(
+            //     onPressed: (context) {},
+            //     backgroundColor: Color.fromARGB(255, 253, 158, 49),
+            //     icon: Icons.edit_rounded,
+            //   ),
+            // ),
+            // Container(
+            //   child: SlidableAction(
+            //     // onPressed: () => deletCheck(searcharticlecheckModel[index].cctv_check_id),
+            //     onPressed: (context) {},
+            //     backgroundColor: Color.fromARGB(255, 253, 23, 23),
+            //     icon: Icons.delete,
+            //   ),
+            // ),
           ],
         ),
         child: Column(

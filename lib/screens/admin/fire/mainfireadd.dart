@@ -536,7 +536,7 @@ class _MainFireaddState extends State<MainFireadd> {
             Text('ชำรุด'),
           ],
         ),
-      );
+  );
 
   Widget gaugeRadio() => Container(
         child: Row(
@@ -563,7 +563,7 @@ class _MainFireaddState extends State<MainFireadd> {
             Text('ชำรุด'),
           ],
         ),
-      );
+  );
 
   Widget drawbackRadio() => Container(
         child: Row(

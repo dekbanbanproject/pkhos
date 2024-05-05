@@ -22,9 +22,10 @@
             $newDate     = date('Y-m-d', strtotime($date . ' -1 months')); //ย้อนหลัง 1 เดือน
             $newyear     = date('Y-m-d', strtotime($date . ' -1 year')); //ย้อนหลัง 1 ปี 
 
-            $article_num = $_GET['article_num'];
+            $article_num       = $_GET['article_num'];
+            $cctv_check_date   = $_GET['cctv_check_date'];
 
-            $sql = "DELETE FROM cctv_check WHERE article_num = '$article_num'";
+            $sql = "DELETE FROM cctv_check WHERE article_num = '$article_num' AND cctv_check_date = '$cctv_check_date'";
             $result = mysqli_query($conn,$sql);
 
            if ($result) {

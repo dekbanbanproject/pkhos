@@ -21,14 +21,14 @@ class Mainfirereq extends StatefulWidget {
 }
 
 class _MainfirereqState extends State<Mainfirereq> {
-   List<Firemodel> fireModel = [];
+  List<Firemodel> fireModel = [];
   List<Firemodel> searchfireModel = [];
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
 
   @override
-  void initState() { 
-    super.initState(); 
+  void initState() {
+    super.initState();
     listFire();
   }
 
@@ -36,8 +36,7 @@ class _MainfirereqState extends State<Mainfirereq> {
     if (fireModel.length != 0) {
       fireModel.clear();
     } else {}
-    final apifire =
-        '${MyConstant.domain}/pkhos/api/getfire.php?isAdd=true';
+    final apifire = '${MyConstant.domain}/pkhos/api/getfire.php?isAdd=true';
     await Dio().get(apifire).then((value) async {
       print('## value for API  ==>  $value');
       for (var item in json.decode(value.data!)) {
@@ -52,10 +51,9 @@ class _MainfirereqState extends State<Mainfirereq> {
     });
   }
 
-  
   @override
   Widget build(BuildContext context) {
-     return Scaffold(
+    return Scaffold(
       backgroundColor: Colors.white,
       // body: screens[currentIndex],
       body: SingleChildScrollView(
@@ -80,9 +78,10 @@ class _MainfirereqState extends State<Mainfirereq> {
                     ),
                     iconSize: 30,
                     icon: Icon(Icons.qr_code_scanner_rounded,
-                      // Icons.photo_camera_front,
+                        // Icons.photo_camera_front,
                         color: const Color.fromARGB(255, 255, 64, 121)),
-                  ),Text('บันทึกข้อมูลถังดับเพลิง',style: MyConstant().h4back()),
+                  ),
+                  Text('บันทึกข้อมูลถังดับเพลิง', style: MyConstant().h4back()),
                   // IconButton(
                   //   style: IconButton.styleFrom(
                   //       backgroundColor: MyConstant.kprimaryColor,
@@ -102,7 +101,11 @@ class _MainfirereqState extends State<Mainfirereq> {
                     //     builder: (context) => MainFireadd(),
                     //   ),
                     // ),
-                     onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MainFireadd(),)).then((value) => listFire()),
+                    onPressed: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainFireadd(),
+                        )).then((value) => listFire()),
                     iconSize: 30,
                     icon: Icon(Icons.qr_code_scanner_rounded,
                         color: Colors.lightBlueAccent),
@@ -181,7 +184,7 @@ class _MainfirereqState extends State<Mainfirereq> {
                 onPressed: ((context) {
                   MaterialPageRoute route = MaterialPageRoute(
                     builder: (context) => MainFireedit(
-                      fireModel: searchfireModel[index],
+                      fireModeledit: searchfireModel[index],
                     ),
                   );
                   Navigator.push(context, route).then((value) => listFire());
@@ -193,8 +196,7 @@ class _MainfirereqState extends State<Mainfirereq> {
             Container(
               child: SlidableAction(
                 // onPressed: () => deletCheck(searcharticlecheckModel[index].cctv_check_id),
-                onPressed: (context) =>
-                    delectCheck(searchfireModel[index]),
+                onPressed: (context) => delectCheck(searchfireModel[index]),
                 backgroundColor: Color.fromARGB(255, 253, 23, 23),
                 icon: Icons.delete,
               ),
@@ -263,8 +265,7 @@ class _MainfirereqState extends State<Mainfirereq> {
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searchfireModel[index]
-                              .fire_check_drawback!,
+                          searchfireModel[index].fire_check_drawback!,
                           style: MyConstant().h5dark(),
                         ),
                       ],
@@ -279,23 +280,41 @@ class _MainfirereqState extends State<Mainfirereq> {
     );
   }
 
-
- Future<Null> delectCheck(Firemodel searchfireModel) async {
+  Future<Null> delectCheck(Firemodel searchfireModel) async {
     showDialog(
       context: context,
       builder: (context) => SimpleDialog(
-        title: Text(
-            'ต้องการลบข้อมูล ${searchfireModel.fire_num} ใช่ไหม ?'),
+        title: Text('ต้องการลบข้อมูล ${searchfireModel.fire_num} ใช่ไหม ?'),
         children: [
-          Center(
-            child: OutlinedButton(
+          // Center(
+          //   child: OutlinedButton(
+              // onPressed: () async {
+              //   Navigator.pop(context);
+              //   String path =
+              //       '${MyConstant.domain}/pkhos/api/deletefire.php?isAdd=true&fire_num=${searchfireModel.fire_num}&check_date=${searchfireModel.check_date}';
+              //   await Dio().get(path).then((value) => listFire());
+              // },
+          //     child: Text('ใช่ ต้องการลบข้อมูล'),
+          //   ),
+          // )
+          Center( 
+            child: ElevatedButton.icon( 
+              label: Text(
+                ' Yes',
+                style: MyConstant().h2White(),
+              ),
               onPressed: () async {
                 Navigator.pop(context);
                 String path =
-                    '${MyConstant.domain}/pkhos/api/deletcctv.php?isAdd=true&article_num=${searchfireModel.fire_num}';
+                    '${MyConstant.domain}/pkhos/api/deletefire.php?isAdd=true&fire_num=${searchfireModel.fire_num}&check_date=${searchfireModel.check_date}';
                 await Dio().get(path).then((value) => listFire());
               },
-              child: Text('ใช่ ต้องการลบข้อมูล'),
+              // onPressed: () => comfirmDialog(),
+              style: ElevatedButton.styleFrom(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 255, 80, 103)),
             ),
           )
         ],
