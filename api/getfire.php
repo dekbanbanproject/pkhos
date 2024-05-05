@@ -41,7 +41,7 @@
             // ");
 
             
-            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND category = 'fire' ORDER BY cctv_check_date DESC");
+            $result = mysqli_query($conn,"SELECT * FROM fire_check WHERE check_date BETWEEN '$newDate' AND '$date' ORDER BY check_date DESC");
 
             // $sql = "SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND fire_extinguisher='Y' ORDER BY cctv_check_date DESC";
             // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());

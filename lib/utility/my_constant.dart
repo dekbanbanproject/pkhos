@@ -15,7 +15,7 @@ class MyConstant {
   // static String routePoPage = '/po';
   static String routeAdminPage = '/admin';
   static String routeAdminnewPage = '/adminnew';
-  static String routeMainCctvAdd = '/cctvadd';
+  static String routeMainCctvAdd = '/cctvadd';  
   static String routeMainCctv = '/cctvmain';
   static String routeMaincctvReq = '/maincctvReq';
   static String routespachScreen = '/spachscreen';
@@ -138,6 +138,9 @@ static const listColors = [green, purple, yellow, orange, sky, secondary, red, b
 
   TextStyle h2() =>
       TextStyle(fontSize: 17, color: primary, fontWeight: FontWeight.bold);
+
+      TextStyle h2save() =>
+      TextStyle(fontSize: 20, color:Color.fromARGB(255, 11, 185, 162), fontWeight: FontWeight.bold);
 
   TextStyle h2White() =>
       TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);

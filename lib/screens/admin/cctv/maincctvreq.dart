@@ -35,7 +35,7 @@ class _MaincctvReqState extends State<MaincctvReq> {
     // readdatacctv();
     listcctv();
   }
-  
+
   // @override
   // void dispose() {
   //   controller.dispose();
@@ -89,9 +89,10 @@ class _MaincctvReqState extends State<MaincctvReq> {
                     ),
                     iconSize: 30,
                     icon: Icon(Icons.qr_code_scanner_rounded,
-                      // Icons.photo_camera_front,
+                        // Icons.photo_camera_front,
                         color: const Color.fromARGB(255, 255, 64, 121)),
-                  ),Text('บันทึกข้อมูลกล้อง CCTV',style: MyConstant().h4back()),
+                  ),
+                  Text('บันทึกข้อมูลกล้อง CCTV', style: MyConstant().h4back()),
                   // IconButton(
                   //   style: IconButton.styleFrom(
                   //       backgroundColor: MyConstant.kprimaryColor,
@@ -105,12 +106,25 @@ class _MaincctvReqState extends State<MaincctvReq> {
                     style: IconButton.styleFrom(
                         backgroundColor: MyConstant.kprimaryColor,
                         padding: const EdgeInsets.all(20)),
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainCctvAdd(),
-                      ),
-                    ),
+                        // onPressed: ((context) {
+                        //   MaterialPageRoute route = MaterialPageRoute(
+                        //     builder: (context) => Maincctvedit(
+                        //       articlecheckModeledit: searcharticlecheckModel[index],
+                        //     ),
+                        //   );
+                        //   Navigator.push(context, route).then((value) => listcctv());
+                        // }),
+                    // onPressed: () => Navigator.of(context).push(
+                    //   MaterialPageRoute(builder: (context) => MainCctvAdd()),
+                    // ),
+                    // onPressed:() => Navigator.push(context, MyConstant().routeMainCctvAdd).then((value) => listcctv())
+                    // onPressed: () => Navigator.push(
+                    //   context, MaterialPageRoute(                        
+                    //     builder: (context) => MainCctvAdd(),
+                    //   ),                      
+                    // ),
+                    onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MainCctvAdd(),)).then((value) => listcctv()),
+                    // Navigator.push(context, route).then((value) => listcctv());
                     iconSize: 30,
                     icon: Icon(Icons.qr_code_scanner_rounded,
                         color: Colors.lightBlueAccent),

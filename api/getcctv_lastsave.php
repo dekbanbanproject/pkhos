@@ -30,7 +30,7 @@
   
             // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error()); 
          
-            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' AND category = 'cctv' ORDER BY cctv_check_date DESC");
+            $result = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date BETWEEN '$newDate' AND '$date' ORDER BY cctv_check_date DESC");
  
             if ($result) {
                 while($row=mysqli_fetch_assoc($result)){

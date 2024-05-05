@@ -52,14 +52,14 @@
                 VALUES(Null,'$date','$article_num','$cctv_user_id','$cctv_camera_screen','$cctv_camera_corner','$cctv_camera_drawback','$cctv_camera_save','$cctv_camera_power_backup','$cctv_type_','$cctv_location_')";
                 $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
                 
-                if ($result) {
-                    echo "true";
-                }else{
-                    echo "false";
-                }
+              
             }
             
-           
+            if ($result) {
+                echo "true";
+            }else{
+                echo "false";
+            }
             // $sql = "INSERT INTO `cctv_check` (`cctv_check_id`,`cctv_check_date`,`article_num`,`cctv_user_id`,`cctv_camera_screen`,`cctv_camera_corner`,`cctv_camera_drawback`,`cctv_camera_save`,`cctv_camera_power_backup`) 
             // VALUES(Null,'$date','$article_num','$cctv_user_id','$cctv_camera_screen','$cctv_camera_corner','$cctv_camera_drawback','$cctv_camera_save','$cctv_camera_power_backup')";
             // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());

@@ -5,9 +5,12 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:pkhos/models/article_model_check.dart';
+import 'package:pkhos/models/firemodel.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvdetail.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvedit.dart';
+import 'package:pkhos/screens/admin/fire/mainfireadd.dart';
+import 'package:pkhos/screens/admin/fire/mainfireedit.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
 class Mainfirereq extends StatefulWidget {
@@ -18,8 +21,8 @@ class Mainfirereq extends StatefulWidget {
 }
 
 class _MainfirereqState extends State<Mainfirereq> {
-   List<ArticleCheckModel> articlecheckModel = [];
-  List<ArticleCheckModel> searcharticlecheckModel = [];
+   List<Firemodel> fireModel = [];
+  List<Firemodel> searchfireModel = [];
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
 
@@ -30,20 +33,20 @@ class _MainfirereqState extends State<Mainfirereq> {
   }
 
   Future<Null> listFire() async {
-    if (articlecheckModel.length != 0) {
-      articlecheckModel.clear();
+    if (fireModel.length != 0) {
+      fireModel.clear();
     } else {}
-    final apicctv =
+    final apifire =
         '${MyConstant.domain}/pkhos/api/getfire.php?isAdd=true';
-    await Dio().get(apicctv).then((value) async {
+    await Dio().get(apifire).then((value) async {
       print('## value for API  ==>  $value');
       for (var item in json.decode(value.data!)) {
-        ArticleCheckModel model = ArticleCheckModel.fromJson(item);
-        var cctvname = model.articleNum!.toString();
-        print('### ==>>>$cctvname');
+        Firemodel model = Firemodel.fromJson(item);
+        var firename = model.fire_num!.toString();
+        print('### ==>>>$firename');
         setState(() {
-          articlecheckModel.add(model);
-          searcharticlecheckModel = articlecheckModel;
+          fireModel.add(model);
+          searchfireModel = fireModel;
         });
       }
     });
@@ -93,12 +96,13 @@ class _MainfirereqState extends State<Mainfirereq> {
                     style: IconButton.styleFrom(
                         backgroundColor: MyConstant.kprimaryColor,
                         padding: const EdgeInsets.all(20)),
-                    onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => MainCctvAdd(),
-                      ),
-                    ),
+                    // onPressed: () => Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) => MainFireadd(),
+                    //   ),
+                    // ),
+                     onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => MainFireadd(),)).then((value) => listFire()),
                     iconSize: 30,
                     icon: Icon(Icons.qr_code_scanner_rounded,
                         color: Colors.lightBlueAccent),
@@ -145,8 +149,8 @@ class _MainfirereqState extends State<Mainfirereq> {
               onChanged: (value) {
                 debouncer.run(() {
                   setState(() {
-                    searcharticlecheckModel = articlecheckModel
-                        .where((element) => element.articleNum!
+                    searchfireModel = fireModel
+                        .where((element) => element.fire_num!
                             .toLowerCase()
                             .contains(value.toLowerCase()))
                         .toList();
@@ -167,7 +171,7 @@ class _MainfirereqState extends State<Mainfirereq> {
       padding: EdgeInsets.only(top: 2),
       shrinkWrap: true,
       physics: const ScrollPhysics(),
-      itemCount: searcharticlecheckModel.length,
+      itemCount: searchfireModel.length,
       itemBuilder: (context, index) => Slidable(
         endActionPane: ActionPane(
           motion: const StretchMotion(),
@@ -176,8 +180,8 @@ class _MainfirereqState extends State<Mainfirereq> {
               child: SlidableAction(
                 onPressed: ((context) {
                   MaterialPageRoute route = MaterialPageRoute(
-                    builder: (context) => Maincctvedit(
-                      articlecheckModeledit: searcharticlecheckModel[index],
+                    builder: (context) => MainFireedit(
+                      fireModel: searchfireModel[index],
                     ),
                   );
                   Navigator.push(context, route).then((value) => listFire());
@@ -190,7 +194,7 @@ class _MainfirereqState extends State<Mainfirereq> {
               child: SlidableAction(
                 // onPressed: () => deletCheck(searcharticlecheckModel[index].cctv_check_id),
                 onPressed: (context) =>
-                    delectCheck(searcharticlecheckModel[index]),
+                    delectCheck(searchfireModel[index]),
                 backgroundColor: Color.fromARGB(255, 253, 23, 23),
                 icon: Icons.delete,
               ),
@@ -232,35 +236,35 @@ class _MainfirereqState extends State<Mainfirereq> {
                 child: Center(
                   child: ListTile(
                     leading: Text(
-                      searcharticlecheckModel[index].articleNum!,
+                      searchfireModel[index].fire_num!,
                       style: MyConstant().h5dark(),
                     ),
                     title: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          searcharticlecheckModel[index].cctv_check_date!,
+                          searchfireModel[index].check_date!,
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searcharticlecheckModel[index].cctv_camera_screen!,
+                          searchfireModel[index].fire_check_injection!,
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searcharticlecheckModel[index].cctv_camera_corner!,
+                          searchfireModel[index].fire_check_joystick!,
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searcharticlecheckModel[index].cctv_camera_drawback!,
+                          searchfireModel[index].fire_check_body!,
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searcharticlecheckModel[index].cctv_camera_save!,
+                          searchfireModel[index].fire_check_gauge!,
                           style: MyConstant().h5dark(),
                         ),
                         Text(
-                          searcharticlecheckModel[index]
-                              .cctv_camera_power_backup!,
+                          searchfireModel[index]
+                              .fire_check_drawback!,
                           style: MyConstant().h5dark(),
                         ),
                       ],
@@ -276,19 +280,19 @@ class _MainfirereqState extends State<Mainfirereq> {
   }
 
 
- Future<Null> delectCheck(ArticleCheckModel searcharticlecheckModel) async {
+ Future<Null> delectCheck(Firemodel searchfireModel) async {
     showDialog(
       context: context,
       builder: (context) => SimpleDialog(
         title: Text(
-            'ต้องการลบข้อมูล ${searcharticlecheckModel.articleNum} ใช่ไหม ?'),
+            'ต้องการลบข้อมูล ${searchfireModel.fire_num} ใช่ไหม ?'),
         children: [
           Center(
             child: OutlinedButton(
               onPressed: () async {
                 Navigator.pop(context);
                 String path =
-                    '${MyConstant.domain}/pkhos/api/deletcctv.php?isAdd=true&article_num=${searcharticlecheckModel.articleNum}';
+                    '${MyConstant.domain}/pkhos/api/deletcctv.php?isAdd=true&article_num=${searchfireModel.fire_num}';
                 await Dio().get(path).then((value) => listFire());
               },
               child: Text('ใช่ ต้องการลบข้อมูล'),

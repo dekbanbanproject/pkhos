@@ -1,30 +1,28 @@
-import 'dart:convert';
-
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:pkhos/models/article_model.dart';
-import 'package:pkhos/models/article_model_check.dart';
+import 'package:pkhos/models/firemodel.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class MainCctvAdd extends StatefulWidget {
-  const MainCctvAdd({super.key});
+class MainFireadd extends StatefulWidget {
+  const MainFireadd({super.key});
 
   @override
-  State<MainCctvAdd> createState() => _MainCctvAddState();
+  State<MainFireadd> createState() => _MainFireaddState();
 }
 
-class _MainCctvAddState extends State<MainCctvAdd> {
+class _MainFireaddState extends State<MainFireadd> {
   late String _scanBarcode = 'ยังไม่มีข้อมูล';
   int index = 0;
   final formKey = GlobalKey<FormState>();
-  TextEditingController article_numController = TextEditingController();
-  TextEditingController check_dateController = TextEditingController();
-  TextEditingController camera_screenController = TextEditingController();
+  // TextEditingController fire_numController = TextEditingController();
+  // TextEditingController check_dateController = TextEditingController();
+  // TextEditingController camera_screenController = TextEditingController();
 
   Future<void> startBarcodeScanStream() async {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
@@ -34,21 +32,19 @@ class _MainCctvAddState extends State<MainCctvAdd> {
 
   late String barcodeScanRes = '';
   late String getbarcodeScanRes = '';
-  late String cctvStatus = '';
-  late String articlenum = '';
-  late String connerStatus = '';
+  late String fireStatus = '';
+  late String fire_num = '';
+  late String injectionStatus = '';
+  late String joystickStatus = '';
+  late String bodyStatus = '';
+  late String gaugeStatus = '';
   late String drawbackStatus = '';
-  late String saveStatus = '';
-  late String powerStatus = '';
-  List<ArticleModel> articleModel = [];
-  List<ArticleCheckModel> articlecheckModel = [];
-  List<ArticleCheckModel> searcharticlecheckModel = [];
+  List<Firemodel> fireModel = [];
 
   @override
   void initState() {
     super.initState();
     scanQR();
-    // listcctv();
   }
 
   Future<void> scanQR() async {
@@ -72,39 +68,22 @@ class _MainCctvAddState extends State<MainCctvAdd> {
     return await Future.delayed(Duration(seconds: 2));
   }
 
-  // Future<Null> listcctv() async {
-  //   final apicctv =
-  //       '${MyConstant.domain}/pkhos/api/getcctv_lastsave.php?isAdd=true';
-  //   await Dio().get(apicctv).then((value) async {
-  //     print('## value for API  ==>  $value');
-  //     for (var item in json.decode(value.data!)) {
-  //       ArticleCheckModel model = ArticleCheckModel.fromJson(item);
-  //       var cctvname = model.articleNum!.toString();
-  //       print('### ==>>>$cctvname');
-  //       setState(() {
-  //         articlecheckModel.add(model);
-  //         searcharticlecheckModel = articlecheckModel;
-  //       });
-  //     }
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
     double size = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
+        backgroundColor: Color.fromARGB(255, 222, 248, 244),
         title: Padding(
           padding: const EdgeInsets.only(right: 30),
           child: Center(
             child: Text(
-              'บันทึกข้อมูลกล้องวงจรปิด',
+              'บันทึกข้อมูลถังดับเพลิง',
               // _gleaveModel.LEAVE_PERSON_FULLNAME,
               style: TextStyle(
                   fontSize: 20,
                   fontFamily: 'Kanit-Regular',
-                  color: Colors.white),
+                  color: Color.fromARGB(255, 8, 190, 166)),
             ),
           ),
         ),
@@ -147,7 +126,7 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                     height: 3,
                   ),
                 ),
-                Text('SCAN QRCODE CCTV'),
+                Text('SCAN QRCODE FIRE EXTINGUISHER'),
                 Center(
                   child: SizedBox(
                     height: 3,
@@ -155,7 +134,7 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                 ),
                 // textNum(),
                 Text(
-                  'รหัสกล้องวงจรปิด :$_scanBarcode',
+                  'รหัสถังดับเพลิง :$_scanBarcode',
                   style: TextStyle(fontSize: 18),
                 ),
                 Padding(
@@ -190,15 +169,16 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                       ],
                     ),
                     child: Card(
+                      color: Colors.white,
                       child: ListTile(
                         leading: Text(
-                          'จอกล้อง',
+                          'สายฉีด',
                           style: TextStyle(fontSize: 17),
                         ),
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            damagedRadio(),
+                            injectionRadio(),
                           ],
                         ),
                       ),
@@ -233,15 +213,16 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                       ],
                     ),
                     child: Card(
+                      color: Colors.white,
                       child: ListTile(
                         leading: Text(
-                          'มุมกล้อง',
+                          'คันบังคับ',
                           style: TextStyle(fontSize: 17),
                         ),
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            damagedconerRadio(),
+                            joystickRadio(),
                           ],
                         ),
                       ),
@@ -276,6 +257,95 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                       ],
                     ),
                     child: Card(
+                      color: Colors.white,
+                      child: ListTile(
+                        leading: Text(
+                          'ตัวถัง',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            bodyRadio(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 3, bottom: 3, left: 10, right: 10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                        left: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                        right: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                        bottom: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                      ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(221, 255, 255, 255)
+                              .withOpacity(0.05),
+                          spreadRadius: 1.5,
+                          blurRadius: 1.5,
+                          offset: Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: Card(
+                      color: Colors.white,
+                      child: ListTile(
+                        leading: Text(
+                          'เกจความดัน',
+                          style: TextStyle(fontSize: 17),
+                        ),
+                        title: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            gaugeRadio(),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(
+                      top: 3, bottom: 3, left: 10, right: 10),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border(
+                        top: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                        left: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                        right: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                        bottom: BorderSide(
+                            color: Color.fromARGB(255, 102, 217, 252)),
+                      ),
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(15.0),
+                      boxShadow: [
+                        BoxShadow(
+                          color: const Color.fromARGB(221, 255, 255, 255)
+                              .withOpacity(0.05),
+                          spreadRadius: 1.5,
+                          blurRadius: 1.5,
+                          offset: Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: Card(
+                      color: Colors.white,
                       child: ListTile(
                         leading: Text(
                           'สิ่งกีดขวาง',
@@ -284,93 +354,7 @@ class _MainCctvAddState extends State<MainCctvAdd> {
                         title: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            damageddrawbackRadio(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 3, bottom: 3, left: 10, right: 10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                        left: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                        right: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                        bottom: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                      ),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromARGB(221, 255, 255, 255)
-                              .withOpacity(0.05),
-                          spreadRadius: 1.5,
-                          blurRadius: 1.5,
-                          offset: Offset(0, 1),
-                        ),
-                      ],
-                    ),
-                    child: Card(
-                      child: ListTile(
-                        leading: Text(
-                          'การบันทึก',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            damagedsaveRadio(),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(
-                      top: 3, bottom: 3, left: 10, right: 10),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      border: Border(
-                        top: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                        left: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                        right: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                        bottom: BorderSide(
-                            color: Color.fromARGB(255, 102, 217, 252)),
-                      ),
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(15.0),
-                      boxShadow: [
-                        BoxShadow(
-                          color: const Color.fromARGB(221, 255, 255, 255)
-                              .withOpacity(0.05),
-                          spreadRadius: 1.5,
-                          blurRadius: 1.5,
-                          offset: Offset(0, 1),
-                        ),
-                      ],
-                    ),
-                    child: Card(
-                      child: ListTile(
-                        leading: Text(
-                          'การสำรองไฟ',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            damagedpowerRadio(),
+                            drawbackRadio(),
                           ],
                         ),
                       ),
@@ -387,7 +371,7 @@ class _MainCctvAddState extends State<MainCctvAdd> {
     );
   }
 
-  // dynamic saveButtom() => saveButtom();
+// dynamic saveButtom() => saveButtom();
   Row saveButtom(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -395,16 +379,27 @@ class _MainCctvAddState extends State<MainCctvAdd> {
         Container(
           margin: EdgeInsets.symmetric(vertical: 18),
           width: size * 0.6,
-          child: ElevatedButton(
-            style: MyConstant().mybuttonStyle(),
-            // onPressed: () {
-            //   print('######## Active = $cctvStatus, ###### Article num = $articlenum');
-            // },
-            onPressed: () => comfirmDialog(),
-            // onPressed: () => editActive(),
-            child: Text(
-              'Save',
-              style: MyConstant().h2White(),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 3),
+            child: ElevatedButton.icon(
+              icon: Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Icon(
+                  Icons.save,
+                  color: Color.fromARGB(255, 8, 190, 166),
+                  size: 30.0,
+                ),
+              ),
+              label: Text(
+                'Save',
+                style: MyConstant().h2save(),
+              ),
+              onPressed: () => comfirmDialog(),
+              style: ElevatedButton.styleFrom(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(50.0),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 222, 248, 244)),
             ),
           ),
         ),
@@ -418,14 +413,22 @@ class _MainCctvAddState extends State<MainCctvAdd> {
       builder: (context) => SimpleDialog(
         title: Text('บันทึกข้อมูลใช่ไหม ?'),
         children: [
-          Center(
-            child: OutlinedButton(
+          Center( 
+            child: ElevatedButton.icon( 
+              label: Text(
+                ' Yes',
+                style: MyConstant().h2save(),
+              ),
               onPressed: () {
                 Navigator.pop(context);
-                updateActive();
-                // editActive();
+                saveActive();
               },
-              child: Text('ใช่'),
+              // onPressed: () => comfirmDialog(),
+              style: ElevatedButton.styleFrom(
+                  shape: new RoundedRectangleBorder(
+                    borderRadius: new BorderRadius.circular(20.0),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 222, 248, 244)),
             ),
           )
         ],
@@ -433,317 +436,159 @@ class _MainCctvAddState extends State<MainCctvAdd> {
     );
   }
 
-  Widget normalRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Text(
-              'จอกล้อง',
-              style: TextStyle(fontSize: 17),
-            ),
-          ],
-        ),
-      );
-
-  Widget damagedRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Radio(
-              value: '0',
-              groupValue: cctvStatus,
-              onChanged: (value) {
-                setState(() {
-                  cctvStatus = value!;
-                });
-              },
-            ),
-            Text('ปกติ'),
-            Radio(
-              value: '1',
-              groupValue: cctvStatus,
-              onChanged: (value) {
-                setState(() {
-                  cctvStatus = value!;
-                });
-              },
-            ),
-            Text('ชำรุด'),
-          ],
-        ),
-      );
-  Widget normalconerRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Text(
-              'มุมกล้อง',
-              style: TextStyle(fontSize: 17),
-            ),
-          ],
-        ),
-      );
-  Widget damagedconerRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Radio(
-              value: '0',
-              groupValue: connerStatus,
-              onChanged: (value) {
-                setState(() {
-                  connerStatus = value!;
-                });
-              },
-            ),
-            Text('ปกติ'),
-            Radio(
-              value: '1',
-              groupValue: connerStatus,
-              onChanged: (value) {
-                setState(() {
-                  connerStatus = value!;
-                });
-              },
-            ),
-            Text('ชำรุด'),
-          ],
-        ),
-      );
-  Widget normaldrawbackRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Text(
-              'สิ่งกีดขวาง',
-              style: TextStyle(fontSize: 17),
-            ),
-          ],
-        ),
-      );
-  Widget damageddrawbackRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Radio(
-              value: '0',
-              groupValue: drawbackStatus,
-              onChanged: (value) {
-                setState(() {
-                  drawbackStatus = value!;
-                });
-              },
-            ),
-            Text('ปกติ'),
-            Radio(
-              value: '1',
-              groupValue: drawbackStatus,
-              onChanged: (value) {
-                setState(() {
-                  drawbackStatus = value!;
-                });
-              },
-            ),
-            Text('ชำรุด'),
-          ],
-        ),
-      );
-  Widget normalsaveRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Text(
-              'การบันทึก',
-              style: TextStyle(fontSize: 17),
-            ),
-          ],
-        ),
-      );
-  Widget damagedsaveRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Radio(
-              value: '0',
-              groupValue: saveStatus,
-              onChanged: (value) {
-                setState(() {
-                  saveStatus = value!;
-                });
-              },
-            ),
-            Text('ปกติ'),
-            Radio(
-              value: '1',
-              groupValue: saveStatus,
-              onChanged: (value) {
-                setState(() {
-                  saveStatus = value!;
-                });
-              },
-            ),
-            Text('ชำรุด'),
-          ],
-        ),
-      );
-  Widget normalpowerRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Text(
-              'การสำรองไฟ',
-              style: TextStyle(fontSize: 17),
-            ),
-          ],
-        ),
-      );
-  Widget damagedpowerRadio() => Container(
-        child: Row(
-          children: <Widget>[
-            Radio(
-              value: '0',
-              groupValue: powerStatus,
-              onChanged: (value) {
-                setState(() {
-                  powerStatus = value!;
-                });
-              },
-            ),
-            Text('ปกติ'),
-            Radio(
-              value: '1',
-              groupValue: powerStatus,
-              onChanged: (value) {
-                setState(() {
-                  powerStatus = value!;
-                });
-              },
-            ),
-            Text('ชำรุด'),
-          ],
-        ),
-      );
-
-  // dynamic textNum() {
-  //   return Container(
-  //       child: Text(
-  //     'รหัสกล้องวงจรปิด : $_scanBarcode\n',
-  //     style: TextStyle(fontSize: 20),
-  //   ));
-  // }
-
-  Row articleNum(double size) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Container(
-          margin: EdgeInsets.only(top: 10),
-          width: size * 0.8,
-          // child: TextField(onChanged: (value) => articlenum = value.trim(),
-          //   decoration: InputDecoration(labelText: '$_scanBarcode'),
-          // ),
-          child: TextFormField(
-            // onChanged: (value) => articlenum = value.trim(),
-            // controller: article_numController,
-            // initialValue: barcodeScanRes,
-            // controller: articleController,
-            decoration: InputDecoration(
-              labelStyle: MyConstant().h2(),
-              labelText: '$_scanBarcode\n',
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: MyConstant.primary),
-                borderRadius: BorderRadius.circular(30),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: MyConstant.warning),
-                borderRadius: BorderRadius.circular(30),
-              ),
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-
-  // Future<Null> editActive() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   String id = preferences.getString('id')!;
-  //   // String article_num2 = article_numController.text;
-  //   print('######## userid = $id');
-  //   print('######## article_num = $_scanBarcode');
-  //   String path =
-  //       '${MyConstant.domain}/pkhos/api/getArticle.php?isAdd=true&article_num=$_scanBarcode';
-  //   await Dio().get(path).then((value) async {
-  //     if (value.toString() == 'null') {
-  //       MyDialog()
-  //           .normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีข้อมูลกล้องวงจรปิด');
-  //     } else {
-  //       for (var items in json.decode(value.data!)) {
-  //         ArticleModel model = ArticleModel.fromJson(items);
-  //         String getarticlenum = model.articleNum.toString();
-  //         print('### ==>>>$getarticlenum');
-  //         setState(() {
-  //           articleModel.add(model);
-  //         });
-  //       }
-  //     }
-  //   });
-  // }
-
-  Future<Null> updateActive() async {
+  Future<Null> saveActive() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     String id = preferences.getString('id')!;
     // String article_num2 = article_numController.text;
     print('######## userid = $id');
-    print('######## Active = $cctvStatus');
-
-    // String path =
-    //     '${MyConstant.domain}/pkhos/api/getArticleinsert.php?isAdd=true&article_num=$_scanBarcode&cctv_user_id=$id&cctv_camera_screen=$cctvStatus&cctv_camera_corner=$connerStatus&cctv_camera_drawback=$drawbackStatus&cctv_camera_save=$saveStatus&cctv_camera_power_backup=$powerStatus';
-    // await Dio().get(path).then((value) =>
-    //     MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ'));
-
-    String url =
-        '${MyConstant.domain}/pkhos/api/getArticleinsert.php?isAdd=true&article_num=$_scanBarcode&cctv_user_id=$id&cctv_camera_screen=$cctvStatus&cctv_camera_corner=$connerStatus&cctv_camera_drawback=$drawbackStatus&cctv_camera_save=$saveStatus&cctv_camera_power_backup=$powerStatus';
-    // await Dio().get(path).then((value) async {
-    //   String dd = value.toString();
-    //   print('######## Vaaaaaaaaaa = $dd');
-    //   if (value.toString() == 'true') {
-    //     Navigator.pop(context);
-    //     // listcctv();
-    //     // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
-    //     // MyDialog().normalDialog(context, 'บันทึกไปแล้ว', 'ข้อมูลซ้ำ');
-    //   } else {
-    //     MyDialog().normalDialog(context, 'บันทึกไปแล้ว', 'ข้อมูลซ้ำ');
-    //     // MyDialog().normalDialog(context, 'บันทึกข้อมูลสำเร็จ', 'สำเร็จ');
-    //     // Navigator.pushNamed(context, MyConstant.routeMainCctv);
-    //     // Navigator.pop(context);
-    //     // Navigator.pushNamed(context, MyConstant.routeMaincctvReq);
-    //     // comfirmsaveDialog();
-    //   }
-    // });
-    try {
-      Response response = await Dio().get(url);
-      print('######## Vresponse = $response');
-      if (response.toString() == 'true') {
-         Navigator.pop(context);
-      } else {
+    print('######## Active = $fireStatus');
+  
+    String path =
+        '${MyConstant.domain}/pkhos/api/getfireinsert.php?isAdd=true&fire_num=$_scanBarcode&user_id=$id&fire_check_injection=$injectionStatus&fire_check_joystick=$joystickStatus&fire_check_body=$bodyStatus&fire_check_gauge=$gaugeStatus&fire_check_drawback=$drawbackStatus';
+    await Dio().get(path).then((value) async {
+      String dd = value.toString();
+      print('######## Vaaaaaaaaaa = $dd');
+      if (value.toString() == 'false') { 
         MyDialog().normalDialog(context, 'บันทึกไปแล้ว', 'ข้อมูลซ้ำ');
+      } else {
+       Navigator.pop(context,MaincctvReq());
       }
-
-    } catch (e) {}
+    });
   }
 
-  Future<Null> comfirmsaveDialog() async {
-    showDialog(
-      context: context,
-      builder: (context) => SimpleDialog(
-        title: Text('บันทึกข้อมูลสำเร็จ'),
-        children: [
-          Center(
-            child: OutlinedButton(
-              onPressed: () {
-                // Navigator.pop(context);
-                // Navigator.pushNamed(context, MyConstant.routeMaincctvReq);
-                // Navigator.pushNamedAndRemoveUntil(
-                //     context, MyConstant.routeMaincctvReq, (route) => false);
+  Widget injectionRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '0',
+              groupValue: injectionStatus,
+              onChanged: (value) {
+                setState(() {
+                  injectionStatus = value!;
+                });
               },
-              child: Text('ปิด'),
             ),
-          )
-        ],
-      ),
-    );
-  }
+            Text('ปกติ'),
+            Radio(
+              value: '1',
+              groupValue: injectionStatus,
+              onChanged: (value) {
+                setState(() {
+                  injectionStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+
+  Widget joystickRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '0',
+              groupValue: joystickStatus,
+              onChanged: (value) {
+                setState(() {
+                  joystickStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+            Radio(
+              value: '1',
+              groupValue: joystickStatus,
+              onChanged: (value) {
+                setState(() {
+                  joystickStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+
+  Widget bodyRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '0',
+              groupValue: bodyStatus,
+              onChanged: (value) {
+                setState(() {
+                  bodyStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+            Radio(
+              value: '1',
+              groupValue: bodyStatus,
+              onChanged: (value) {
+                setState(() {
+                  bodyStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+
+  Widget gaugeRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '0',
+              groupValue: gaugeStatus,
+              onChanged: (value) {
+                setState(() {
+                  gaugeStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+            Radio(
+              value: '1',
+              groupValue: gaugeStatus,
+              onChanged: (value) {
+                setState(() {
+                  gaugeStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
+
+  Widget drawbackRadio() => Container(
+        child: Row(
+          children: <Widget>[
+            Radio(
+              value: '0',
+              groupValue: drawbackStatus,
+              onChanged: (value) {
+                setState(() {
+                  drawbackStatus = value!;
+                });
+              },
+            ),
+            Text('ปกติ'),
+            Radio(
+              value: '1',
+              groupValue: drawbackStatus,
+              onChanged: (value) {
+                setState(() {
+                  drawbackStatus = value!;
+                });
+              },
+            ),
+            Text('ชำรุด'),
+          ],
+        ),
+      );
 }
