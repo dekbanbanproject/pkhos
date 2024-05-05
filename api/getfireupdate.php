@@ -37,7 +37,7 @@
             // }
 
              //Qury article_data
-             $sql2 = "SELECT `fire_name`,`fire_location`,`cctv_type`,`fire` FROM fire WHERE fire_num = '$fire_num'";
+             $sql2 = "SELECT `fire_name`,`fire_location`,`fire_color` FROM fire WHERE fire_num = '$fire_num'";
              $resline2 = mysqli_query($conn, $sql2) or die ("Error : $sql2" .mysqli_error());
              while($obje = mysqli_fetch_array($resline2,MYSQLI_ASSOC))
              {
@@ -45,7 +45,7 @@
                  $fire_location      = $obje["fire_location"]; 
                  $fire_color         = $obje["fire_color"];   
              }
-             $sql = "UPDATE `fire_check` SET `fire_name` = '$fire_name',`fire_location` = '$fire_location',`fire_check_injection` = '$injection',`fire_check_joystick` = '$joystick',`fire_check_body` = '$body',`fire_check_gauge` = '$gauge',`fire_check_drawback` = '$drawback' WHERE fire_check_id = '$fire_check_id'";
+             $sql = "UPDATE `fire_check` SET `fire_name` = '$fire_name',`fire_check_location` = '$fire_location',`fire_check_color` = '$fire_color',`fire_check_injection` = '$injection',`fire_check_joystick` = '$joystick',`fire_check_body` = '$body',`fire_check_gauge` = '$gauge',`fire_check_drawback` = '$drawback' WHERE fire_check_id = '$fire_check_id'";
             // $sql = "UPDATE `cctv_check` SET `cctv_camera_screen` = '$screen',`cctv_camera_corner` = '$corner',`cctv_camera_drawback` = '$drawback',`cctv_camera_save` = '$camera_save',`cctv_camera_power_backup` = '$power_backup',`cctv_type` = '$cctv_type_',`cctv_location` = '$cctv_location_' WHERE cctv_check_id = '$cctv_check_id'";
             $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error());
             

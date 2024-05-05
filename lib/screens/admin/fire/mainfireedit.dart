@@ -328,6 +328,7 @@ class _MainFireeditState extends State<MainFireedit> {
             ),
             Text('ปกติ'),
             Radio(
+              activeColor: Colors.pink,
               value: '1',
               groupValue: fire_check_injection,
               onChanged: (value) {
@@ -354,6 +355,7 @@ class _MainFireeditState extends State<MainFireedit> {
             ),
             Text('ปกติ'),
             Radio(
+              activeColor: Colors.pink,
               value: '1',
               groupValue: fire_check_joystick,
               onChanged: (value) {
@@ -381,6 +383,7 @@ class _MainFireeditState extends State<MainFireedit> {
             ),
             Text('ปกติ'),
             Radio(
+              activeColor: Colors.pink,
               value: '1',
               groupValue: fire_check_body,
               onChanged: (value) {
@@ -408,6 +411,7 @@ class _MainFireeditState extends State<MainFireedit> {
             ),
             Text('ปกติ'),
             Radio(
+              activeColor: Colors.pink,
               value: '1',
               groupValue: fire_check_gauge,
               onChanged: (value) {
@@ -435,6 +439,7 @@ Widget drawbackRadio() => Container(
             ),
             Text('ปกติ'),
             Radio(
+              activeColor: Colors.pink,
               value: '1',
               groupValue: fire_check_drawback,
               onChanged: (value) {
@@ -527,10 +532,11 @@ Widget drawbackRadio() => Container(
     await Dio().get(path).then((value) async {
       String dd = value.toString();
       print('######## Vaaaaaaaaaa = $dd');
-      if (value.toString() == 'false') { 
-        MyDialog().normalDialog(context, 'กรุณาลองใหม่', 'ไม่สำเร็จ');
+      if (value.toString() == 'true') { 
+        Navigator.pop(context,Mainfirereq());
+        
       } else {
-       Navigator.pop(context,Mainfirereq());
+       MyDialog().normalDialog(context, 'กรุณาลองใหม่', 'ไม่สำเร็จ');
       }
     });
   }
