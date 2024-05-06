@@ -10,6 +10,7 @@ import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvdetail.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvedit.dart';
 import 'package:pkhos/screens/admin/fire/mainfireadd.dart';
+import 'package:pkhos/screens/admin/fire/mainfiredetail.dart';
 import 'package:pkhos/screens/admin/fire/mainfireedit.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
@@ -73,7 +74,7 @@ class _MainfirereqState extends State<Mainfirereq> {
                     onPressed: () => Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MainCctvdetail(),
+                        builder: (context) => MainfireDetail(),
                       ),
                     ),
                     iconSize: 30,

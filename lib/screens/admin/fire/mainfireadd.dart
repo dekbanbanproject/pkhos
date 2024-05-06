@@ -1,13 +1,17 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:pkhos/models/firelistmodel.dart';
 import 'package:pkhos/models/firemodel.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 class MainFireadd extends StatefulWidget {
   const MainFireadd({super.key});
@@ -39,12 +43,14 @@ class _MainFireaddState extends State<MainFireadd> {
   late String bodyStatus = '';
   late String gaugeStatus = '';
   late String drawbackStatus = '';
-  List<Firemodel> fireModel = [];
+  List<FireListmodel> firelistmodel = [];
+  String? firenum;
 
   @override
   void initState() {
     super.initState();
     scanQR();
+    // getFiredata();
   }
 
   Future<void> scanQR() async {
@@ -53,7 +59,7 @@ class _MainFireaddState extends State<MainFireadd> {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
       // print(barcodeScanRes);
-      print('## value for API ===> $barcodeScanRes');
+      // print('## value for API ===> $barcodeScanRes');
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
@@ -61,12 +67,56 @@ class _MainFireaddState extends State<MainFireadd> {
 
     setState(() {
       _scanBarcode = barcodeScanRes;
+      getFiredata();
     });
   }
 
   Future<void> _refreshpage() async {
     return await Future.delayed(Duration(seconds: 2));
   }
+
+  Future<Null> getFiredata() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    String id = preferences.getString('id')!;
+    print('######## userid = $id');
+    print('######## Active = $fireStatus');
+
+    String path =
+        '${MyConstant.domain}/pkhos/api/getfire_detailsave.php?isAdd=true&fire_id=$_scanBarcode';
+    //  'http://192.168.0.217/pkbackoffice/public/api/getfire/F88888888';
+    await Dio().get(path).then((value) async {
+      String dd = value.toString();
+      print('## value for API  ==>  $value');
+      for (var item in json.decode(value.data!)) {
+        FireListmodel model = FireListmodel.fromJson(item);
+        var fire_id = model.fire_id!.toString();
+        var fire_num = model.fire_num!.toString();
+        print('###fire_id ==>>>$fire_num');
+        setState(() {
+          firelistmodel.add(model);
+          firenum = fire_num;
+        });
+      }
+    });
+  }
+  // Future<List<FireListmodel>> getFiredata() async {
+  //   final response = await http.get(Uri.parse(
+  //       'http://192.168.0.217/pkbackoffice/public/api/getfire/F88888888'));
+  //   var data = jsonDecode(response.body.toString());
+  //   print('## value Alll for API  ==>  $data');
+  //   if (response.statusCode == 200) {
+  //     firelistmodel.clear();
+  //     for (var i in data) {
+  //       firelistmodel.add(FireListmodel.fromJson(i));
+  //       // FireListmodel model = FireListmodel.fromJson(i);
+  //       // var fire_id = model.fire_id!.toString();
+  //        print('## value fire_id for API  ==>  $firelistmodel');
+  //     }
+  //     return firelistmodel;
+  //   } else {
+  //     return firelistmodel;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -134,7 +184,8 @@ class _MainFireaddState extends State<MainFireadd> {
                 ),
                 // textNum(),
                 Text(
-                  'รหัสถังดับเพลิง :$_scanBarcode',
+                  // 'รหัสถังดับเพลิง :$_scanBarcode',
+                  'รหัสถังดับเพลิง : $firenum',
                   style: TextStyle(fontSize: 18),
                 ),
                 Padding(
@@ -413,8 +464,8 @@ class _MainFireaddState extends State<MainFireadd> {
       builder: (context) => SimpleDialog(
         title: Text('บันทึกข้อมูลใช่ไหม ?'),
         children: [
-          Center( 
-            child: ElevatedButton.icon( 
+          Center(
+            child: ElevatedButton.icon(
               label: Text(
                 ' Yes',
                 style: MyConstant().h2save(),
@@ -443,16 +494,16 @@ class _MainFireaddState extends State<MainFireadd> {
     // String article_num2 = article_numController.text;
     print('######## userid = $id');
     print('######## Active = $fireStatus');
-  
+
     String path =
-        '${MyConstant.domain}/pkhos/api/getfireinsert.php?isAdd=true&fire_num=$_scanBarcode&user_id=$id&fire_check_injection=$injectionStatus&fire_check_joystick=$joystickStatus&fire_check_body=$bodyStatus&fire_check_gauge=$gaugeStatus&fire_check_drawback=$drawbackStatus';
+        '${MyConstant.domain}/pkhos/api/getfireinsert.php?isAdd=true&fire_id=$_scanBarcode&user_id=$id&fire_check_injection=$injectionStatus&fire_check_joystick=$joystickStatus&fire_check_body=$bodyStatus&fire_check_gauge=$gaugeStatus&fire_check_drawback=$drawbackStatus';
     await Dio().get(path).then((value) async {
       String dd = value.toString();
       print('######## Vaaaaaaaaaa = $dd');
-      if (value.toString() == 'false') { 
+      if (value.toString() == 'false') {
         MyDialog().normalDialog(context, 'บันทึกไปแล้ว', 'ข้อมูลซ้ำ');
       } else {
-       Navigator.pop(context,MaincctvReq());
+        Navigator.pop(context, MaincctvReq());
       }
     });
   }
@@ -536,7 +587,7 @@ class _MainFireaddState extends State<MainFireadd> {
             Text('ชำรุด'),
           ],
         ),
-  );
+      );
 
   Widget gaugeRadio() => Container(
         child: Row(
@@ -563,7 +614,7 @@ class _MainFireaddState extends State<MainFireadd> {
             Text('ชำรุด'),
           ],
         ),
-  );
+      );
 
   Widget drawbackRadio() => Container(
         child: Row(

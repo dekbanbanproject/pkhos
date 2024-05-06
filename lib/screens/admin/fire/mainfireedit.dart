@@ -47,13 +47,13 @@ class _MainFireeditState extends State<MainFireedit> {
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
         title: Padding(
-          padding: const EdgeInsets.only(right: 30),
+          padding: const EdgeInsets.only(right: 35),
           child: Center(
             child: Text(
-              'รายละเอียด',
+              'แก้ไขถังดับเพลิงรหัส $fire_num',
               // _gleaveModel.LEAVE_PERSON_FULLNAME,
               style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 17,
                   fontFamily: 'Kanit-Regular',
                   color: Colors.white),
             ),
