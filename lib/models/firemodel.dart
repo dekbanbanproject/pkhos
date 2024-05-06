@@ -11,6 +11,7 @@ class Firemodel {
   String? fire_check_gauge;
   String? fire_check_drawback;
   String? user_id;
+   String? fire_id;
 
   Firemodel({
     this.fire_check_id,
@@ -25,6 +26,7 @@ class Firemodel {
     this.fire_check_gauge,
     this.fire_check_drawback,
     this.user_id,
+     this.fire_id,
   });
 
   Firemodel.fromJson(Map<String, dynamic> json) {
@@ -49,6 +51,7 @@ class Firemodel {
     fire_check_drawback =
         json['fire_check_drawback'] == null ? '' : json['fire_check_drawback'];
     user_id = json['user_id'] == null ? '' : json['user_id'];
+    fire_id = json['fire_id'] == null ? '' : json['fire_id'];
   }
 
   Map<String, dynamic> toJson() {
@@ -65,6 +68,7 @@ class Firemodel {
     data['fire_check_gauge'] = this.fire_check_gauge;
     data['fire_check_drawback'] = this.fire_check_drawback;
     data['user_id'] = this.user_id;
+    data['fire_id'] = this.fire_id;
     return data;
   }
 

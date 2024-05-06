@@ -24,15 +24,15 @@ class _MainfireDetailState extends State<MainfireDetail> {
   late String barcodeScanRes = '';
   List<Firemodel> fireModel = [];
   List<Firemodel> searchfireModel = [];
-   List<FireListmodel> firelistmodel = [];
+  //  List<FireListmodel> firelistmodel = [];
   String? firenum;
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
   int index = 0;
   final formKey = GlobalKey<FormState>();
-  TextEditingController article_numController = TextEditingController();
-  TextEditingController check_dateController = TextEditingController();
-  TextEditingController camera_screenController = TextEditingController();
+  // TextEditingController article_numController = TextEditingController();
+  // TextEditingController check_dateController = TextEditingController();
+  // TextEditingController camera_screenController = TextEditingController();
 
   Future<void> startBarcodeScanStream() async {
     FlutterBarcodeScanner.getBarcodeStreamReceiver(
@@ -46,60 +46,46 @@ class _MainfireDetailState extends State<MainfireDetail> {
     // getdetail();
   }
 
-  Future<void> scanQR() async {
+   Future<void> scanQR() async {
     // Platform messages may fail, so we use a try/catch PlatformException.
     try {
       barcodeScanRes = await FlutterBarcodeScanner.scanBarcode(
           '#ff6666', 'Cancel', true, ScanMode.QR);
       // print(barcodeScanRes);
-      print('## value for API ===> $barcodeScanRes');
+      // print('## value for API ===> $barcodeScanRes');
     } on PlatformException {
       barcodeScanRes = 'Failed to get platform version.';
     }
     if (!mounted) return;
 
-    setState(() async {
+    setState(() {
       _scanBarcode = barcodeScanRes;
-
-      String path =
-          '${MyConstant.domain}/pkhos/api/getfiredetail.php?isAdd=true&fire_id=$_scanBarcode';
-      await Dio().get(path).then((value) async {
-        print('###get ==>>>$value');
-        for (var item in json.decode(value.data!)) {
-          Firemodel model = Firemodel.fromJson(item);
-          var firename = model.fire_name!.toString();
-          print('### ==>>>$firename');
-          setState(() {
-            fireModel.add(model);
-            searchfireModel = fireModel;
-          });
-        }
-      });
-
       getFiredata();
-      
     });
+  }
+
+   Future<void> _refreshpage() async {
+    return await Future.delayed(Duration(seconds: 2));
   }
 
   Future<Null> getFiredata() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
     String id = preferences.getString('id')!;
-    print('######## userid = $id');
- 
+    print('######## userid ************** = $id');
 
     String path =
-        '${MyConstant.domain}/pkhos/api/getfire_detailsave.php?isAdd=true&fire_id=$_scanBarcode';
+        '${MyConstant.domain}/pkhos/api/getfiredetail.php?isAdd=true&fire_id=$_scanBarcode';
     //  'http://192.168.0.217/pkbackoffice/public/api/getfire/F88888888';
     await Dio().get(path).then((value) async {
       String dd = value.toString();
-      print('## value for API  ==>  $value');
+      print('##*************** value for API  ==>  $value');
       for (var item in json.decode(value.data!)) {
-        FireListmodel model = FireListmodel.fromJson(item);
+        Firemodel model = Firemodel.fromJson(item);
         var fire_id = model.fire_id!.toString();
         var fire_num = model.fire_num!.toString();
         print('###fire_id ==>>>$fire_num');
         setState(() {
-          firelistmodel.add(model);
+          fireModel.add(model);
           firenum = fire_num;
         });
       }
@@ -132,30 +118,31 @@ class _MainfireDetailState extends State<MainfireDetail> {
               child: Column(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.only(top: 10,bottom: 3),
+                    padding: const EdgeInsets.only(top: 10, bottom: 3),
                     child: Text(
                       'ประวัติการตรวจเช็คถังดับเพลิง',
                       style: TextStyle(fontSize: 18),
                     ),
                   ),
-                   Text(
+                  Text(
                     'รหัส :$firenum',
                     style: TextStyle(fontSize: 18),
                   ),
-                     Padding(
-                  padding: const EdgeInsets.only(left: 15, right: 15,top: 15),
-                  child: buildListView(),
-                ), 
+                  Padding(
+                    padding:
+                        const EdgeInsets.only(left: 15, right: 15, top: 15),
+                    child: buildListView(),
+                  ),
                 ],
               ),
-              
             ),
           ),
         ],
       ),
     );
   }
- buildListView() {
+
+  buildListView() {
     return ListView.builder(
       // padding: EdgeInsets.only(top: 2),
       shrinkWrap: true,
@@ -243,7 +230,6 @@ class _MainfireDetailState extends State<MainfireDetail> {
                           searchfireModel[index].fire_check_drawback!,
                           style: MyConstant().h5dark(),
                         ),
-                        
                       ],
                     ),
                   ),

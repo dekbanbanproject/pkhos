@@ -16,23 +16,28 @@
     }
     if(isset($_GET)){
         if ($_GET['isAdd'] == 'true') {
-            $article_num = $_GET['article_num']; 
+            // $fire_id = $_GET['fire_id']; 
 
-            $sql = "SELECT * FROM cctv_check WHERE article_num = '$article_num'";
-            $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error()); 
+            // $sql = "SELECT * FROM fire_check WHERE fire_id = '$fire_id'";
+            // $result = mysqli_query($conn, $sql) or die ("Error : $sql" .mysqli_error()); 
 
+            $fire_id                     = $_GET['fire_id'];
+
+            // $sql2 = "SELECT * FROM fire_check WHERE fire_id = '$fire_id'";
+            // $result = mysqli_query($conn, $sql2);
+            $result = mysqli_query($conn,"SELECT * FROM fire_check WHERE fire_id = '$fire_id'");
         //    if ($result) {
         //     echo "true";
         //    } else {
         //     echo "false";
         //    }
             
-            if ($result) {
-                while($row=mysqli_fetch_assoc($result)){
-                    $output[]=$row;
-                }
-                echo json_encode($output);
+        if ($result) {
+            while($row=mysqli_fetch_assoc($result)){
+                $output[]=$row;
             }
+            echo json_encode($output);
+        }
             
         } else echo "Wellcome";
     }
