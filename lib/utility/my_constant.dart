@@ -9,13 +9,27 @@ class MyConstant {
   static String AUTHORIZATION = "authorization";
   static String DEFAULT_LANGUAGE = "en";
   static String TOKEN = "token";
-  static String BASE_URL = "http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi";
+  static String BASE_URL =
+      "http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi";
 
   static String appName = 'PK-OFFice';
   // static String domain = 'http://27.254.191.157/';
   static String domain = 'http://smarthos-phukieohos.moph.go.th';
-  static String authenspsch = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
-   static String pullhos = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
+  static String authenspsch =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
+  static String pullhos =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
+  static String fdh_mini_auth =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_auth';
+  static String fdh_mini_pullhosinv =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosinv';
+  static String fdh_mini_pullhosnoinv =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosnoinv';
+  static String fdh_mini_pidsit =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pidsit';
+ static String fdh_mini_pullbookid =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
+
   static String routeLogin = '/login';
   static String routeHome = '/home';
   static String routeUserPage = '/user';
@@ -24,7 +38,7 @@ class MyConstant {
   // static String routePoPage = '/po';
   static String routeAdminPage = '/admin';
   static String routeAdminnewPage = '/adminnew';
-  static String routeMainCctvAdd = '/cctvadd';  
+  static String routeMainCctvAdd = '/cctvadd';
   static String routeMainCctv = '/cctvmain';
   static String routeMaincctvReq = '/maincctvReq';
   static String routespachScreen = '/spachscreen';
@@ -60,26 +74,25 @@ class MyConstant {
   }
 
   static List<String> menus = [
-      ' Dashboard  ',
-      ' หนังสือราชการ  ',
-      '    การลา    ',
-      ' ประชุม/อบรม/ดูงาน  ',
-      '  จัดซื้อจัดจ้าง  ',
-      '  คลังวัสดุ  ',
+    ' Dashboard  ',
+    ' หนังสือราชการ  ',
+    '    การลา    ',
+    ' ประชุม/อบรม/ดูงาน  ',
+    '  จัดซื้อจัดจ้าง  ',
+    '  คลังวัสดุ  ',
   ];
 
   static List<Color> colors = [
-      Colors.blueAccent.shade700,
-      Colors.blueAccent.shade700,
-      Colors.blueAccent.shade700,
-      Colors.blueAccent.shade700,
-      Colors.blueAccent.shade700,
-      Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
   ];
 
   static List<Image> image = [
     Image.asset('images/logo.png'),
-    
   ];
 
   // Image
@@ -99,7 +112,7 @@ class MyConstant {
   static Color white = Color(0xFFFFFFFF);
   static Color back = Color(0xFF020202);
   static const kprimaryColor = Color(0xffF5F5F5);
-   static const searchColor = Color.fromARGB(255, 252, 234, 224);
+  static const searchColor = Color.fromARGB(255, 252, 234, 224);
   static const kcontentColor = Color(0xffff660e);
   static const cctvhomeColor = Color.fromARGB(255, 253, 128, 44);
   static const cctvaddColor = Color.fromARGB(255, 14, 167, 255);
@@ -134,98 +147,111 @@ class MyConstant {
   static const sky = Color(0xFFABDEE6);
   static const blue = Color(0xFF509BE4);
 
-  static const listColors = [green, purple, yellow, orange, sky, secondary, red, blue, pink, yellow,];
-    //Style
-    TextStyle h1() =>
-        TextStyle(fontSize: 24, color: primary, fontWeight: FontWeight.bold);
+  static const listColors = [
+    green,
+    purple,
+    yellow,
+    orange,
+    sky,
+    secondary,
+    red,
+    blue,
+    pink,
+    yellow,
+  ];
+  //Style
+  TextStyle h1() =>
+      TextStyle(fontSize: 24, color: primary, fontWeight: FontWeight.bold);
 
-    TextStyle h1dark() =>
-        TextStyle(fontSize: 22, color: back, fontWeight: FontWeight.normal);
+  TextStyle h1dark() =>
+      TextStyle(fontSize: 22, color: back, fontWeight: FontWeight.normal);
 
-    TextStyle h1White() =>
-        TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
+  TextStyle h1White() =>
+      TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
 
-    TextStyle h2() =>
-        TextStyle(fontSize: 17, color: primary, fontWeight: FontWeight.bold);
+  TextStyle h2() =>
+      TextStyle(fontSize: 17, color: primary, fontWeight: FontWeight.bold);
 
-        TextStyle h2save() =>
-        TextStyle(fontSize: 20, color:Color.fromARGB(255, 11, 185, 162), fontWeight: FontWeight.bold);
+  TextStyle h2save() => TextStyle(
+      fontSize: 20,
+      color: Color.fromARGB(255, 11, 185, 162),
+      fontWeight: FontWeight.bold);
 
-    TextStyle h2White() =>
-        TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
+  TextStyle h2White() =>
+      TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
 
-    TextStyle h2info() =>
-        TextStyle(fontSize: 17, color: info, fontWeight: FontWeight.bold);
+  TextStyle h2info() =>
+      TextStyle(fontSize: 17, color: info, fontWeight: FontWeight.bold);
 
-    TextStyle h2dan() =>
-        TextStyle(fontSize: 17, color: danger, fontWeight: FontWeight.bold);
+  TextStyle h2dan() =>
+      TextStyle(fontSize: 17, color: danger, fontWeight: FontWeight.bold);
 
-    TextStyle h22dark() =>
-        TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
+  TextStyle h22dark() =>
+      TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
 
-    TextStyle h2dark() =>
-        TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
-    TextStyle h3dark() =>
-        TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
-    TextStyle h4dark() =>
-        TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
-    TextStyle h5dark() =>
-        TextStyle(fontSize: 13, color: dark, fontWeight: FontWeight.bold);
+  TextStyle h2dark() =>
+      TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
+  TextStyle h3dark() =>
+      TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
+  TextStyle h4dark() =>
+      TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
+  TextStyle h5dark() =>
+      TextStyle(fontSize: 13, color: dark, fontWeight: FontWeight.bold);
 
-    TextStyle h3() =>
-        TextStyle(fontSize: 14, color: primary, fontWeight: FontWeight.bold);
+  TextStyle h3() =>
+      TextStyle(fontSize: 14, color: primary, fontWeight: FontWeight.bold);
 
-    TextStyle h3white() =>
-        TextStyle(fontSize: 14, color: white, fontWeight: FontWeight.bold);
+  TextStyle h3white() =>
+      TextStyle(fontSize: 14, color: white, fontWeight: FontWeight.bold);
 
-    TextStyle h1back() =>
-        TextStyle(fontSize: 24, color: back, fontWeight: FontWeight.bold);
-    TextStyle h2back() =>
-        TextStyle(fontSize: 20, color: back, fontWeight: FontWeight.bold);
-    TextStyle h3back() =>
-        TextStyle(fontSize: 17, color: back, fontWeight: FontWeight.bold);
-    TextStyle h4back() =>
-        TextStyle(fontSize: 15, color: back, fontWeight: FontWeight.bold);
+  TextStyle h1back() =>
+      TextStyle(fontSize: 24, color: back, fontWeight: FontWeight.bold);
+  TextStyle h2back() =>
+      TextStyle(fontSize: 20, color: back, fontWeight: FontWeight.bold);
+  TextStyle h3back() =>
+      TextStyle(fontSize: 17, color: back, fontWeight: FontWeight.bold);
+  TextStyle h4back() =>
+      TextStyle(fontSize: 15, color: back, fontWeight: FontWeight.bold);
 
-    TextStyle h1whit24() =>
-        TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
-    TextStyle h1whit20() =>
-        TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
-    TextStyle h1whit17() =>
-        TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
-    TextStyle h1cctv17() => TextStyle(
-        fontSize: 17,
-        color: Color.fromARGB(255, 248, 143, 143),
-        fontWeight: FontWeight.bold);
+  TextStyle h1whit24() =>
+      TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
+  TextStyle h1whit20() =>
+      TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
+  TextStyle h1whit17() =>
+      TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
+  TextStyle h1cctv17() => TextStyle(
+      fontSize: 17,
+      color: Color.fromARGB(255, 248, 143, 143),
+      fontWeight: FontWeight.bold);
 
-    Text showTitle(String title) => Text(
-          title,
-          style: h3white(),
-        );
+  Text showTitle(String title) => Text(
+        title,
+        style: h3white(),
+      );
 
   //Button
-    ButtonStyle mybuttonStyle() => ElevatedButton.styleFrom(
-          // iconColor: Colors.orange,
-          backgroundColor: Color.fromARGB(255, 54, 186, 247),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-        );
-
-    BoxDecoration myBoxDecoration(String namePic) {
-      return BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage('images/$namePic'),
-          fit: BoxFit.cover,
+  ButtonStyle mybuttonStyle() => ElevatedButton.styleFrom(
+        // iconColor: Colors.orange,
+        backgroundColor: Color.fromARGB(255, 54, 186, 247),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(30),
         ),
       );
-    }
 
-    Container showlogo2() {
-      return Container(
-        width: 360.0,
-        child: Image.asset('images/logo.png'),
-      );
-    }
+  BoxDecoration myBoxDecoration(String namePic) {
+    return BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage('images/$namePic'),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+  Container showlogo2() {
+    return Container(
+      width: 360.0,
+      child: Image.asset('images/logo.png'),
+    );
+  }
   // Mydialog()
 }
