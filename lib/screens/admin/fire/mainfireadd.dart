@@ -6,12 +6,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:pkhos/models/firelistmodel.dart';
-import 'package:pkhos/models/firemodel.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:http/http.dart' as http;
 
 class MainFireadd extends StatefulWidget {
   const MainFireadd({super.key});
