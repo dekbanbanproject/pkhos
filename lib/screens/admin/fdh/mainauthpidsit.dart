@@ -116,10 +116,11 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.only(top: 35),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const SizedBox(height: 30),
               Container(
                 child: Column(
                   children: [
@@ -155,11 +156,11 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                   ],
                 ),
               ),
-              const SizedBox(height: 15),
+              // const SizedBox(height: 5),
               Padding(
                 padding: const EdgeInsets.only(top: 10),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 35),
+                  padding: const EdgeInsets.only(top: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -254,6 +255,133 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                 //   ],
                 // ),
               ),
+              const SizedBox(height: 10),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 30, right: 30, top: 30, bottom: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 140,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 4, 197, 193),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                          bottomLeft: Radius.circular(50),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "images/person.png",
+                            height: 120,
+                            width: 120,
+                          ),
+                          Text(
+                            'Visit',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 140,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 255, 123, 233),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          bottomRight: Radius.circular(50),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "images/money.png",
+                            height: 120,
+                            width: 120,
+                          ),
+                          Text(
+                            'Income',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(
+                    left: 30, right: 30, top: 30, bottom: 5),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 140,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 150, 190, 252),
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(50),
+                          bottomRight: Radius.circular(50),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "images/person.png",
+                            height: 120,
+                            width: 120,
+                          ),
+                          Text(
+                            'ปิดสิทธิ์',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      width: 140,
+                      height: 160,
+                      decoration: BoxDecoration(
+                        color: Color.fromARGB(255, 253, 169, 100),
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(50),
+                          bottomLeft: Radius.circular(50),
+                        ),
+                      ),
+                      child: Column(
+                        children: [
+                          Image.asset(
+                            "images/bookid.png",
+                            height: 120,
+                            width: 120,
+                          ),
+                          Text(
+                            'BookId',
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
             ],
           ),
         ),
@@ -275,7 +403,6 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       //   ),
       // ),
       // body: screens[currentIndex],
- 
     );
   }
 }
