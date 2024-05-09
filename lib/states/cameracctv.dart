@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pkhos/models/article_model.dart';
-import 'package:pkhos/utility/my_constant.dart';
 
 class CameraCCtv extends StatefulWidget {
   const CameraCCtv({Key? key}) : super(key: key);

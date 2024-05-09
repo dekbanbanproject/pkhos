@@ -8,7 +8,6 @@ import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:pkhos/models/article_model_check.dart';
 import 'package:pkhos/utility/my_constant.dart';
-import 'package:pkhos/utility/my_dialog.dart';
 
 class MainCctvdetail extends StatefulWidget {
   const MainCctvdetail({super.key});

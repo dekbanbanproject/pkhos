@@ -1,8 +1,6 @@
 
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pkhos/models/article_model.dart';
-import 'package:http/http.dart' as http;
 
 class Detail extends StatefulWidget {
   // const Detail({super.key});

@@ -6,8 +6,6 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pkhos/models/article_model.dart';
 import 'package:pkhos/utility/my_constant.dart';
-import 'package:pkhos/utility/my_dialog.dart';
-import 'package:http/http.dart' as http;
 
 class CctvPage extends StatefulWidget {
   const CctvPage({Key? key}) : super(key: key);

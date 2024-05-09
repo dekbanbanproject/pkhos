@@ -6,9 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
-import 'package:pkhos/models/firelistmodel.dart';
 import 'package:pkhos/models/firemodel.dart';
-import 'package:pkhos/screens/admin/fire/mainfirereq.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

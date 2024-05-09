@@ -1,17 +1,12 @@
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
-import 'package:pkhos/states/advertise.dart';
 import 'package:pkhos/states/cameracctv.dart';
-import 'package:pkhos/states/login.dart';
 import 'package:pkhos/states/signout.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/widgets/list_cctv.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 import 'package:flutter_barcode_scanner/flutter_barcode_scanner.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class AdminPage extends StatefulWidget {
   const AdminPage({Key? key}) : super(key: key);

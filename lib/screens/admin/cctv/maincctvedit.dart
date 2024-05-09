@@ -5,7 +5,6 @@ import 'package:pkhos/models/article_model_check.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class Maincctvedit extends StatefulWidget {
   final ArticleCheckModel articlecheckModeledit;
