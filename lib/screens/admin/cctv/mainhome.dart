@@ -4,9 +4,16 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:pkhos/models/article_model.dart';
+import 'package:pkhos/models/category.dart';
+import 'package:pkhos/screens/admin/authen/authenspsch.dart';
 import 'package:pkhos/screens/admin/cctv/category.dart';
 import 'package:pkhos/screens/admin/cctv/cctvlist.dart';
 import 'package:pkhos/screens/admin/cctv/image_slide.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
+import 'package:pkhos/screens/admin/electric/mainelectric.dart';
+import 'package:pkhos/screens/admin/fire/mainfirereq.dart';
+import 'package:pkhos/screens/admin/phone/mainPhone.dart';
+import 'package:pkhos/screens/admin/plumbing/mainplumbing.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/widgets/home_app_bar.dart';
 import 'package:pkhos/widgets/search_bar.dart';
@@ -19,11 +26,24 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
-  int currentSlider = 0;
   List<ArticleModel> articleModel = [];
   List<ArticleModel> searcharticleModel = [];
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
+  int currentSlider = 0;
+  int selectIndex = 0;
+  int index = 0;
+  List<String>? menus;
+  final List<Widget> screentTab = [
+    const MaincctvReq(), // 0
+    const Mainfirereq(), // 1
+    const MainElectric(), // 2
+    const MainPlumbing(), // 3
+    const MainPhone(), // 4
+    const Authenspsch(), // 5
+  ];
+
+  // List<List<Categories>> selectCategories = [];
 
   @override
   void initState() {
@@ -63,31 +83,89 @@ class _MainHomeState extends State<MainHome> {
               //for searchbar
               const SizedBox(height: 15),
               MySearchBar(),
-              const SizedBox(height: 15),
-              ImageSlider(
-                currentSlide: currentSlider,
-                onChang: (value) {
-                  setState(() {
-                    currentSlider = value;
-                  });
-                },
-              ),
+              // const SizedBox(height: 15),
+              // ImageSlider(
+              //   currentSlide: currentSlider,
+              //   onChang: (value) {
+              //     setState(() {
+              //       currentSlider = value;
+              //     });
+              //   },
+              // ),
               const SizedBox(height: 15),
               const Categories(),
+              // SizedBox(
+              //   height: 130,
+              //   child: Row(
+              //     children: [
+              //       Container(
+              //         height: 65,
+              //         width: 65,
+              //         decoration: BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           image: DecorationImage(
+              //               image: AssetImage("images/cctv1.png"),
+              //               fit: BoxFit.cover),
+              //         ), 
+              //       ),SizedBox(height: 5),
+              //                  Text(
+              //                "Cctv",
+              //               style: TextStyle(
+              //                   fontSize: 16, fontWeight: FontWeight.bold),
+              //             ),
+              //     ],
+              //   ),
+                // child: ListView.separated(
+                //     scrollDirection: Axis.horizontal,
+                //     itemBuilder: (context, index) {
+                //       return Column(
+                //         children: [
+                //           // screentTab[index],
+                //           Container(
+                //             height: 65,
+                //             width: 65,
+                //             decoration: BoxDecoration(
+                //               shape: BoxShape.circle,
+                //               image: DecorationImage(
+                //                   image: AssetImage(categories[index].image),
+                //                   fit: BoxFit.cover),
+                //             ),
+                //           ),
+                //           SizedBox(height: 5),
+                //           // screentTab[index],
+                //           Text(
+                //             categories[index].title,
+                //             style: TextStyle(
+                //                 fontSize: 16, fontWeight: FontWeight.bold),
+                //           ),
+                //         //  Navigator.of(context).pushNamed('/dev_hn')
+                //         // Navigator.of(context).pushNamed('maincctvReq');
+                //         ],
+                //       );
+                //     },
+                //     separatorBuilder: (context, index) => const SizedBox(width: 20),
+                //     itemCount: screentTab.length),
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'กล้องวงจรปิด',
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
-                  ),
-                  Text(
-                    'ดูทั้งหมด',
-                    style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black54),
-                  ),
+                  //  Container(
+                  //       width: double.infinity,
+                  //       height: double.infinity,
+                  //       alignment: Alignment.center,
+                  //       child: getSelectedWidget(index: index),
+                  //     )
+                  // Text(
+                  //   'กล้องวงจรปิด',
+                  //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                  // ),
+                  // Text(
+                  //   'ดูทั้งหมด',
+                  //   style: TextStyle(
+                  //       fontSize: 16,
+                  //       fontWeight: FontWeight.w500,
+                  //       color: Colors.black54),
+                  // ),
                   // SizedBox(width: 10,)
                 ],
               ),
@@ -105,25 +183,52 @@ class _MainHomeState extends State<MainHome> {
               //   },
               // ),
 
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: searcharticleModel.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding:
-                        const EdgeInsets.only(right: 2, left: 2, bottom: 10),
-                    child: CctvList(articleModel: searcharticleModel[index]),
-                  );
-                },
-              )
-
+              // ListView.builder(
+              //   physics: NeverScrollableScrollPhysics(),
+              //   shrinkWrap: true,
+              //   itemCount: getSelectedWidget(index: index),
+              //   // itemCount: searcharticleModel.length,
+              //   itemBuilder: (context, index) {
+              //     return Padding(
+              //       padding:
+              //           const EdgeInsets.only(right: 2, left: 2, bottom: 10),
+              //       child: CctvList(articleModel: searcharticleModel[index]),
+              //     );
+              //   },
+              // )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Widget getSelectedWidget({required int index}) {
+  Widget widget;
+  switch (index) {
+    case 0:
+      widget = const MaincctvReq();
+      break;
+    case 1:
+      widget = const Mainfirereq();
+      break;
+    case 2:
+      widget = const MainElectric();
+      break;
+    case 3:
+      widget = const MainPlumbing();
+      break;
+    case 4:
+      widget = const MainPhone();
+      break;
+    case 5:
+      widget = const Authenspsch();
+      break;
+    default:
+      widget = const MaincctvReq();
+  }
+  return widget;
 }
 
 class Debouncer {
@@ -150,7 +255,7 @@ class Debouncer {
 //     return Row(
 //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
 //       children: [
-        
+
 //         IconButton(
 //           style: IconButton.styleFrom(
 //               backgroundColor: MyConstant.kprimaryColor,

@@ -3,10 +3,19 @@ import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MyConstant {
+  static String APPLICATION_JSON = "application/json";
+  static String CONTENT_TYPE = "content-type";
+  static String ACCEPT = "accept";
+  static String AUTHORIZATION = "authorization";
+  static String DEFAULT_LANGUAGE = "en";
+  static String TOKEN = "token";
+  static String BASE_URL = "http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi";
+
   static String appName = 'PK-OFFice';
   // static String domain = 'http://27.254.191.157/';
   static String domain = 'http://smarthos-phukieohos.moph.go.th';
-
+  static String authenspsch = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
+   static String pullhos = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
   static String routeLogin = '/login';
   static String routeHome = '/home';
   static String routeUserPage = '/user';
@@ -51,21 +60,21 @@ class MyConstant {
   }
 
   static List<String> menus = [
-    ' Dashboard  ',
-    ' หนังสือราชการ  ',
-    '    การลา    ',
-    ' ประชุม/อบรม/ดูงาน  ',
-    '  จัดซื้อจัดจ้าง  ',
-    '  คลังวัสดุ  ',
+      ' Dashboard  ',
+      ' หนังสือราชการ  ',
+      '    การลา    ',
+      ' ประชุม/อบรม/ดูงาน  ',
+      '  จัดซื้อจัดจ้าง  ',
+      '  คลังวัสดุ  ',
   ];
 
   static List<Color> colors = [
-    Colors.blueAccent.shade700,
-    Colors.blueAccent.shade700,
-    Colors.blueAccent.shade700,
-    Colors.blueAccent.shade700,
-    Colors.blueAccent.shade700,
-    Colors.blueAccent.shade700,
+      Colors.blueAccent.shade700,
+      Colors.blueAccent.shade700,
+      Colors.blueAccent.shade700,
+      Colors.blueAccent.shade700,
+      Colors.blueAccent.shade700,
+      Colors.blueAccent.shade700,
   ];
 
   static List<Image> image = [
@@ -98,125 +107,125 @@ class MyConstant {
   static const cctvprofileColor = Color.fromARGB(255, 253, 49, 127);
   static const cctvtreportColor = Color.fromARGB(255, 10, 174, 196);
 
-//  static const Color primary = Color(0xFFf77080);
-static const secondary = Color(0xFFe96561);
+  //  static const Color primary = Color(0xFFf77080);
+  static const secondary = Color(0xFFe96561);
 
-static const mainColor = Color(0xFF000000);
-static const darker = Color(0xFF3E4249);
-static const cardColor = Colors.white;
-static const appBgColor = Color(0xFFF7F7F7);
-static const appBarColor = Color(0xFFF7F7F7);
-static const bottomBarColor = Colors.white;
-static const inActiveColor = Colors.grey;
-static const shadowColor = Colors.black87;
-static const textBoxColor = Colors.white;
-static const textColor = Color(0xFF333333);
-static const glassTextColor = Colors.white;
-static const labelColor = Color(0xFF8A8989);
-static const glassLabelColor = Colors.white;
-static const actionColor = Color(0xFFe54140);
+  static const mainColor = Color(0xFF000000);
+  static const darker = Color(0xFF3E4249);
+  static const cardColor = Colors.white;
+  static const appBgColor = Color(0xFFF7F7F7);
+  static const appBarColor = Color(0xFFF7F7F7);
+  static const bottomBarColor = Colors.white;
+  static const inActiveColor = Colors.grey;
+  static const shadowColor = Colors.black87;
+  static const textBoxColor = Colors.white;
+  static const textColor = Color(0xFF333333);
+  static const glassTextColor = Colors.white;
+  static const labelColor = Color(0xFF8A8989);
+  static const glassLabelColor = Colors.white;
+  static const actionColor = Color(0xFFe54140);
 
-static const yellow = Color(0xFFffcb66);
-static const green = Color(0xFFa2e1a6);
-static const pink = Color(0xFFf5bde8);
-static const purple = Color(0xFFcdacf9);
-static const red = Color(0xFFf77080);
-static const orange = Color(0xFFf5ba92);
-static const sky = Color(0xFFABDEE6);
-static const blue = Color(0xFF509BE4);
+  static const yellow = Color(0xFFffcb66);
+  static const green = Color(0xFFa2e1a6);
+  static const pink = Color(0xFFf5bde8);
+  static const purple = Color(0xFFcdacf9);
+  static const red = Color(0xFFf77080);
+  static const orange = Color(0xFFf5ba92);
+  static const sky = Color(0xFFABDEE6);
+  static const blue = Color(0xFF509BE4);
 
-static const listColors = [green, purple, yellow, orange, sky, secondary, red, blue, pink, yellow,];
-  //Style
-  TextStyle h1() =>
-      TextStyle(fontSize: 24, color: primary, fontWeight: FontWeight.bold);
+  static const listColors = [green, purple, yellow, orange, sky, secondary, red, blue, pink, yellow,];
+    //Style
+    TextStyle h1() =>
+        TextStyle(fontSize: 24, color: primary, fontWeight: FontWeight.bold);
 
-  TextStyle h1dark() =>
-      TextStyle(fontSize: 22, color: back, fontWeight: FontWeight.normal);
+    TextStyle h1dark() =>
+        TextStyle(fontSize: 22, color: back, fontWeight: FontWeight.normal);
 
-  TextStyle h1White() =>
-      TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
+    TextStyle h1White() =>
+        TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
 
-  TextStyle h2() =>
-      TextStyle(fontSize: 17, color: primary, fontWeight: FontWeight.bold);
+    TextStyle h2() =>
+        TextStyle(fontSize: 17, color: primary, fontWeight: FontWeight.bold);
 
-      TextStyle h2save() =>
-      TextStyle(fontSize: 20, color:Color.fromARGB(255, 11, 185, 162), fontWeight: FontWeight.bold);
+        TextStyle h2save() =>
+        TextStyle(fontSize: 20, color:Color.fromARGB(255, 11, 185, 162), fontWeight: FontWeight.bold);
 
-  TextStyle h2White() =>
-      TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
+    TextStyle h2White() =>
+        TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
 
-  TextStyle h2info() =>
-      TextStyle(fontSize: 17, color: info, fontWeight: FontWeight.bold);
+    TextStyle h2info() =>
+        TextStyle(fontSize: 17, color: info, fontWeight: FontWeight.bold);
 
-  TextStyle h2dan() =>
-      TextStyle(fontSize: 17, color: danger, fontWeight: FontWeight.bold);
+    TextStyle h2dan() =>
+        TextStyle(fontSize: 17, color: danger, fontWeight: FontWeight.bold);
 
-  TextStyle h22dark() =>
-      TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
+    TextStyle h22dark() =>
+        TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
 
-  TextStyle h2dark() =>
-      TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
-  TextStyle h3dark() =>
-      TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
-  TextStyle h4dark() =>
-      TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
-  TextStyle h5dark() =>
-      TextStyle(fontSize: 13, color: dark, fontWeight: FontWeight.bold);
+    TextStyle h2dark() =>
+        TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
+    TextStyle h3dark() =>
+        TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
+    TextStyle h4dark() =>
+        TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
+    TextStyle h5dark() =>
+        TextStyle(fontSize: 13, color: dark, fontWeight: FontWeight.bold);
 
-  TextStyle h3() =>
-      TextStyle(fontSize: 14, color: primary, fontWeight: FontWeight.bold);
+    TextStyle h3() =>
+        TextStyle(fontSize: 14, color: primary, fontWeight: FontWeight.bold);
 
-  TextStyle h3white() =>
-      TextStyle(fontSize: 14, color: white, fontWeight: FontWeight.bold);
+    TextStyle h3white() =>
+        TextStyle(fontSize: 14, color: white, fontWeight: FontWeight.bold);
 
-  TextStyle h1back() =>
-      TextStyle(fontSize: 24, color: back, fontWeight: FontWeight.bold);
-  TextStyle h2back() =>
-      TextStyle(fontSize: 20, color: back, fontWeight: FontWeight.bold);
-  TextStyle h3back() =>
-      TextStyle(fontSize: 17, color: back, fontWeight: FontWeight.bold);
-  TextStyle h4back() =>
-      TextStyle(fontSize: 15, color: back, fontWeight: FontWeight.bold);
+    TextStyle h1back() =>
+        TextStyle(fontSize: 24, color: back, fontWeight: FontWeight.bold);
+    TextStyle h2back() =>
+        TextStyle(fontSize: 20, color: back, fontWeight: FontWeight.bold);
+    TextStyle h3back() =>
+        TextStyle(fontSize: 17, color: back, fontWeight: FontWeight.bold);
+    TextStyle h4back() =>
+        TextStyle(fontSize: 15, color: back, fontWeight: FontWeight.bold);
 
-  TextStyle h1whit24() =>
-      TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
-  TextStyle h1whit20() =>
-      TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
-  TextStyle h1whit17() =>
-      TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
-  TextStyle h1cctv17() => TextStyle(
-      fontSize: 17,
-      color: Color.fromARGB(255, 248, 143, 143),
-      fontWeight: FontWeight.bold);
+    TextStyle h1whit24() =>
+        TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
+    TextStyle h1whit20() =>
+        TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
+    TextStyle h1whit17() =>
+        TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
+    TextStyle h1cctv17() => TextStyle(
+        fontSize: 17,
+        color: Color.fromARGB(255, 248, 143, 143),
+        fontWeight: FontWeight.bold);
 
-  Text showTitle(String title) => Text(
-        title,
-        style: h3white(),
-      );
+    Text showTitle(String title) => Text(
+          title,
+          style: h3white(),
+        );
 
-//Button
-  ButtonStyle mybuttonStyle() => ElevatedButton.styleFrom(
-        // iconColor: Colors.orange,
-        backgroundColor: Color.fromARGB(255, 54, 186, 247),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(30),
+  //Button
+    ButtonStyle mybuttonStyle() => ElevatedButton.styleFrom(
+          // iconColor: Colors.orange,
+          backgroundColor: Color.fromARGB(255, 54, 186, 247),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(30),
+          ),
+        );
+
+    BoxDecoration myBoxDecoration(String namePic) {
+      return BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('images/$namePic'),
+          fit: BoxFit.cover,
         ),
       );
+    }
 
-  BoxDecoration myBoxDecoration(String namePic) {
-    return BoxDecoration(
-      image: DecorationImage(
-        image: AssetImage('images/$namePic'),
-        fit: BoxFit.cover,
-      ),
-    );
-  }
-
-  Container showlogo2() {
-    return Container(
-      width: 360.0,
-      child: Image.asset('images/logo.png'),
-    );
-  }
+    Container showlogo2() {
+      return Container(
+        width: 360.0,
+        child: Image.asset('images/logo.png'),
+      );
+    }
   // Mydialog()
 }

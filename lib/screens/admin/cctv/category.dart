@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:pkhos/models/category.dart';
+import 'package:pkhos/screens/admin/authen/authenspsch.dart';
+import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
+import 'package:pkhos/screens/admin/electric/mainelectric.dart';
+import 'package:pkhos/screens/admin/fire/mainfirereq.dart';
+import 'package:pkhos/screens/admin/phone/mainPhone.dart';
+import 'package:pkhos/screens/admin/plumbing/mainplumbing.dart';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});
@@ -9,6 +15,16 @@ class Categories extends StatefulWidget {
 }
 
 class _CategoriesState extends State<Categories> {
+  int currentSlidebar = 0;
+  int selectIndex = 0;
+  // List screens = const [
+  //   MaincctvReq(), // 0
+  //   Mainfirereq(), // 1
+  //   MainElectric(), // 2
+  //   MainPlumbing(), // 3
+  //   MainPhone(), // 4
+  //   Authenspsch() // 5
+  // ];
   @override
   Widget build(BuildContext context) {
     return SizedBox(

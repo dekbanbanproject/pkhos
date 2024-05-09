@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pkhos/screens/admin/authen/authenspsch.dart';
 import 'package:pkhos/states/signout.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
@@ -31,7 +32,12 @@ class CustomAppBar extends StatelessWidget {
                 style: IconButton.styleFrom(
                     backgroundColor: MyConstant.kprimaryColor,
                     padding: const EdgeInsets.all(20)),
-                onPressed: () {},
+                onPressed: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => Authenspsch(),
+                      ),
+                    ),
                 iconSize: 30,
                 icon: Icon(Icons.notifications_outlined),color: Colors.lightBlue,
               ),
