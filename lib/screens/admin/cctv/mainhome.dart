@@ -11,6 +11,7 @@ import 'package:pkhos/screens/admin/cctv/cctvlist.dart';
 import 'package:pkhos/screens/admin/cctv/image_slide.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/screens/admin/electric/mainelectric.dart';
+import 'package:pkhos/screens/admin/fdh/fdhcategory.dart';
 import 'package:pkhos/screens/admin/fire/mainfirereq.dart';
 import 'package:pkhos/screens/admin/phone/mainPhone.dart';
 import 'package:pkhos/screens/admin/plumbing/mainplumbing.dart';
@@ -92,8 +93,10 @@ class _MainHomeState extends State<MainHome> {
               //     });
               //   },
               // ),
-              const SizedBox(height: 15),
+              const SizedBox(height: 20),
               const Categories(),
+              const SizedBox(height: 20),
+              const FdhCategory(),
               // SizedBox(
               //   height: 130,
               //   child: Row(

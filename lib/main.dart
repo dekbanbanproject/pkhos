@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pkhos/pages/home.dart';
+import 'package:pkhos/screens/admin/authen/authenspsch.dart';
 import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
+import 'package:pkhos/screens/admin/fdh/mainfdh.dart';
 import 'package:pkhos/splash_screen.dart';
 import 'package:pkhos/states/admin.dart';
 import 'package:pkhos/states/adminnew.dart';
@@ -26,6 +28,8 @@ final Map<String, WidgetBuilder> map = {
   '/cctvmain': (BuildContext context) => const MainCctv(),
   '/maincctvReq': (BuildContext context) => const MaincctvReq(),
   '/spachscreen': (BuildContext context) => const SplashScreen(),
+    '/mainfdh': (BuildContext context) => const MainFdh(),
+      '/authen': (BuildContext context) => const Authenspsch(),
 };
 
 String? initlalRoute;

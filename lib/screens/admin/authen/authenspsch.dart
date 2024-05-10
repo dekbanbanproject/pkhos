@@ -30,6 +30,8 @@ int currentIndex = 2;
 List screens = const [ 
   MainAuthpidsit(),        // 0
   MainPidsit(),        // 1
+  // Scaffold(),
+  // Authenspsch(),
   MainFdh(),        // 2
   MainPullPidsit(),      // 3
   MainPidsitReport(),     // 4
@@ -210,7 +212,7 @@ List screens = const [
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       bottomNavigationBar: BottomAppBar(
         elevation: 1,
-        height: 60,
+        height: 70,
         color: Colors.white,
         shape: CircularNotchedRectangle(),
         notchMargin: 10,

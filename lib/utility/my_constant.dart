@@ -23,12 +23,13 @@ class MyConstant {
       'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_auth';
   static String fdh_mini_pullhosinv =
       'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosinv';
-  static String fdh_mini_pullhosnoinv =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosnoinv';
+  static String fdh_minipullhosnoinv =
+      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_minipullhosnoinv';
   static String fdh_mini_pidsit =
       'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pidsit';
- static String fdh_mini_pullbookid =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
+ static String fdh_mini_pullbookid = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
+  static String fdh_countvn = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countvn';
+  static String fdh_sumincome = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome';
 
   static String routeLogin = '/login';
   static String routeHome = '/home';
@@ -42,7 +43,8 @@ class MyConstant {
   static String routeMainCctv = '/cctvmain';
   static String routeMaincctvReq = '/maincctvReq';
   static String routespachScreen = '/spachscreen';
-  // static String routeTdbSPage = '/tdbS';
+ static String routemainfdh = '/mainfdh';
+ static String routeauthenspsch = '/authen';
   // static String routeTGleaveDetailPage = '/gleavedetail';
 
   var version = Text(

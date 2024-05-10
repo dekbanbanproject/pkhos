@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pkhos/screens/admin/authen/authenspsch.dart';
+import 'package:pkhos/screens/admin/fdh/mainfdh.dart';
 import 'package:pkhos/states/signout.dart';
 import 'package:pkhos/utility/my_constant.dart';
 
@@ -19,7 +20,7 @@ class CustomAppBar extends StatelessWidget {
             style: IconButton.styleFrom(
                 backgroundColor: MyConstant.kprimaryColor,
                 padding: const EdgeInsets.all(20)),
-            onPressed: () {}, iconSize: 30,color: Colors.lightBlue,
+            onPressed: () {}, iconSize: 30, color: Colors.lightBlue,
             icon: Icon(Icons.dashboard),
             // icon: Image.asset(
             //   "images/cctv2.jpg",
@@ -32,23 +33,32 @@ class CustomAppBar extends StatelessWidget {
                 style: IconButton.styleFrom(
                     backgroundColor: MyConstant.kprimaryColor,
                     padding: const EdgeInsets.all(20)),
-                onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => Authenspsch(),
-                      ),
-                    ),
+                onPressed: () {},
+                // onPressed: () => Navigator.push(
+                //       context,
+                //       MaterialPageRoute(
+                //         builder: (context) => Authenspsch(),
+                //       ),
+                //     ),
+                // onPressed: () {
+                //   Navigator.pop(context);
+                //   MaterialPageRoute route =
+                //       MaterialPageRoute(builder: (context) => MainFdh());
+                //   Navigator.push(context, route);
+                // },
                 iconSize: 30,
-                icon: Icon(Icons.notifications_outlined),color: Colors.lightBlue,
+                icon: Icon(Icons.notifications_outlined),
+                color: Colors.lightBlue,
               ),
               Padding(
                 padding: const EdgeInsets.only(left: 10),
                 child: IconButton(
                   style: IconButton.styleFrom(
                       backgroundColor: MyConstant.kprimaryColor,
-                      padding: const EdgeInsets.all(20)), 
+                      padding: const EdgeInsets.all(20)),
                   iconSize: 30,
-                  icon: const Icon(Icons.logout),color: Colors.red,
+                  icon: const Icon(Icons.logout),
+                  color: Colors.red,
                   tooltip: 'Logout',
                   onPressed: () => signoutProcess(context),
                 ),

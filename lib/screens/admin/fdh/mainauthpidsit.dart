@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pkhos/models/fdhminidatasetmodel.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
 
@@ -12,6 +15,60 @@ class MainAuthpidsit extends StatefulWidget {
 }
 
 class _MainAuthpidsitState extends State<MainAuthpidsit> {
+  String? vn;
+  String? total_amont;
+  // List<dynamic> vn = [];
+  List<Fdhminidatasetmodel> fdhminidatasetModel = [];
+  @override
+  void initState() {
+    super.initState();
+    fdh_countvn();
+    fdh_sumincome();
+  }
+
+  Future<void> fdh_sumincome() async {
+    final urlincome = '${MyConstant.fdh_sumincome}';
+    await Dio().get(urlincome).then((values) async {
+      var sumincome_ = values.toString();
+      
+      if (values.toString() == '{}') {
+        setState(() {
+          total_amont = '0';
+        });
+      } else {
+        setState(() {
+          total_amont = sumincome_;
+        }); 
+      }
+      //  for (var item in json.decode(value.data!)) {
+      // UsersModel model = UsersModel.fromMap(item);
+      print('## value for API  sumincome_==>  $sumincome_');
+      // for (var item in json.decode(values.data!)) {
+      // Fdhminidatasetmodel model = Fdhminidatasetmodel.fromJson(item);
+      // var countvn = model.vn!.toString();
+      // print('### ==>>>$countvn');
+      // setState(() {
+      //   fdhminidatasetModel.add(model);
+
+      // });
+      // }
+      // setState(() {
+      //   total_amont = sumincome_;
+      // });
+    });
+  }
+
+  Future<void> fdh_countvn() async {
+    final urlcount = '${MyConstant.fdh_countvn}';
+    await Dio().get(urlcount).then((values) async {
+      var vn_ = values.toString();
+      print('######## pull vn_ = $vn_');
+      setState(() {
+        vn = vn_;
+      });
+    });
+  }
+
   Future<void> LoginMini() async {
     try {
       final url = '${MyConstant.fdh_mini_auth}';
@@ -19,7 +76,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       await Dio().get(url).then((values) async {
         String ddd = values.toString();
 
-        print('######## pull = $ddd');
+        print('######## pull LoginMini = $ddd');
         if (values.toString() == '200') {
           MyDialog().normalDialog(context, 'Login Success', 'Success');
         } else {
@@ -38,7 +95,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       await Dio().get(url).then((values) async {
         String ddd = values.toString();
 
-        print('######## pull = $ddd');
+        print('######## pull fdh_minipullhosinv = $ddd');
         if (values.toString() == '200') {
           MyDialog().normalDialog(context, 'Pull Data Success', 'Success');
         } else {
@@ -53,12 +110,12 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
 
   Future<void> fdh_minipullhosnoinv() async {
     try {
-      final url = '${MyConstant.fdh_mini_pullhosnoinv}';
+      final urlnoinv = '${MyConstant.fdh_minipullhosnoinv}';
 
-      await Dio().get(url).then((values) async {
-        String ddd = values.toString();
+      await Dio().get(urlnoinv).then((values) async {
+        String noinv = values.toString();
 
-        print('######## pull = $ddd');
+        print('######## pullfdh_minipullhosnoinv = $noinv');
         if (values.toString() == '200') {
           MyDialog().normalDialog(context, 'Pull Data Success', 'Success');
         } else {
@@ -66,26 +123,24 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
               .normalDialog(context, 'Pull Data Not Success', 'UnSuccess');
         }
       });
-      // print('## value for API ===> $status');
     } on PlatformException {}
     if (!mounted) return;
   }
 
   Future<void> fdh_mini_pidsit() async {
     try {
-      final url = '${MyConstant.fdh_mini_pidsit}';
+      final urlpidsit = '${MyConstant.fdh_mini_pidsit}';
 
-      await Dio().get(url).then((values) async {
-        String ddd = values.toString();
+      await Dio().get(urlpidsit).then((values) async {
+        String pidsit = values.toString();
 
-        print('######## pull = $ddd');
+        print('######## pull pidsit = $pidsit');
         if (values.toString() == '200') {
           MyDialog().normalDialog(context, 'ปิดสิทธิ์สำเร็จ', 'Success');
         } else {
           MyDialog().normalDialog(context, 'ปิดสิทธิ์ไม่สำเร็จ', 'UnSuccess');
         }
       });
-      // print('## value for API ===> $status');
     } on PlatformException {}
     if (!mounted) return;
   }
@@ -97,7 +152,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       await Dio().get(url).then((values) async {
         String ddd = values.toString();
 
-        print('######## pull = $ddd');
+        print('######## pull bookid = $ddd');
         if (values.toString() == '200') {
           MyDialog().normalDialog(context, 'Pull IdBook สำเร็จ', 'Success');
         } else {
@@ -276,11 +331,11 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                         children: [
                           Image.asset(
                             "images/person.png",
-                            height: 120,
-                            width: 120,
+                            height: 110,
+                            width: 110,
                           ),
                           Text(
-                            'Visit',
+                            '$vn Visit',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -303,11 +358,12 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                         children: [
                           Image.asset(
                             "images/money.png",
-                            height: 120,
-                            width: 120,
+                            height: 110,
+                            width: 110,
                           ),
                           Text(
-                            'Income',
+                            '$total_amont ฿',
+                            //  '$vn',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
