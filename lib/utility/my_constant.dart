@@ -14,25 +14,23 @@ class MyConstant {
 
   static String appName = 'PK-OFFice';
   // static String domain = 'http://27.254.191.157/';
-  static String domain = 'http://smarthos-phukieohos.moph.go.th';
-  static String authenspsch =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
-  static String pullhos =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
-  static String fdh_mini_auth =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_auth';
-  static String fdh_mini_pullhosinv =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosinv';
-  static String fdh_minipullhosnoinv =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_minipullhosnoinv';
-  static String fdh_mini_pidsit =
-      'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pidsit';
- static String fdh_mini_pullbookid = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
-  static String fdh_countvn = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countvn';
-  static String fdh_sumincome = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome';
-   static String fdh_countpidsit = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countpidsit';
-    static String fdh_countbookid = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countbookid';
-
+  static String domain                   = 'http://smarthos-phukieohos.moph.go.th';
+  static String authenspsch              = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
+  static String pullhos                  = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
+  static String fdh_mini_auth            = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_auth';
+  static String fdh_mini_pullhosinv      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosinv';
+  static String fdh_minipullhosnoinv     = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_minipullhosnoinv';
+  static String fdh_mini_pidsit          = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pidsit';
+  static String fdh_mini_pullbookid      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
+  static String fdh_countvn              = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countvn';
+  static String fdh_sumincome            = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome';
+  static String fdh_countpidsit          = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countpidsit';
+  static String fdh_countbookid          = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countbookid';
+  static String fdh_countauthen          = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countauthen';
+  static String fdh_countauthennull      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countauthennull';
+  static String fdh_sumincome_authen     = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome_authen';
+  static String fdh_sumincome_noauthen   = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome_noauthen';
+  
   // Route::get('fdh_countpidsit', [App\Http\Controllers\ApiController::class, 'fdh_countpidsit'])->name('app.fdh_countpidsit');
 // Route::get('fdh_countbookid', [App\Http\Controllers\ApiController::class, 'fdh_countbookid'])->name('app.fdh_countbookid');
 

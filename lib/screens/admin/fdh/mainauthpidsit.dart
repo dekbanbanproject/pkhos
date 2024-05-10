@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
@@ -18,8 +19,10 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
   // String? vn;
   // String? total_amont;
   // String? pidsit;
-  String? vn,total_amont,pidsit,bookid;
-  // List<dynamic> vn = [];
+  String? vn, total_amont, pidsit, bookid;
+  double percent = 0;
+  String downloading = 'InitialiZing......';
+  bool _isDownloading = false;
   List<Fdhminidatasetmodel> fdhminidatasetModel = [];
   @override
   void initState() {
@@ -117,13 +120,40 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
   Future<void> fdh_minipullhosinv() async {
     try {
       final url = '${MyConstant.fdh_mini_pullhosinv}';
-
       await Dio().get(url).then((values) async {
         String ddd = values.toString();
-
         print('######## pull fdh_minipullhosinv = $ddd');
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 0.1;
+
+            if (percent.toStringAsFixed(1) == '1.0') {
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog().normalDialog(context, 'Pull Hos Success', 'Success');
+                percent = 0;
+                setState(() {
+                  fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countpidsit();
+                  fdh_countbookid();
+                });
+              } else {
+                MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+              }
+            }
+          });
+        });
         if (values.toString() == '200') {
-          MyDialog().normalDialog(context, 'Pull Data Success', 'Success');
+          // MyDialog().normalDialog(context, 'Pull Data Success', 'Success');
+          // setState(() {
+          //   fdh_countvn();
+          //   fdh_sumincome();
+          //   fdh_countpidsit();
+          //   fdh_countbookid();
+          // });
         } else {
           MyDialog()
               .normalDialog(context, 'Pull Data Not Success', 'UnSuccess');
@@ -142,8 +172,36 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
         String noinv = values.toString();
 
         print('######## pullfdh_minipullhosnoinv = $noinv');
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 0.1;
+            if (percent.toStringAsFixed(1) == '1.0') {
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog().normalDialog(context, 'Pull Hos Success', 'Success');
+                percent = 0;
+                setState(() {
+                  fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countpidsit();
+                  fdh_countbookid();
+                });
+              } else {
+                MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+              }
+            }
+          });
+        });
         if (values.toString() == '200') {
-          MyDialog().normalDialog(context, 'Pull Data Success', 'Success');
+          // MyDialog().normalDialog(context, 'Pull Data Success', 'Success');
+          // setState(() {
+          //   fdh_countvn();
+          //   fdh_sumincome();
+          //   fdh_countpidsit();
+          //   fdh_countbookid();
+          // });
         } else {
           MyDialog()
               .normalDialog(context, 'Pull Data Not Success', 'UnSuccess');
@@ -161,8 +219,36 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
         String pidsit = values.toString();
 
         print('######## pull pidsit = $pidsit');
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 0.1;
+            if (percent.toStringAsFixed(1) == '1.0') {
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog().normalDialog(context, 'Pull Hos Success', 'Success');
+                percent = 0;
+                setState(() {
+                  fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countpidsit();
+                  fdh_countbookid();
+                });
+              } else {
+                MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+              }
+            }
+          });
+        });
         if (values.toString() == '200') {
-          MyDialog().normalDialog(context, 'ปิดสิทธิ์สำเร็จ', 'Success');
+          // MyDialog().normalDialog(context, 'ปิดสิทธิ์สำเร็จ', 'Success');
+          // setState(() {
+          //   fdh_countvn();
+          //   fdh_sumincome();
+          //   fdh_countpidsit();
+          //   fdh_countbookid();
+          // });
         } else {
           MyDialog().normalDialog(context, 'ปิดสิทธิ์ไม่สำเร็จ', 'UnSuccess');
         }
@@ -174,13 +260,39 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
   Future<void> fdh_mini_pullbookid() async {
     try {
       final url = '${MyConstant.fdh_mini_pullbookid}';
-
       await Dio().get(url).then((values) async {
         String ddd = values.toString();
-
         print('######## pull bookid = $ddd');
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 0.1;
+            if (percent.toStringAsFixed(1) == '1.0') {
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog().normalDialog(context, 'Pull Hos Success', 'Success');
+                percent = 0;
+                setState(() {
+                  fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countpidsit();
+                  fdh_countbookid();
+                });
+              } else {
+                MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+              }
+            }
+          });
+        });
         if (values.toString() == '200') {
-          MyDialog().normalDialog(context, 'Pull IdBook สำเร็จ', 'Success');
+          // MyDialog().normalDialog(context, 'Pull IdBook สำเร็จ', 'Success');
+          // setState(() {
+          //   fdh_countvn();
+          //   fdh_sumincome();
+          //   fdh_countpidsit();
+          //   fdh_countbookid();
+          // });
         } else {
           MyDialog()
               .normalDialog(context, 'Pull IdBook ไม่สำเร็จ', 'UnSuccess');
@@ -197,7 +309,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(top: 35),
+          padding: EdgeInsets.only(top: 15),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -206,7 +318,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(top: 20),
+                      padding: const EdgeInsets.only(top: 10),
                       child: Center(
                         child: Text(
                           'Mini Data Set',
@@ -239,9 +351,9 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
               ),
               // const SizedBox(height: 5),
               Padding(
-                padding: const EdgeInsets.only(top: 10),
+                padding: const EdgeInsets.only(top: 5),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 20),
+                  padding: const EdgeInsets.only(top: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -251,7 +363,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                           style: IconButton.styleFrom(
                               backgroundColor: MyConstant.kprimaryColor,
                               padding: const EdgeInsets.all(10)),
-                          iconSize: 30,
+                          iconSize: 40,
                           icon: const Icon(Icons.fingerprint),
                           color: Color.fromARGB(255, 255, 128, 44),
                           tooltip: 'Login',
@@ -268,9 +380,10 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                           style: IconButton.styleFrom(
                               backgroundColor: MyConstant.kprimaryColor,
                               padding: const EdgeInsets.all(10)),
-                          iconSize: 30,
+                          iconSize: 40,
                           icon: const Icon(Icons.download),
-                          color: Color.fromARGB(255, 44, 149, 235),
+                          // color: Color.fromARGB(255, 44, 149, 235),
+                          color: Color.fromARGB(255, 160, 196, 250),
                           tooltip: 'Pull Invoice',
                           onPressed: () {
                             setState(() {
@@ -285,7 +398,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                           style: IconButton.styleFrom(
                               backgroundColor: MyConstant.kprimaryColor,
                               padding: const EdgeInsets.all(10)),
-                          iconSize: 30,
+                          iconSize: 40,
                           icon: const Icon(Icons.download),
                           color: Color.fromARGB(255, 201, 20, 218),
                           tooltip: 'Pull NoInvoice',
@@ -302,7 +415,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                           style: IconButton.styleFrom(
                               backgroundColor: MyConstant.kprimaryColor,
                               padding: const EdgeInsets.all(10)),
-                          iconSize: 30,
+                          iconSize: 40,
                           icon: const Icon(Icons.upload),
                           color: Color.fromARGB(255, 252, 64, 111),
                           tooltip: 'Pid Sit',
@@ -319,7 +432,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                           style: IconButton.styleFrom(
                               backgroundColor: MyConstant.kprimaryColor,
                               padding: const EdgeInsets.all(10)),
-                          iconSize: 30,
+                          iconSize: 40,
                           icon: const Icon(Icons.download),
                           color: Color.fromARGB(255, 4, 197, 193),
                           tooltip: 'Pull BookID',
@@ -338,16 +451,41 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
               ),
               const SizedBox(height: 10),
               Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30, top: 2),
+                child: Text(downloading ?? ''
+                    ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30, top: 5),
+                child: LinearProgressIndicator(
+                  value: percent,minHeight: 15,
+                  borderRadius: BorderRadius.circular(30),
+                  backgroundColor: Color.fromARGB(255, 130, 197, 252),
+                ),
+              ),
+              
+              Padding(
+                padding: const EdgeInsets.only(left: 30, right: 30, top: 2),
+                child: Text('Downloading...${(percent * 100).round()} %',
+                  style: TextStyle(
+                      fontSize: 30,
+                      color: Color.fromARGB(255, 140, 235, 233),
+                      fontWeight: FontWeight.bold),
+                ),
+              ),
+
+              const SizedBox(height: 5),
+              Padding(
                 padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 30, bottom: 5),
+                    left: 20, right: 20, top: 2, bottom: 2),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 160,
+                      width: 170,
                       height: 160,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 4, 197, 193),
+                        color: Color.fromARGB(255, 82, 176, 253),
                         borderRadius: BorderRadius.only(
                           topRight: Radius.circular(50),
                           bottomLeft: Radius.circular(50),
@@ -371,7 +509,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                       ),
                     ),
                     Container(
-                      width: 160,
+                      width: 170,
                       height: 160,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 255, 123, 233),
@@ -403,15 +541,15 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 20, right: 20, top: 30, bottom: 5),
+                    left: 20, right: 20, top: 5, bottom:2),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 160,
+                      width: 170,
                       height: 160,
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 150, 190, 252),
+                        color: Color.fromARGB(255, 4, 197, 193),
                         borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(50),
                           bottomRight: Radius.circular(50),
@@ -435,7 +573,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                       ),
                     ),
                     Container(
-                      width: 160,
+                      width: 170,
                       height: 160,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 253, 169, 100),

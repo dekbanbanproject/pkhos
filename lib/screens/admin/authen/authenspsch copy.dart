@@ -3,9 +3,6 @@ import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pkhos/screens/admin/authen/authenReport.dart';
-import 'package:pkhos/screens/admin/authen/authenlist.dart';
-import 'package:pkhos/screens/admin/authen/authenpull.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/screens/admin/cctv/mainhome.dart';
 import 'package:pkhos/screens/admin/cctv/mainprofile.dart';
@@ -31,12 +28,12 @@ class _AuthenspschState extends State<Authenspsch> {
 
 int currentIndex = 2;
 List screens = const [ 
-  AuthenList(),        // 0
+  MainAuthpidsit(),        // 0
   MainPidsit(),        // 1
   // Scaffold(),
-  AuthenPull(),         // 2
-  // MainFdh(),        
-  AuthenReport(),      // 3
+  // Authenspsch(),
+  MainFdh(),        // 2
+  MainPullPidsit(),      // 3
   MainPidsitReport(),     // 4
   // Scaffold()         // 5
 ];
