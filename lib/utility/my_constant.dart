@@ -30,6 +30,11 @@ class MyConstant {
  static String fdh_mini_pullbookid = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
   static String fdh_countvn = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countvn';
   static String fdh_sumincome = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome';
+   static String fdh_countpidsit = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countpidsit';
+    static String fdh_countbookid = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countbookid';
+
+  // Route::get('fdh_countpidsit', [App\Http\Controllers\ApiController::class, 'fdh_countpidsit'])->name('app.fdh_countpidsit');
+// Route::get('fdh_countbookid', [App\Http\Controllers\ApiController::class, 'fdh_countbookid'])->name('app.fdh_countbookid');
 
   static String routeLogin = '/login';
   static String routeHome = '/home';

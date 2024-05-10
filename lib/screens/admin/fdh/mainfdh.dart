@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -26,7 +28,9 @@ class _MainFdhState extends State<MainFdh> {
     MainPidsitReport(), // 4
     // Scaffold()         // 5
   ];
-  double percent = 20;
+  double percent = 0;
+  String downloading = 'InitialiZing......';
+  bool _isDownloading = false;
 
   Future<void> Pull_authen() async {
     try {
@@ -34,8 +38,28 @@ class _MainFdhState extends State<MainFdh> {
       await Dio().get(path).then((value) async {
         String dd = value.toString();
         print('######## Vaaaaaaaaaa = $dd');
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 10.0;
+            if (percent.toStringAsFixed(1) == '100.0') {
+              // _isDownloading = false;
+              // timer.cancel();
+              // return;
+              // MyDialog().normalDialog(context, 'Pull Success', 'Success');
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog().normalDialog(context, 'Pull Success', 'Success');
+                percent = 0;
+              } else {
+                MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+              }
+            }
+          });
+        });
         if (value.toString() == 'true') {
-          MyDialog().normalDialog(context, 'Pull Success', 'Success');
+          // MyDialog().normalDialog(context, 'Pull Success', 'Success');
           // Navigator.pop(context, MaincctvReq());
         } else {
           MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
@@ -66,29 +90,45 @@ class _MainFdhState extends State<MainFdh> {
         //     response: response,
         //   );
         // }
+
         print('######## pull = $ddd');
-          if (values.toString() == '200') {
-             if (percent >= 100) {
-                  setState(() { 
-                    percent = 100;
-                         MyDialog().normalDialog(context, 'Pull Success', 'Success'); 
-                  });
-                } else {
-                  setState(() {
-                    // Pull_hos();
-                    percent += 20;
-                  });
-                }
-              //  MyDialog().normalDialog(context, 'Pull Success', 'Success');  
-                // Navigator.pop(context, MaincctvReq());
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 10.0;
+            if (percent.toStringAsFixed(1) == '100.0') {
+              // _isDownloading = false;
+              // timer.cancel();
+              // return;
+              // percent = 100.0;
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog().normalDialog(context, 'Pull Success', 'Success');
+                percent = 0;
               } else {
                 MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
               }
-       
-
-
-
-       
+            }
+          });
+        });
+        if (values.toString() == '200') {
+          // if (percent >= 100) {
+          //   setState(() {
+          //     percent = 100;
+          // MyDialog().normalDialog(context, 'Pull Success', 'Success');
+          // });
+          // } else {
+          //   setState(() {
+          //     // Pull_hos();
+          //     percent += 20;
+          //   });
+          // }
+          //  MyDialog().normalDialog(context, 'Pull Success', 'Success');
+          // Navigator.pop(context, MaincctvReq());
+        } else {
+          MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+        }
       });
       // print('## value for API ===> $status');
     } on PlatformException {}
@@ -125,49 +165,6 @@ class _MainFdhState extends State<MainFdh> {
                           ),
                         ),
                       ),
-
-                      // IconButton(
-                      //   style: IconButton.styleFrom(
-                      //       backgroundColor: MyConstant.kprimaryColor,
-                      //       padding: const EdgeInsets.all(20)),
-                      //   onPressed: () {}, iconSize: 30, color: Colors.lightBlue,
-                      //   icon: Icon(Icons.dashboard),
-
-                      // ),
-                      // Row(
-                      //   children: [
-                      //     Padding(
-                      //       padding: const EdgeInsets.only(left: 5, right: 5),
-                      //       child: IconButton(
-                      //         style: IconButton.styleFrom(
-                      //             backgroundColor: MyConstant.kprimaryColor,
-                      //             padding: const EdgeInsets.all(20)),
-                      //         iconSize: 30,
-                      //         icon: const Icon(Icons.download),
-                      //         color: Colors.red,
-                      //         tooltip: 'Pull Hos',
-                      //         onPressed: () {
-                      //           setState(() {
-                      //             Pull_hos();
-                      //           });
-                      //         },
-                      //       ),
-                      //     ),
-                      //     IconButton(
-                      //       style: IconButton.styleFrom(
-                      //           backgroundColor: MyConstant.kprimaryColor,
-                      //           padding: const EdgeInsets.all(20)),
-                      //       onPressed: () {
-                      //         setState(() {
-                      //           Pull_authen();
-                      //         });
-                      //       },
-                      //       iconSize: 30,
-                      //       icon: Icon(Icons.download),
-                      //       color: Color.fromARGB(255, 4, 197, 193),
-                      //     ),
-                      //   ],
-                      // ),
                     ],
                   ),
                 ),
@@ -178,23 +175,6 @@ class _MainFdhState extends State<MainFdh> {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 5, right: 5),
-                        //   child: IconButton(
-                        //     style: IconButton.styleFrom(
-                        //         backgroundColor: MyConstant.kprimaryColor,
-                        //         padding: const EdgeInsets.all(10)),
-                        //     iconSize: 30,
-                        //     icon: const Icon(Icons.fingerprint),
-                        //     color: Color.fromARGB(255, 255, 128, 44),
-                        //     tooltip: 'Login',
-                        //     onPressed: () {
-                        //       setState(() {
-                        //         // LoginMini();
-                        //       });
-                        //     },
-                        //   ),
-                        // ),
                         Padding(
                           padding: const EdgeInsets.only(left: 2, right: 2),
                           child: IconButton(
@@ -206,17 +186,20 @@ class _MainFdhState extends State<MainFdh> {
                             color: Color.fromARGB(255, 44, 149, 235),
                             tooltip: 'Pull Authen',
                             onPressed: () {
-                              if (percent >= 100) {
-                                setState(() {
-                                Pull_hos();
-                                    percent = 10;
-                                  });
-                              } else {
-                                setState(() {
-                                  // Pull_hos();
-                                  percent += 10;
-                                });
-                              }
+                              setState(() {
+                                _isDownloading = !_isDownloading;
+                              });
+                              Pull_hos();
+                              // final url = '${MyConstant.pullhos}';
+                              // Dio dio = Dio();
+                              // dio.get(url).then((value) async {
+                              //   downloading = value.toString();
+                              //   var percent = downloading * 100;
+                              //   print('## value for API ===> $percent');
+                              //   setState(() {
+                              //     downloading = 'Dowonloading...${percent} %';
+                              //   });
+                              // });
                             },
                           ),
                         ),
@@ -238,40 +221,6 @@ class _MainFdhState extends State<MainFdh> {
                             },
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 2, right: 2),
-                        //   child: IconButton(
-                        //     style: IconButton.styleFrom(
-                        //         backgroundColor: MyConstant.kprimaryColor,
-                        //         padding: const EdgeInsets.all(10)),
-                        //     iconSize: 30,
-                        //     icon: const Icon(Icons.upload),
-                        //     color: Color.fromARGB(255, 252, 64, 111),
-                        //     tooltip: 'Pid Sit',
-                        //     onPressed: () {
-                        //       setState(() {
-                        //         // fdh_mini_pidsit();
-                        //       });
-                        //     },
-                        //   ),
-                        // ),
-                        // Padding(
-                        //   padding: const EdgeInsets.only(left: 2, right: 2),
-                        //   child: IconButton(
-                        //     style: IconButton.styleFrom(
-                        //         backgroundColor: MyConstant.kprimaryColor,
-                        //         padding: const EdgeInsets.all(10)),
-                        //     iconSize: 30,
-                        //     icon: const Icon(Icons.download),
-                        //     color: Color.fromARGB(255, 4, 197, 193),
-                        //     tooltip: 'Pull BookID',
-                        //     onPressed: () {
-                        //       setState(() {
-                        //         // fdh_mini_pullbookid();
-                        //       });
-                        //     },
-                        //   ),
-                        // ),
                       ],
                     ),
                   ),
@@ -311,11 +260,18 @@ class _MainFdhState extends State<MainFdh> {
                   radius: 100,
                   percent: percent / 100,
                   animation: true,
-                  lineWidth: 15,
+                  lineWidth: 30,
                   animateFromLastPercent: true,
-                  center: Text("${percent.toStringAsFixed(0)}%"),
+                  center: Text("${percent.toStringAsFixed(1)}%"),
                   progressColor: Colors.pinkAccent,
                 ),
+                // const SizedBox(height: 10),
+                // Text(downloading ?? '',
+                //     style: Theme.of(context).textTheme.headlineLarge),
+                // LinearProgressIndicator(
+                //   value: percent,
+                // ),
+                // Text('${(percent * 100).round()} %'),
               ],
             ),
           ),

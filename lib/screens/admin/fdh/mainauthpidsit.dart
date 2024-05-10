@@ -15,8 +15,10 @@ class MainAuthpidsit extends StatefulWidget {
 }
 
 class _MainAuthpidsitState extends State<MainAuthpidsit> {
-  String? vn;
-  String? total_amont;
+  // String? vn;
+  // String? total_amont;
+  // String? pidsit;
+  String? vn,total_amont,pidsit,bookid;
   // List<dynamic> vn = [];
   List<Fdhminidatasetmodel> fdhminidatasetModel = [];
   @override
@@ -24,13 +26,15 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
     super.initState();
     fdh_countvn();
     fdh_sumincome();
+    fdh_countpidsit();
+    fdh_countbookid();
   }
 
   Future<void> fdh_sumincome() async {
     final urlincome = '${MyConstant.fdh_sumincome}';
     await Dio().get(urlincome).then((values) async {
       var sumincome_ = values.toString();
-      
+
       if (values.toString() == '{}') {
         setState(() {
           total_amont = '0';
@@ -38,7 +42,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       } else {
         setState(() {
           total_amont = sumincome_;
-        }); 
+        });
       }
       //  for (var item in json.decode(value.data!)) {
       // UsersModel model = UsersModel.fromMap(item);
@@ -65,6 +69,28 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
       print('######## pull vn_ = $vn_');
       setState(() {
         vn = vn_;
+      });
+    });
+  }
+
+  Future<void> fdh_countpidsit() async {
+    final urlcounts = '${MyConstant.fdh_countpidsit}';
+    await Dio().get(urlcounts).then((values) async {
+      var vn_pidsit = values.toString();
+      print('######## pull vn_pidsit = $vn_pidsit');
+      setState(() {
+        pidsit = vn_pidsit;
+      });
+    });
+  }
+
+  Future<void> fdh_countbookid() async {
+    final urlcountss = '${MyConstant.fdh_countbookid}';
+    await Dio().get(urlcountss).then((values) async {
+      var vn_bookid = values.toString();
+      print('######## pull vn_bookid = $vn_bookid');
+      setState(() {
+        bookid = vn_bookid;
       });
     });
   }
@@ -313,12 +339,12 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
               const SizedBox(height: 10),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 30, right: 30, top: 30, bottom: 5),
+                    left: 20, right: 20, top: 30, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 140,
+                      width: 160,
                       height: 160,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 4, 197, 193),
@@ -335,7 +361,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                             width: 110,
                           ),
                           Text(
-                            '$vn Visit',
+                            'คนไข้ $vn ราย',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -345,7 +371,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                       ),
                     ),
                     Container(
-                      width: 140,
+                      width: 160,
                       height: 160,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 255, 123, 233),
@@ -377,12 +403,12 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                    left: 30, right: 30, top: 30, bottom: 5),
+                    left: 20, right: 20, top: 30, bottom: 5),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 140,
+                      width: 160,
                       height: 160,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 150, 190, 252),
@@ -395,11 +421,11 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                         children: [
                           Image.asset(
                             "images/person.png",
-                            height: 120,
-                            width: 120,
+                            height: 110,
+                            width: 110,
                           ),
                           Text(
-                            'ปิดสิทธิ์',
+                            'ปิดสิทธิ์ $pidsit ราย',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,
@@ -409,7 +435,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                       ),
                     ),
                     Container(
-                      width: 140,
+                      width: 160,
                       height: 160,
                       decoration: BoxDecoration(
                         color: Color.fromARGB(255, 253, 169, 100),
@@ -422,11 +448,11 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
                         children: [
                           Image.asset(
                             "images/bookid.png",
-                            height: 120,
-                            width: 120,
+                            height: 110,
+                            width: 110,
                           ),
                           Text(
-                            'BookId',
+                            'BookId $bookid',
                             style: TextStyle(
                                 color: Colors.white,
                                 fontSize: 16,

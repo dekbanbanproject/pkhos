@@ -48,6 +48,7 @@ dependencies:
   thai_idcard_reader_flutter: ^0.0.7
   qrscan: ^0.3.3
   http: ^0.13.6
+  path_provider: any
 
   # http: ^0.12.0+2
   flutter_automation: ^2.0.0
