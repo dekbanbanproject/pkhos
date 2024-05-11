@@ -31,121 +31,124 @@ class _CategoriesState extends State<Categories> {
               children: [
                 Container(
                   height: 100,
-                  width: 100, 
+                  width: 100,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage("images/cctv1.png"), fit: BoxFit.cover),
+                        image: AssetImage("images/cctv1.png"),
+                        fit: BoxFit.cover),
                   ),
-                ), SizedBox(height: 2),               
+                ),
+                SizedBox(height: 2),
                 Text(
                   "CCTV",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-          ), 
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Container(
-                  height: 90,
-                  width: 90, 
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    image: DecorationImage(
-                        image: AssetImage("images/fire.png"), fit: BoxFit.cover),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(
+                      context,
+                      ('/firemainpage'),
+                    );
+                  },
+                  style: ElevatedButton.styleFrom(
+                    shape: new RoundedRectangleBorder(
+                      borderRadius: new BorderRadius.circular(50.0),
+                    ),
+                    backgroundColor: Color.fromARGB(255, 255, 255, 255),
                   ),
-                ),  SizedBox(height: 10),             
+                  child: Container(
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                          image: AssetImage("images/fire.png"),
+                          fit: BoxFit.cover),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 10),
                 Text(
                   "Fire",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-          ),  
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 Container(
                   height: 90,
-                  width: 90, 
+                  width: 90,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage("images/electrice.png"), fit: BoxFit.cover),
+                        image: AssetImage("images/electrice.png"),
+                        fit: BoxFit.cover),
                   ),
-                ),  SizedBox(height: 10),             
+                ),
+                SizedBox(height: 10),
                 Text(
                   "Electric",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-          ),  
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 Container(
                   height: 90,
-                  width: 90, 
+                  width: 90,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage("images/Plumbing.png"), fit: BoxFit.cover),
+                        image: AssetImage("images/Plumbing.png"),
+                        fit: BoxFit.cover),
                   ),
-                ),  SizedBox(height: 10),             
+                ),
+                SizedBox(height: 10),
                 Text(
                   "Plumbing",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-          ),  
+          ),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
                 Container(
                   height: 90,
-                  width: 90, 
+                  width: 90,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: AssetImage("images/tel_1.png"), fit: BoxFit.cover),
+                        image: AssetImage("images/tel_1.png"),
+                        fit: BoxFit.cover),
                   ),
-                ),  SizedBox(height: 10),             
+                ),
+                SizedBox(height: 10),
                 Text(
                   "Phone",
                   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
-          ),  
-          // Padding(
-          //   padding: const EdgeInsets.all(8.0),
-          //   child: Column(
-          //     children: [
-          //       Container(
-          //         height: 90,
-          //         width: 90, 
-          //         decoration: BoxDecoration(
-          //           shape: BoxShape.circle,
-          //           image: DecorationImage(
-          //               image: AssetImage("images/fdh.png"), fit: BoxFit.cover),
-          //         ),
-          //       ),  SizedBox(height: 10),             
-          //       Text(
-          //         "FDH",
-          //         style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-          //       ),
-          //     ],
-          //   ),
-          // ),  
-            
+          ),
         ],
       ),
       //   child: Column(
@@ -268,11 +271,11 @@ class _CategoriesState extends State<Categories> {
       //           //         fit: BoxFit.cover),
       //           //   ),
       //           // ),
-                // SizedBox(height: 5),
-                // Text(
-                //   "Fire",
-                //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-                // ),
+      // SizedBox(height: 5),
+      // Text(
+      //   "Fire",
+      //   style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+      // ),
       //         ],
       //       ),
       //     ],

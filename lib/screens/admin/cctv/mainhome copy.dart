@@ -97,14 +97,108 @@ class _MainHomeState extends State<MainHome> {
               const Categories(),
               const SizedBox(height: 20),
               const FdhCategory(),
-              
+              // SizedBox(
+              //   height: 130,
+              //   child: Row(
+              //     children: [
+              //       Container(
+              //         height: 65,
+              //         width: 65,
+              //         decoration: BoxDecoration(
+              //           shape: BoxShape.circle,
+              //           image: DecorationImage(
+              //               image: AssetImage("images/cctv1.png"),
+              //               fit: BoxFit.cover),
+              //         ), 
+              //       ),SizedBox(height: 5),
+              //                  Text(
+              //                "Cctv",
+              //               style: TextStyle(
+              //                   fontSize: 16, fontWeight: FontWeight.bold),
+              //             ),
+              //     ],
+              //   ),
+                // child: ListView.separated(
+                //     scrollDirection: Axis.horizontal,
+                //     itemBuilder: (context, index) {
+                //       return Column(
+                //         children: [
+                //           // screentTab[index],
+                //           Container(
+                //             height: 65,
+                //             width: 65,
+                //             decoration: BoxDecoration(
+                //               shape: BoxShape.circle,
+                //               image: DecorationImage(
+                //                   image: AssetImage(categories[index].image),
+                //                   fit: BoxFit.cover),
+                //             ),
+                //           ),
+                //           SizedBox(height: 5),
+                //           // screentTab[index],
+                //           Text(
+                //             categories[index].title,
+                //             style: TextStyle(
+                //                 fontSize: 16, fontWeight: FontWeight.bold),
+                //           ),
+                //         //  Navigator.of(context).pushNamed('/dev_hn')
+                //         // Navigator.of(context).pushNamed('maincctvReq');
+                //         ],
+                //       );
+                //     },
+                //     separatorBuilder: (context, index) => const SizedBox(width: 20),
+                //     itemCount: screentTab.length),
+              // ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  
+                  //  Container(
+                  //       width: double.infinity,
+                  //       height: double.infinity,
+                  //       alignment: Alignment.center,
+                  //       child: getSelectedWidget(index: index),
+                  //     )
+                  // Text(
+                  //   'กล้องวงจรปิด',
+                  //   style: TextStyle(fontSize: 20, fontWeight: FontWeight.w800),
+                  // ),
+                  // Text(
+                  //   'ดูทั้งหมด',
+                  //   style: TextStyle(
+                  //       fontSize: 16,
+                  //       fontWeight: FontWeight.w500,
+                  //       color: Colors.black54),
+                  // ),
+                  // SizedBox(width: 10,)
                 ],
               ),
-             
+              // GridView.builder(
+              //   physics: NeverScrollableScrollPhysics(),
+              //   shrinkWrap: true,
+              //   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              //       crossAxisCount: 2,
+              //       childAspectRatio: 0.78,
+              //       crossAxisSpacing: 20,
+              //       mainAxisSpacing: 20),
+              //   itemCount: searcharticleModel.length,
+              //   itemBuilder: (context, index) {
+              //     return CctvList(articleModel: searcharticleModel[index]);
+              //   },
+              // ),
+
+              // ListView.builder(
+              //   physics: NeverScrollableScrollPhysics(),
+              //   shrinkWrap: true,
+              //   itemCount: getSelectedWidget(index: index),
+              //   // itemCount: searcharticleModel.length,
+              //   itemBuilder: (context, index) {
+              //     return Padding(
+              //       padding:
+              //           const EdgeInsets.only(right: 2, left: 2, bottom: 10),
+              //       child: CctvList(articleModel: searcharticleModel[index]),
+              //     );
+              //   },
+              // )
             ],
           ),
         ),

@@ -5,7 +5,10 @@ import 'package:pkhos/screens/admin/authen/authenspsch.dart';
 import 'package:pkhos/screens/admin/cctv/maincctv.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvadd.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
+import 'package:pkhos/screens/admin/cctv/mainfire.dart';
 import 'package:pkhos/screens/admin/fdh/mainfdh.dart';
+import 'package:pkhos/screens/admin/fire/firemain.dart';
+import 'package:pkhos/screens/admin/fire/mainfireshow.dart';
 import 'package:pkhos/splash_screen.dart';
 import 'package:pkhos/states/admin.dart';
 import 'package:pkhos/states/adminnew.dart';
@@ -28,8 +31,13 @@ final Map<String, WidgetBuilder> map = {
   '/cctvmain': (BuildContext context) => const MainCctv(),
   '/maincctvReq': (BuildContext context) => const MaincctvReq(),
   '/spachscreen': (BuildContext context) => const SplashScreen(),
-    '/mainfdh': (BuildContext context) => const MainFdh(),
-      '/authen': (BuildContext context) => const Authenspsch(),
+  '/mainfdh': (BuildContext context) => const MainFdh(),
+  '/authen': (BuildContext context) => const Authenspsch(),
+'/mainfire': (BuildContext context) => const MainFire(),
+'/mainfireshow': (BuildContext context) => const MainFireshow(),
+'/firemainpage': (BuildContext context) => const FireMainPage(),
+
+  
 };
 
 String? initlalRoute;

@@ -25,13 +25,18 @@
             $cctv_camera_save             = $_GET['cctv_camera_save'];
             $cctv_camera_power_backup     = $_GET['cctv_camera_power_backup'];
 
-            $datacount_ = mysqli_query($conn,"SELECT * FROM cctv_check WHERE cctv_check_date = '$date' AND article_num = '$article_num'");
-            $datacount = mysqli_num_rows($datacount_);
-           
+            $datacount_ = mysqli_query($conn,"SELECT COUNT(cctv_check_id) cctv_check_id  FROM cctv_check WHERE cctv_check_date = '$date' AND article_num = '$article_num'");
+            // $datacount = mysqli_num_rows($datacount_);           
             // while($objet = mysqli_fetch_array($datacount,MYSQLI_ASSOC))
             // {
             //     $checkdata =$objet["total"];    
             // } 
+
+            // $datacount_ = mysqli_query($conn,"SELECT COUNT(fire_id) fire_id FROM fire WHERE fire_num = 'FR01102'"); 
+            while($objet = mysqli_fetch_array($datacount_,MYSQLI_ASSOC))
+            {
+                $countdata =$objet["cctv_check_id"];    
+            }
             if ($datacount > 0) {
                 echo "false";
             } else {

@@ -30,9 +30,17 @@ class MyConstant {
   static String fdh_countauthennull      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countauthennull';
   static String fdh_sumincome_authen     = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome_authen';
   static String fdh_sumincome_noauthen   = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome_noauthen';
-  
-  // Route::get('fdh_countpidsit', [App\Http\Controllers\ApiController::class, 'fdh_countpidsit'])->name('app.fdh_countpidsit');
-// Route::get('fdh_countbookid', [App\Http\Controllers\ApiController::class, 'fdh_countbookid'])->name('app.fdh_countbookid');
+
+  // static String countfiregreen           = 'http://smarthos-phukieohos.moph.go.th/pkhos/api/countfire.php?isAddGREEN=true';
+  static String countfiregreenall        = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfiregreenall'; 
+  static String countfiregreen           = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfiregreen'; 
+
+  static String countfireredall          = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfireredall';
+  static String countfirered             = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfirered';
+  static String countfireredrepaire      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfireredrepaire';
+  static String countfiregreenrepaire    = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfiregreenrepaire';
+
+
 
   static String routeLogin = '/login';
   static String routeHome = '/home';
@@ -48,11 +56,11 @@ class MyConstant {
   static String routespachScreen = '/spachscreen';
  static String routemainfdh = '/mainfdh';
  static String routeauthenspsch = '/authen';
-  // static String routeTGleaveDetailPage = '/gleavedetail';
-
+  static String routeMainfireshow = '/mainfireshow';
+  static String routeFireMainPage = '/firemainpage';
   var version = Text(
       // 'V.641105', style: TextStyle(color: Colors.white),
-      'V.660917',
+      'V.670511',
       style: TextStyle(
         color: Colors.orange,
         fontSize: 17,
