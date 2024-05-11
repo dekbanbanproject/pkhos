@@ -172,6 +172,12 @@ class _AuthenPullState extends State<AuthenPull> {
                 MyDialog()
                     .normalDialog(context, 'Pull Authen Success', 'Success');
                 percent = 0;
+                 fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countauthen();
+                  fdh_countauthennull();
+                  fdh_sumincome_authen();
+                  fdh_sumincome_noauthen();
               } else {
                 MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
               }
@@ -227,6 +233,12 @@ class _AuthenPullState extends State<AuthenPull> {
                 MyDialog()
                     .normalDialog(context, 'Pull Authen Success', 'Success');
                 percent = 0;
+                  fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countauthen();
+                  fdh_countauthennull();
+                  fdh_sumincome_authen();
+                  fdh_sumincome_noauthen();
               } else {
                 MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
               }
