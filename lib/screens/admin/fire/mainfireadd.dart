@@ -79,8 +79,9 @@ class _MainFireaddState extends State<MainFireadd> {
     print('######## userid = $id');
     print('######## Active = $fireStatus');
 
-    String path =
-        '${MyConstant.domain}/pkhos/api/getfire_detailsave.php?isAdd=true&fire_id=$_scanBarcode';
+    // String path =
+    //     '${MyConstant.domain}/pkhos/api/getfire_detailsave.php?isAdd=true&fire_id=$_scanBarcode';
+        final path = '${MyConstant.getFiredata}fire_id=$_scanBarcode';
     //  'http://192.168.0.217/pkbackoffice/public/api/getfire/F88888888';
     await Dio().get(path).then((value) async {
       String dd = value.toString();

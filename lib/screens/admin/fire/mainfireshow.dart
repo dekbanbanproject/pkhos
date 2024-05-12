@@ -19,7 +19,12 @@ class MainFireshow extends StatefulWidget {
 class _MainFireshowState extends State<MainFireshow> {
   bool statusRedEye = true;
   final formKey = GlobalKey<FormState>();
-  String? fire_green, fire_red, fire_green_all, fire_red_all, fire_red_rep,fire_green_rep;
+  String? fire_green,
+      fire_red,
+      fire_green_all,
+      fire_red_all,
+      fire_red_rep,
+      fire_green_rep;
 
   @override
   void initState() {
@@ -55,7 +60,7 @@ class _MainFireshowState extends State<MainFireshow> {
   }
 
   Future<void> countfireredall() async {
-    final urlcount = '${MyConstant.countfirered}';
+    final urlcount = '${MyConstant.countfireredall}';
     await Dio().get(urlcount).then((values) async {
       var fireid_all = values.toString();
       print('######## pull countfireredall = $fireid_all');
@@ -100,297 +105,682 @@ class _MainFireshowState extends State<MainFireshow> {
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.only(top: 15),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const SizedBox(height: 30),
-              Container(
-                child: Column(
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10),
-                      child: Center(
-                        child: Text(
-                          'Fire Extinguisher',
-                          style: TextStyle(
-                            fontSize: 35,
-                            fontFamily: 'Kanit-Regular',
-                            color: Color.fromARGB(255, 4, 197, 193),
+      backgroundColor: Colors.blue[500],
+      appBar: AppBar(
+        elevation: 0,
+        title: Text('Fire Extinguisher'),
+        centerTitle: false,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 5),
+            child: IconButton(
+              style: IconButton.styleFrom(
+                  backgroundColor: MyConstant.kprimaryColor,
+                  padding: const EdgeInsets.all(15)),
+              onPressed: () {},
+              iconSize: 25,
+              color: Colors.lightBlue,
+              icon: Icon(Icons.notifications),
+            ),
+          ),
+        ],
+      ),
+      body: SafeArea(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+                child: Stack(
+              children: <Widget>[
+                Container(
+                  margin: EdgeInsets.only(top: 70),
+                  decoration: BoxDecoration(
+                    color: Color.fromARGB(255, 243, 237, 237),
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(40),
+                      topRight: Radius.circular(40),
+                    ),
+                  ),
+                ),
+                SingleChildScrollView( 
+                  child: Container(
+                    // padding: const EdgeInsets.all(8.0),
+                    child: Column(
+                      children: [
+                        
+                        Container(
+                          height: 200,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 30, top: 30, right: 10),
+                                child: Container(
+                                  height: 160,
+                                  width: 340,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(40),
+                                           color: Color.fromARGB(255, 18, 196, 181),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0xFFe8e8e8),
+                                              blurRadius: 5.0,
+                                              offset: Offset(0, 5),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(40),
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 190,
+                                          width: 170,
+                                          child: Image.asset(
+                                            "images/FGREEN.png",
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        child: SizedBox(
+                                          height: 200,
+                                          // width: size.width - 200,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Spacer(), // ล่าง
+                                              Padding(
+                                                padding: const EdgeInsets.all(10),
+                                                child: Text(
+                                                  'F-Green All',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 28, 29, 29),
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                              Spacer(), // ล่าง
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        kDefaultFontSize * 1.0,
+                                                    vertical:
+                                                        kDefaultFontSize / 10),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.orange[300],
+                                                  borderRadius: BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(40),
+                                                      topRight:
+                                                          Radius.circular(40)),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: Text(
+                                                    '$fire_green_all ถัง',
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 28, 29, 29),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, top: 30, right: 10),
+                                child: Container(
+                                  height: 160,
+                                  width: 340,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(40),
+                                           color: Color.fromARGB(255, 18, 196, 181),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0xFFe8e8e8),
+                                              blurRadius: 5.0,
+                                              offset: Offset(0, 5),
+                                            ),
+                                            // BoxShadow(
+                                            //   color: Color(0xFFe8e8e8),
+                                            //   blurRadius: 5.0,
+                                            //   offset: Offset(-10, -10,),
+                                            // ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(40),
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 190,
+                                          width: 170,
+                                          child: Image.asset(
+                                            "images/FGREEN.png",
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        child: SizedBox(
+                                          height: 200,
+                                          // width: size.width - 200,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Spacer(), // ล่าง
+                                              Padding(
+                                                padding: const EdgeInsets.all(10),
+                                                child: Text(
+                                                  'F-Green ใช้งานได้',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 28, 29, 29),
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                              Spacer(), // ล่าง
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        kDefaultFontSize * 1.0,
+                                                    vertical:
+                                                        kDefaultFontSize / 10),
+                                                decoration: BoxDecoration(
+                                               color: Color.fromARGB(255, 6, 231, 213),
+                                                  borderRadius: BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(40),
+                                                      topRight:
+                                                          Radius.circular(40)),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: Text(
+                                                    '$fire_green ถัง',
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 28, 29, 29),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, top: 30, right: 10),
+                                child: Container(
+                                  height: 160,
+                                  width: 340,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(40),
+                                          color: Color.fromARGB(255, 18, 196, 181),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0xFFe8e8e8),
+                                              blurRadius: 5.0,
+                                              offset: Offset(0, 5),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(40),
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 190,
+                                          width: 170,
+                                          child: Image.asset(
+                                            "images/FGREEN.png",
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        child: SizedBox(
+                                          height: 200,
+                                          // width: size.width - 200,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Spacer(), // ล่าง
+                                              Padding(
+                                                padding: const EdgeInsets.all(10),
+                                                child: Text(
+                                                  'F-Green ส่งซ่อม',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 28, 29, 29),
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                              Spacer(), // ล่าง
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        kDefaultFontSize * 1.0,
+                                                    vertical:
+                                                        kDefaultFontSize / 10),
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromARGB(255, 243, 41, 15),
+                                                  borderRadius: BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(40),
+                                                      topRight:
+                                                          Radius.circular(40)),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: Text(
+                                                    '$fire_green_rep ถัง',
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 250, 250, 250),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                      ),
+                    
+                    
+                        Container(
+                          height: 200,
+                          child: ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: <Widget>[
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 30, top: 30, right: 10),
+                                child: Container(
+                                  height: 160,
+                                  width: 340,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(40),
+                                          color: Color.fromARGB(255, 245, 60, 14),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0xFFe8e8e8),
+                                              blurRadius: 5.0,
+                                              offset: Offset(0, 5),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(40),
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 170,
+                                          width: 170,
+                                          child: Image.asset(
+                                            "images/FRED.png",
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        child: SizedBox(
+                                          height: 200,
+                                          // width: size.width - 200,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Spacer(), // ล่าง
+                                              Padding(
+                                                padding: const EdgeInsets.all(10),
+                                                child: Text(
+                                                  'F-Red All',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 28, 29, 29),
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                              Spacer(), // ล่าง
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        kDefaultFontSize * 1.0,
+                                                    vertical:
+                                                        kDefaultFontSize / 10),
+                                                decoration: BoxDecoration(
+                                                  color: Colors.orange[300],
+                                                  borderRadius: BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(40),
+                                                      topRight:
+                                                          Radius.circular(40)),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: Text(
+                                                    '$fire_red_all ถัง',
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 28, 29, 29),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, top: 30, right: 10),
+                                child: Container(
+                                  height: 160,
+                                  width: 340,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(40),
+                                          color: Color.fromARGB(255, 245, 60, 14),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0xFFe8e8e8),
+                                              blurRadius: 5.0,
+                                              offset: Offset(0, 5),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(40),
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 170,
+                                          width: 170,
+                                          child: Image.asset(
+                                            "images/FRED.png",
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        child: SizedBox(
+                                          height: 200,
+                                          // width: size.width - 200,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Spacer(), // ล่าง
+                                              Padding(
+                                                padding: const EdgeInsets.all(10),
+                                                child: Text(
+                                                  'F-Red ใช้งานได้',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 28, 29, 29),
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                              Spacer(), // ล่าง
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        kDefaultFontSize * 1.0,
+                                                    vertical:
+                                                        kDefaultFontSize / 10),
+                                                decoration: BoxDecoration(
+                                                 color: Color.fromARGB(255, 28, 224, 208),
+                                                  borderRadius: BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(40),
+                                                      topRight:
+                                                          Radius.circular(40)),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: Text(
+                                                    '$fire_red ถัง',
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(
+                                                            255, 28, 29, 29),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, top: 30, right: 10),
+                                child: Container(
+                                  height: 160,
+                                  width: 340,
+                                  child: Stack(
+                                    children: <Widget>[
+                                      Container(
+                                        height: 200,
+                                        decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(40),
+                                        color: Color.fromARGB(255, 245, 60, 14),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              color: Color(0xFFe8e8e8),
+                                              blurRadius: 5.0,
+                                              offset: Offset(0, 5),
+                                            ),
+                                          ],
+                                        ),
+                                        child: Container(
+                                          margin: EdgeInsets.only(right: 10),
+                                          decoration: BoxDecoration(
+                                            color: Colors.white,
+                                            borderRadius: BorderRadius.circular(40),
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        top: 0,
+                                        right: 0,
+                                        child: Container(
+                                          height: 170,
+                                          width: 170,
+                                          child: Image.asset(
+                                            "images/FRED.png",
+                                          ),
+                                        ),
+                                      ),
+                                      Positioned(
+                                        child: SizedBox(
+                                          height: 200,
+                                          // width: size.width - 200,
+                                          child: Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: <Widget>[
+                                              Spacer(), // ล่าง
+                                              Padding(
+                                                padding: const EdgeInsets.all(10),
+                                                child: Text(
+                                                  'F-Red ส่งซ่อม',
+                                                  style: TextStyle(
+                                                      color: Color.fromARGB(
+                                                          255, 28, 29, 29),
+                                                      fontSize: 20,
+                                                      fontWeight: FontWeight.bold),
+                                                ),
+                                              ),
+                                              Spacer(), // ล่าง
+                                              Container(
+                                                padding: EdgeInsets.symmetric(
+                                                    horizontal:
+                                                        kDefaultFontSize * 1.0,
+                                                    vertical:
+                                                        kDefaultFontSize / 10),
+                                                decoration: BoxDecoration(
+                                                  color: Color.fromARGB(255, 245, 60, 14),
+                                                  borderRadius: BorderRadius.only(
+                                                      bottomLeft:
+                                                          Radius.circular(40),
+                                                      topRight:
+                                                          Radius.circular(40)),
+                                                ),
+                                                child: Padding(
+                                                  padding:
+                                                      const EdgeInsets.all(10.0),
+                                                  child: Text(
+                                                    '$fire_red_rep ถัง',
+                                                    style: TextStyle(
+                                                        color: Color.fromARGB(255, 238, 243, 243),
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.bold),
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
-                  ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 15, right: 15, top: 10, bottom: 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 170,
-                      height: 190,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 82, 176, 253),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(50),
-                          bottomLeft: Radius.circular(50),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "images/FGREEN.png",
-                              height: 110,
-                              width: 110,
-                            ),
-                            Text(
-                              'F-Green All',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '$fire_green_all',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 170,
-                      height: 190,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 14, 209, 160),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "images/FRED.png",
-                              height: 110,
-                              width: 110,
-                            ),
-                            Text(
-                              'F-Red All',
-                              //  '$vn',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '$fire_red_all',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 15, right: 15, top: 10, bottom: 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 170,
-                      height: 190,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 136, 202, 255),
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "images/FGREEN.png",
-                              height: 110,
-                              width: 110,
-                            ),
-                            Text(
-                              'F-Green ใช้ได้',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '$fire_green',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 170,
-                      height: 190,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 85, 236, 199),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(50),
-                          bottomLeft: Radius.circular(50),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "images/FRED.png",
-                              height: 110,
-                              width: 110,
-                            ),
-                            Text(
-                              'F-Red ใช้ได้',
-                              //  '$vn',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '$fire_red',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 5),
-              Padding(
-                padding: const EdgeInsets.only(
-                    left: 15, right: 15, top: 10, bottom: 2),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 170,
-                      height: 190,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 182, 79),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(50),
-                          bottomLeft: Radius.circular(50),
-                          topLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "images/FGREEN.png",
-                              height: 110,
-                              width: 110,
-                            ),
-                            Text(
-                              'F-Green ส่งซ่อม',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '$fire_green_rep',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Container(
-                      width: 170,
-                      height: 190,
-                      decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 255, 182, 79),
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(50),
-                          bottomLeft: Radius.circular(50),
-                          topLeft: Radius.circular(50),
-                          bottomRight: Radius.circular(50),
-                        ),
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(top: 10),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              "images/FRED.png",
-                              height: 110,
-                              width: 110,
-                            ),
-                            Text(
-                              'F-Red ส่งซ่อม',
-                              //  '$vn',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                            Text(
-                              '$fire_red_rep',
-                              style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
+              ],
+            ))
+          ],
         ),
       ),
     );
+    // return SafeArea(
+    //   child: Column(
+    //     children: <Widget>[
+    //       Expanded(
+    //           child: Stack(
+    //         children: <Widget>[
+    //           Container(
+    //             decoration: BoxDecoration(
+    //               color: Colors.lightBlue,
+    //               borderRadius: BorderRadius.only(
+    //                 topLeft: Radius.circular(40),
+    //                 topRight: Radius.circular(40),
+    //               ),
+    //             ),
+    //           )
+    //         ],
+    //       ))
+    //     ],
+    //   ),
+    // );
   }
 }

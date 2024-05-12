@@ -1,6 +1,9 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:pkhos/models/firelistmodel.dart';
 import 'package:pkhos/models/firemodel.dart';
 import 'package:pkhos/screens/admin/fire/mainfirereq.dart';
 import 'package:pkhos/utility/my_constant.dart';
@@ -8,23 +11,32 @@ import 'package:pkhos/utility/my_dialog.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MainFireedit extends StatefulWidget {
-    final Firemodel fireModeledit;
-  const MainFireedit({Key? key, required this.fireModeledit})
-      : super(key: key);
+  final Firemodel fireModeledit;
+  const MainFireedit({Key? key, required this.fireModeledit}) : super(key: key);
 
   @override
   State<MainFireedit> createState() => _MainFireeditState();
 }
 
 class _MainFireeditState extends State<MainFireedit> {
-   Future<void> _refreshpage() async {
+  Future<void> _refreshpage() async {
     return await Future.delayed(Duration(seconds: 2));
   }
-    final formKey = GlobalKey<FormState>();
+
+  final formKey = GlobalKey<FormState>();
   late Firemodel _fireModeledit;
-  String? fire_check_id, fire_num, fire_name, check_date, fire_check_injection, fire_check_joystick,fire_check_body,fire_check_gauge,fire_check_drawback;
- 
- @override
+  String? fire_check_id,
+      fire_num,
+      fire_name,
+      check_date,
+      fire_check_injection,
+      fire_check_joystick,
+      fire_check_body,
+      fire_check_gauge,
+      fire_check_drawback,
+      active,
+      firenum;
+  @override
   void initState() {
     super.initState();
     _fireModeledit = widget.fireModeledit;
@@ -38,11 +50,37 @@ class _MainFireeditState extends State<MainFireedit> {
     fire_check_gauge = _fireModeledit.fire_check_gauge;
     fire_check_drawback = _fireModeledit.fire_check_drawback;
     print('## drawback ## ==>>>$fire_check_drawback');
+    getFiredata();
   }
- 
+
+  List<FireListmodel> firelistmodel = [];
+
+  Future<Null> getFiredata() async {
+    final path = '${MyConstant.getfirenum}/$fire_num';
+    await Dio().get(path).then((value) async {
+      String active_ = value.toString();
+      print('## value for API active ==>  $value');
+      // for (var item in json.decode(value.data!)) {
+      //   FireListmodel model = FireListmodel.fromJson(item);
+      // //   var fire_num = model.fire_num!.toString();
+      // //    var active_ = model.active!.toString();
+      //   print('###dd ==>>> $active_');
+      // //        print('###fire_num ==>>>$active_');
+      //   setState(() {
+      //     firelistmodel.add(model);
+      //     firenum = fire_num;
+      //     active  = active_;
+      //   });
+      // }
+      // setState(() {
+      //    active  = $active;
+      // });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-      double size = MediaQuery.of(context).size.width;
+    double size = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueAccent,
@@ -103,21 +141,21 @@ class _MainFireeditState extends State<MainFireedit> {
                           ),
                         ],
                       ),
-                     child: Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        leading: Text(
-                          'สายฉีด',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            injectionRadio(),
-                          ],
+                      child: Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          leading: Text(
+                            'สายฉีด',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              injectionRadio(),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
                     ),
                   ),
                   Padding(
@@ -149,21 +187,21 @@ class _MainFireeditState extends State<MainFireedit> {
                           ),
                         ],
                       ),
-                       child: Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        leading: Text(
-                          'คันบังคับ',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            joystickRadio(),
-                          ],
+                      child: Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          leading: Text(
+                            'คันบังคับ',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              joystickRadio(),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
                     ),
                   ),
                   Padding(
@@ -195,21 +233,21 @@ class _MainFireeditState extends State<MainFireedit> {
                           ),
                         ],
                       ),
-                     child: Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        leading: Text(
-                          'ตัวถัง',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            bodyRadio(),
-                          ],
+                      child: Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          leading: Text(
+                            'ตัวถัง',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              bodyRadio(),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
                     ),
                   ),
                   Padding(
@@ -241,21 +279,21 @@ class _MainFireeditState extends State<MainFireedit> {
                           ),
                         ],
                       ),
-                     child: Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        leading: Text(
-                          'เกจความดัน',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            gaugeRadio(),
-                          ],
+                      child: Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          leading: Text(
+                            'เกจความดัน',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              gaugeRadio(),
+                            ],
+                          ),
                         ),
                       ),
-                    ),
                     ),
                   ),
                   Padding(
@@ -287,23 +325,159 @@ class _MainFireeditState extends State<MainFireedit> {
                           ),
                         ],
                       ),
-                     child: Card(
-                      color: Colors.white,
-                      child: ListTile(
-                        leading: Text(
-                          'สิ่งกีดขวาง',
-                          style: TextStyle(fontSize: 17),
-                        ),
-                        title: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            drawbackRadio(),
-                          ],
+                      child: Card(
+                        color: Colors.white,
+                        child: ListTile(
+                          leading: Text(
+                            'สิ่งกีดขวาง',
+                            style: TextStyle(fontSize: 17),
+                          ),
+                          title: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              drawbackRadio(),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                    ),
                   ),
+                  // Container(
+                  //   child: Row(
+                  //     children: [
+                  //       Column(
+                  //         children: [
+                  //           Row(
+                  //             children: [
+                  //               Text(
+                  //                 ' สถานะ ',
+                  //                 style: TextStyle(fontSize: 17),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       Row(
+                  //         children: [
+                  //           Radio(
+                  //             activeColor: Colors.pink,
+                  //             value: 'Y',
+                  //             groupValue: active,
+                  //             onChanged: (value) {
+                  //               setState(() {
+                  //                 active = value!;
+                  //               });
+                  //             },
+                  //           ),
+                  //           Text(
+                  //             'ปกติ',
+                  //             style: TextStyle(fontSize: 17),
+                  //           ),
+                  //           Radio(
+                  //             activeColor: Colors.pink,
+                  //             value: 'N',
+                  //             groupValue: active,
+                  //             onChanged: (value) {
+                  //               setState(() {
+                  //                 active = value!;
+                  //               });
+                  //             },
+                  //           ),
+                  //           Text(
+                  //             'ชำรุด',
+                  //             style: TextStyle(fontSize: 17),
+                  //           ),
+                  //           Radio(
+                  //             activeColor: Colors.pink,
+                  //             value: 'D',
+                  //             groupValue: active,
+                  //             onChanged: (value) {
+                  //               setState(() {
+                  //                 active = value!;
+                  //               });
+                  //             },
+                  //           ),
+                  //           Text(
+                  //             'ส่งซ่อม',
+                  //             style: TextStyle(fontSize: 17),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Container(
+                  //   child: Row(
+                  //     children: [
+                  //       Column(
+                  //         children: [
+                  //           Row(
+                  //             children: [
+                  //               Text(
+                  //                 '                              ',
+                  //                 style: TextStyle(fontSize: 17),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       Row(
+                  //         children: [
+                  //           Radio(
+                  //             activeColor: Colors.pink,
+                  //             value: 'N',
+                  //             groupValue: active,
+                  //             onChanged: (value) {
+                  //               setState(() {
+                  //                 active = value!;
+                  //               });
+                  //             },
+                  //           ),
+                  //           Text(
+                  //             'ชำรุด',
+                  //             style: TextStyle(fontSize: 17),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // Container(
+                  //   child: Row(
+                  //     children: [
+                  //       Column(
+                  //         children: [
+                  //           Row(
+                  //             children: [
+                  //               Text(
+                  //                 '                              ',
+                  //                 style: TextStyle(fontSize: 17),
+                  //               ),
+                  //             ],
+                  //           ),
+                  //         ],
+                  //       ),
+                  //       Row(
+                  //         children: [
+                  //           Radio(
+                  //             activeColor: Colors.pink,
+                  //             value: 'R',
+                  //             groupValue: active,
+                  //             onChanged: (value) {
+                  //               setState(() {
+                  //                 active = value!;
+                  //               });
+                  //             },
+                  //           ),
+                  //           Text(
+                  //             'ส่งซ่อม',
+                  //             style: TextStyle(fontSize: 17),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ),
             ),
@@ -314,7 +488,8 @@ class _MainFireeditState extends State<MainFireedit> {
       ),
     );
   }
-   Widget injectionRadio() => Container(
+
+  Widget injectionRadio() => Container(
         child: Row(
           children: <Widget>[
             Radio(
@@ -340,8 +515,8 @@ class _MainFireeditState extends State<MainFireedit> {
             Text('ชำรุด'),
           ],
         ),
-  );
-   Widget joystickRadio() => Container(
+      );
+  Widget joystickRadio() => Container(
         child: Row(
           children: <Widget>[
             Radio(
@@ -367,7 +542,7 @@ class _MainFireeditState extends State<MainFireedit> {
             Text('ชำรุด'),
           ],
         ),
-  );
+      );
 
   Widget bodyRadio() => Container(
         child: Row(
@@ -395,7 +570,7 @@ class _MainFireeditState extends State<MainFireedit> {
             Text('ชำรุด'),
           ],
         ),
-  );
+      );
 
   Widget gaugeRadio() => Container(
         child: Row(
@@ -423,9 +598,9 @@ class _MainFireeditState extends State<MainFireedit> {
             Text('ชำรุด'),
           ],
         ),
-  );
+      );
 
-Widget drawbackRadio() => Container(
+  Widget drawbackRadio() => Container(
         child: Row(
           children: <Widget>[
             Radio(
@@ -453,12 +628,10 @@ Widget drawbackRadio() => Container(
         ),
       );
 
-
-   Row saveButtom(double size) {
+  Row saveButtom(double size) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      
-       children: [
+      children: [
         Container(
           margin: EdgeInsets.symmetric(vertical: 18),
           width: size * 0.6,
@@ -489,15 +662,15 @@ Widget drawbackRadio() => Container(
       ],
     );
   }
-   
-   Future<Null> comfirmDialog() async {
+
+  Future<Null> comfirmDialog() async {
     showDialog(
       context: context,
       builder: (context) => SimpleDialog(
         title: Text('ต้องการแก้ไขข้อมูลใช่ไหม ?'),
         children: [
-          Center( 
-            child: ElevatedButton.icon( 
+          Center(
+            child: ElevatedButton.icon(
               label: Text(
                 ' Yes',
                 style: MyConstant().h2save(),
@@ -518,25 +691,24 @@ Widget drawbackRadio() => Container(
       ),
     );
   }
- 
-    Future<Null> updateActive() async {
+
+  Future<Null> updateActive() async {
     SharedPreferences preferences = await SharedPreferences.getInstance();
 
     String id = preferences.getString('id')!;
     // String article_num2 = article_numController.text;
     print('######## userid = $id');
     // print('######## Active = $fireStatus');
-  
+
     String path =
         '${MyConstant.domain}/pkhos/api/getfireupdate.php?isAdd=true&fire_num=$fire_num&fire_check_id=$fire_check_id&user_id=$id&fire_check_injection=$fire_check_injection&fire_check_joystick=$fire_check_joystick&fire_check_body=$fire_check_body&fire_check_gauge=$fire_check_gauge&fire_check_drawback=$fire_check_drawback';
     await Dio().get(path).then((value) async {
       String dd = value.toString();
       print('######## Vaaaaaaaaaa = $dd');
-      if (value.toString() == 'true') { 
-        Navigator.pop(context,Mainfirereq());
-        
+      if (value.toString() == 'true') {
+        Navigator.pop(context, Mainfirereq());
       } else {
-       MyDialog().normalDialog(context, 'กรุณาลองใหม่', 'ไม่สำเร็จ');
+        MyDialog().normalDialog(context, 'กรุณาลองใหม่', 'ไม่สำเร็จ');
       }
     });
   }

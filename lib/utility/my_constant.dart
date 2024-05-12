@@ -16,6 +16,7 @@ class MyConstant {
   // static String domain = 'http://27.254.191.157/';
   static String domain                   = 'http://smarthos-phukieohos.moph.go.th';
   static String authenspsch              = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
+  static String authenspsch_mini         = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch_mini';
   static String pullhos                  = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
   static String fdh_mini_auth            = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_auth';
   static String fdh_mini_pullhosinv      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosinv';
@@ -30,7 +31,7 @@ class MyConstant {
   static String fdh_countauthennull      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countauthennull';
   static String fdh_sumincome_authen     = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome_authen';
   static String fdh_sumincome_noauthen   = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_sumincome_noauthen';
-
+  static String getfirenum               = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/getfirenum';
   // static String countfiregreen           = 'http://smarthos-phukieohos.moph.go.th/pkhos/api/countfire.php?isAddGREEN=true';
   static String countfiregreenall        = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfiregreenall'; 
   static String countfiregreen           = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfiregreen'; 
@@ -40,6 +41,7 @@ class MyConstant {
   static String countfireredrepaire      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfireredrepaire';
   static String countfiregreenrepaire    = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/countfiregreenrepaire';
 
+  static String getFiredata              = 'http://smarthos-phukieohos.moph.go.th/pkhos/api/getfire_detailsave.php?isAdd=true&';
 
 
   static String routeLogin = '/login';

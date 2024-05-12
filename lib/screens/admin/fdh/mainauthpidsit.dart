@@ -227,7 +227,7 @@ class _MainAuthpidsitState extends State<MainAuthpidsit> {
               if (_isDownloading = true) {
                 _isDownloading = false;
                 timer.cancel();
-                MyDialog().normalDialog(context, 'Pull Hos Success', 'Success');
+                MyDialog().normalDialog(context, 'ปิดสิทธิ์ Success', 'Success');
                 percent = 0;
                 setState(() {
                   fdh_countvn();

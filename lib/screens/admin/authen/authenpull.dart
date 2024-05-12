@@ -196,6 +196,45 @@ class _AuthenPullState extends State<AuthenPull> {
     if (!mounted) return;
   }
 
+  Future<void> Pull_authen_mini() async {
+    try {
+      String path = '${MyConstant.authenspsch_mini}';
+      await Dio().get(path).then((value) async {
+        String dd = value.toString();
+        print('######## Vaaa mini = $dd');
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 10.0;
+            if (percent.toStringAsFixed(1) == '100.0') { 
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog()
+                    .normalDialog(context, 'Pull Authen Mini Success', 'Success');
+                percent = 0;
+                 fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countauthen();
+                  fdh_countauthennull();
+                  fdh_sumincome_authen();
+                  fdh_sumincome_noauthen();
+              } else {
+                MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+              }
+            }
+          });
+        });
+        if (value.toString() == 'true') { 
+        } else {
+          MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+        }
+      });
+      
+    } on PlatformException {}
+    if (!mounted) return;
+  }
+
   Future<void> Pull_hos() async {
     try {
       final url = '${MyConstant.pullhos}';
@@ -340,6 +379,24 @@ class _AuthenPullState extends State<AuthenPull> {
                               setState(() {
                                 Pull_authen();
                                 // fdh_minipullhosnoinv();
+                              });
+                            },
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 2),
+                          child: IconButton(
+                            style: IconButton.styleFrom(
+                                backgroundColor: MyConstant.kprimaryColor,
+                                padding: const EdgeInsets.all(10)),
+                            iconSize: 70,
+                            icon: const Icon(Icons.download),
+                            color: Color.fromARGB(255, 5, 161, 167),
+                            tooltip: 'Pull NoInvoice',
+                            onPressed: () {
+                              setState(() {
+                                Pull_authen_mini();
+                               
                               });
                             },
                           ),
