@@ -17,10 +17,15 @@ class MyConstant {
   static String domain                   = 'http://smarthos-phukieohos.moph.go.th';
   static String authenspsch              = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
   static String authenspsch_mini         = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch_mini';
+
   static String pullhos                  = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
+
+
   static String fdh_mini_auth            = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_auth';
   static String fdh_mini_pullhosinv      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosinv';
+
   static String fdh_minipullhosnoinv     = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_minipullhosnoinv';
+  
   static String fdh_mini_pidsit          = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pidsit';
   static String fdh_mini_pullbookid      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
   static String fdh_countvn              = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countvn';
