@@ -8,7 +8,7 @@ import 'package:pkhos/screens/admin/authen/authenlist.dart';
 import 'package:pkhos/screens/admin/authen/authenpull.dart';
 import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
 import 'package:pkhos/screens/admin/cctv/mainhome.dart';
-import 'package:pkhos/screens/admin/cctv/mainprofile.dart';
+import 'package:pkhos/screens/admin/profiles/mainprofile.dart';
 import 'package:pkhos/screens/admin/cctv/mainreport.dart';
 import 'package:pkhos/screens/admin/fdh/mainauthpidsit.dart';
 import 'package:pkhos/screens/admin/fdh/mainfdh.dart';

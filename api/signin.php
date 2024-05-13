@@ -18,9 +18,7 @@
         if ($_GET['isAdd'] == 'true') {
            
             $Username = $_GET['username'];		
-            // $Password = $_GET['password'];
-
- 
+            // $Password = $_GET['password']; 
 
             // $result = mysqli_query($conn,"SELECT * FROM info_users");
             $result = mysqli_query($conn,"SELECT * FROM users WHERE username = '$Username'");

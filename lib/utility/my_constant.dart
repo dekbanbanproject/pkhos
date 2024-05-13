@@ -190,7 +190,7 @@ class MyConstant {
       TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
 
   TextStyle h2() =>
-      TextStyle(fontSize: 17, color: primary, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 17, color: Color.fromARGB(255, 27, 207, 180), fontWeight: FontWeight.bold);
 
   TextStyle h2save() => TextStyle(
       fontSize: 20,
