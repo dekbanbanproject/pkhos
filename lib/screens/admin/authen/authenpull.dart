@@ -307,6 +307,47 @@ class _AuthenPullState extends State<AuthenPull> {
     if (!mounted) return;
   }
 
+  Future<void> Pull_hosmini() async {
+    try {
+      final url = '${MyConstant.pullhosminiapi}';
+     
+      await Dio().get(url).then((values) async {
+        String ddd = values.toString(); 
+        print('######## pull HOS Mini = $ddd');
+        const oneSec = const Duration(seconds: 1);
+        new Timer.periodic(oneSec, (timer) {
+          setState(() {
+            percent += 10.0;
+            if (percent.toStringAsFixed(1) == '100.0') { 
+              if (_isDownloading = true) {
+                _isDownloading = false;
+                timer.cancel();
+                MyDialog()
+                    .normalDialog(context, 'Pull HOS Mini Success', 'Success');
+                percent = 0;
+                  fdh_countvn();
+                  fdh_sumincome();
+                  fdh_countauthen();
+                  fdh_countauthennull();
+                  fdh_sumincome_authen();
+                  fdh_sumincome_noauthen();
+              } else {
+                MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+              }
+            }
+          });
+        });
+        if (values.toString() == '200') {
+          
+        } else {
+          MyDialog().normalDialog(context, 'Not Success', 'UnSuccess');
+        }
+      });
+      // print('## value for API ===> $status');
+    } on PlatformException {}
+    if (!mounted) return;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -353,7 +394,7 @@ class _AuthenPullState extends State<AuthenPull> {
                             style: IconButton.styleFrom(
                                 backgroundColor: MyConstant.kprimaryColor,
                                 padding: const EdgeInsets.all(10)),
-                            iconSize: 70,
+                            iconSize: 50,
                             icon: const Icon(Icons.download),
                             color: Color.fromARGB(255, 44, 149, 235),
                             tooltip: 'Pull Authen',
@@ -366,12 +407,30 @@ class _AuthenPullState extends State<AuthenPull> {
                           ),
                         ),
                         Padding(
+                          padding: const EdgeInsets.only(left: 2, right: 10),
+                          child: IconButton(
+                            style: IconButton.styleFrom(
+                                backgroundColor: MyConstant.kprimaryColor,
+                                padding: const EdgeInsets.all(10)),
+                            iconSize: 50,
+                            icon: const Icon(Icons.download),
+                            color: Color.fromARGB(255, 44, 149, 235),
+                            tooltip: 'Pull Authen',
+                            onPressed: () {
+                              setState(() {
+                                _isDownloading = !_isDownloading;
+                              });
+                              Pull_hosmini();
+                            },
+                          ),
+                        ),
+                        Padding(
                           padding: const EdgeInsets.only(left: 10, right: 2),
                           child: IconButton(
                             style: IconButton.styleFrom(
                                 backgroundColor: MyConstant.kprimaryColor,
                                 padding: const EdgeInsets.all(10)),
-                            iconSize: 70,
+                            iconSize: 50,
                             icon: const Icon(Icons.download),
                             color: Color.fromARGB(255, 201, 20, 218),
                             tooltip: 'Pull NoInvoice',
@@ -389,7 +448,7 @@ class _AuthenPullState extends State<AuthenPull> {
                             style: IconButton.styleFrom(
                                 backgroundColor: MyConstant.kprimaryColor,
                                 padding: const EdgeInsets.all(10)),
-                            iconSize: 70,
+                            iconSize: 50,
                             icon: const Icon(Icons.download),
                             color: Color.fromARGB(255, 5, 161, 167),
                             tooltip: 'Pull NoInvoice',
