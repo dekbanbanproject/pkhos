@@ -270,7 +270,7 @@ class _AuthenPullState extends State<AuthenPull> {
                 _isDownloading = false;
                 timer.cancel();
                 MyDialog()
-                    .normalDialog(context, 'Pull Authen Success', 'Success');
+                    .normalDialog(context, 'Pull Hos Success', 'Success');
                 percent = 0;
                   fdh_countvn();
                   fdh_sumincome();

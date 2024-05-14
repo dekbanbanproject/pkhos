@@ -17,13 +17,21 @@ class MyConstant {
   static String domain                   = 'http://smarthos-phukieohos.moph.go.th';
   static String authenspsch              = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch';
   static String authenspsch_mini         = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/authen_spsch_mini';
+<<<<<<< HEAD
   static String pullhos                  = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi'
   ;
   static String pullhosminiapi           = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosminiapi';
+=======
+
+  static String pullhos                  = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/pull_hosapi';
+
+>>>>>>> 50d1285a918ee75823d46a2a2111cba363f7208f
 
   static String fdh_mini_auth            = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_auth';
   static String fdh_mini_pullhosinv      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullhosinv';
+
   static String fdh_minipullhosnoinv     = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_minipullhosnoinv';
+  
   static String fdh_mini_pidsit          = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pidsit';
   static String fdh_mini_pullbookid      = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_mini_pullbookid';
   static String fdh_countvn              = 'http://smarthos-phukieohos.moph.go.th/pkbackoffice/public/api/fdh_countvn';
@@ -188,7 +196,7 @@ class MyConstant {
       TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
 
   TextStyle h2() =>
-      TextStyle(fontSize: 17, color: primary, fontWeight: FontWeight.bold);
+      TextStyle(fontSize: 17, color: Color.fromARGB(255, 27, 207, 180), fontWeight: FontWeight.bold);
 
   TextStyle h2save() => TextStyle(
       fontSize: 20,

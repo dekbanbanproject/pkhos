@@ -150,7 +150,7 @@ class _MainFireshowState extends State<MainFireshow> {
                       children: [
                         
                         Container(
-                          height: 200,
+                          height: 300,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: <Widget>[
@@ -163,7 +163,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                   child: Stack(
                                     children: <Widget>[
                                       Container(
-                                        height: 200,
+                                        height: 300,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(40),
                                            color: Color.fromARGB(255, 18, 196, 181),
@@ -187,8 +187,8 @@ class _MainFireshowState extends State<MainFireshow> {
                                         top: 0,
                                         right: 0,
                                         child: Container(
-                                          height: 190,
-                                          width: 170,
+                                          height: 300,
+                                          width: 220,
                                           child: Image.asset(
                                             "images/FGREEN.png",
                                           ),
@@ -196,7 +196,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                       ),
                                       Positioned(
                                         child: SizedBox(
-                                          height: 200,
+                                          height: 300,
                                           // width: size.width - 200,
                                           child: Column(
                                             crossAxisAlignment:
@@ -260,7 +260,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                   child: Stack(
                                     children: <Widget>[
                                       Container(
-                                        height: 200,
+                                        height: 400,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(40),
                                            color: Color.fromARGB(255, 18, 196, 181),
@@ -289,8 +289,8 @@ class _MainFireshowState extends State<MainFireshow> {
                                         top: 0,
                                         right: 0,
                                         child: Container(
-                                          height: 190,
-                                          width: 170,
+                                          height: 300,
+                                          width: 220,
                                           child: Image.asset(
                                             "images/FGREEN.png",
                                           ),
@@ -298,7 +298,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                       ),
                                       Positioned(
                                         child: SizedBox(
-                                          height: 200,
+                                          height: 400,
                                           // width: size.width - 200,
                                           child: Column(
                                             crossAxisAlignment:
@@ -362,7 +362,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                   child: Stack(
                                     children: <Widget>[
                                       Container(
-                                        height: 200,
+                                        height: 300,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(40),
                                           color: Color.fromARGB(255, 18, 196, 181),
@@ -386,8 +386,8 @@ class _MainFireshowState extends State<MainFireshow> {
                                         top: 0,
                                         right: 0,
                                         child: Container(
-                                          height: 190,
-                                          width: 170,
+                                          height: 300,
+                                          width: 220,
                                           child: Image.asset(
                                             "images/FGREEN.png",
                                           ),
@@ -395,7 +395,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                       ),
                                       Positioned(
                                         child: SizedBox(
-                                          height: 200,
+                                          height: 300,
                                           // width: size.width - 200,
                                           child: Column(
                                             crossAxisAlignment:
@@ -405,7 +405,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                               Padding(
                                                 padding: const EdgeInsets.all(10),
                                                 child: Text(
-                                                  'F-Green ส่งซ่อม',
+                                                  'F-Green เสีย',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 28, 29, 29),
@@ -455,7 +455,7 @@ class _MainFireshowState extends State<MainFireshow> {
                     
                     
                         Container(
-                          height: 200,
+                          height: 300,
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: <Widget>[
@@ -468,7 +468,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                   child: Stack(
                                     children: <Widget>[
                                       Container(
-                                        height: 200,
+                                        height: 300,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(40),
                                           color: Color.fromARGB(255, 245, 60, 14),
@@ -492,7 +492,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                         top: 0,
                                         right: 0,
                                         child: Container(
-                                          height: 170,
+                                          height: 270,
                                           width: 170,
                                           child: Image.asset(
                                             "images/FRED.png",
@@ -501,7 +501,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                       ),
                                       Positioned(
                                         child: SizedBox(
-                                          height: 200,
+                                          height: 300,
                                           // width: size.width - 200,
                                           child: Column(
                                             crossAxisAlignment:
@@ -565,7 +565,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                   child: Stack(
                                     children: <Widget>[
                                       Container(
-                                        height: 200,
+                                        height: 300,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(40),
                                           color: Color.fromARGB(255, 245, 60, 14),
@@ -589,7 +589,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                         top: 0,
                                         right: 0,
                                         child: Container(
-                                          height: 170,
+                                          height: 270,
                                           width: 170,
                                           child: Image.asset(
                                             "images/FRED.png",
@@ -598,7 +598,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                       ),
                                       Positioned(
                                         child: SizedBox(
-                                          height: 200,
+                                          height: 300,
                                           // width: size.width - 200,
                                           child: Column(
                                             crossAxisAlignment:
@@ -662,7 +662,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                   child: Stack(
                                     children: <Widget>[
                                       Container(
-                                        height: 200,
+                                        height: 300,
                                         decoration: BoxDecoration(
                                           borderRadius: BorderRadius.circular(40),
                                         color: Color.fromARGB(255, 245, 60, 14),
@@ -686,7 +686,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                         top: 0,
                                         right: 0,
                                         child: Container(
-                                          height: 170,
+                                          height: 270,
                                           width: 170,
                                           child: Image.asset(
                                             "images/FRED.png",
@@ -695,7 +695,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                       ),
                                       Positioned(
                                         child: SizedBox(
-                                          height: 200,
+                                          height: 300,
                                           // width: size.width - 200,
                                           child: Column(
                                             crossAxisAlignment:
@@ -705,7 +705,7 @@ class _MainFireshowState extends State<MainFireshow> {
                                               Padding(
                                                 padding: const EdgeInsets.all(10),
                                                 child: Text(
-                                                  'F-Red ส่งซ่อม',
+                                                  'F-Red เสีย',
                                                   style: TextStyle(
                                                       color: Color.fromARGB(
                                                           255, 28, 29, 29),
@@ -752,6 +752,8 @@ class _MainFireshowState extends State<MainFireshow> {
                             ],
                           ),
                         ),
+
+
                       ],
                     ),
                   ),
