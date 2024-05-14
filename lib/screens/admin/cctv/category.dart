@@ -1,11 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pkhos/models/category.dart';
-import 'package:pkhos/screens/admin/authen/authenspsch.dart';
-import 'package:pkhos/screens/admin/cctv/maincctvreq.dart';
-import 'package:pkhos/screens/admin/electric/mainelectric.dart';
-import 'package:pkhos/screens/admin/fire/mainfirereq.dart';
-import 'package:pkhos/screens/admin/phone/mainPhone.dart';
-import 'package:pkhos/screens/admin/plumbing/mainplumbing.dart';
 
 class Categories extends StatefulWidget {
   const Categories({super.key});

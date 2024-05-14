@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pkhos/screens/admin/authen/authenspsch.dart';
-import 'package:pkhos/screens/admin/fdh/mainfdh.dart';
 import 'package:pkhos/states/signout.dart';
 import 'package:pkhos/utility/my_constant.dart';
 

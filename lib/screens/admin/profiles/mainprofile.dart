@@ -1,11 +1,8 @@
-import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:pkhos/models/usersModel.dart';
 import 'package:pkhos/utility/my_constant.dart';
 import 'package:pkhos/utility/my_dialog.dart';
-import 'package:pkhos/widgets/show_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MainProfile extends StatefulWidget {
